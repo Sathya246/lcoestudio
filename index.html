@@ -1,0 +1,1324 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="LCO Estudio · La chica del orden. Moda circular, accesorios, calzado y decoración de interiores en Gualeguay.">
+<meta property="og:title" content="LCO Estudio">
+<meta property="og:description" content="Moda circular, accesorios y deco · Gualeguay">
+<style>[hidden]{display:none!important}</style>
+<title>LCO Estudio · La chica del orden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap">
+<style>
+/* Layout: barra fija (logo + dónde estás), pantallas que entran deslizando, botón de WhatsApp flotante. Paleta pastel suave como los videos. */
+:root{
+  --fondo:#FFFBF8; --rosa:#F4D3CA; --rosa-medio:#E9AFA2; --celeste:#C3D5EF; --celeste-medio:#9DB8E3;
+  --durazno:#F2C9A0; --amarillo:#F3D58B; --azul:#3B4DAE; --tinta:#2A3170; --coral:#E07A6F; --blanco:#FFFFFF; --verde:#5FB872;
+  --f-molde:"Jost","Futura","Century Gothic","Avenir Next",system-ui,sans-serif;
+  --f-serif:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--fondo);color:var(--tinta);font-family:var(--f-molde);font-weight:300;font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--fondo)}
+h1,h2,h3{text-wrap:balance}
+.wrap{max-width:720px;margin:0 auto;padding-block:8px 110px;display:flex;flex-direction:column;gap:28px}
+
+/* ---------- Barra fija ---------- */
+.barra{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--fondo) 92%,transparent);backdrop-filter:blur(8px);
+  margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));
+  border-bottom:1px solid var(--rosa)}
+.barra-in{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:12px;min-width:0}
+.atras{flex:none;width:38px;height:38px;border-radius:50%;background:var(--rosa);color:var(--azul);display:grid;place-items:center;text-decoration:none;font-size:1.6rem;line-height:1;padding-bottom:3px}
+.atras:focus-visible{outline:2px solid var(--azul);outline-offset:3px}
+.mini-logo{flex:none;width:42px;height:42px;border-radius:50%;background:var(--azul);display:grid;place-items:center;text-decoration:none;
+  box-shadow:inset 0 0 0 2px var(--azul),inset 0 0 0 3.5px var(--rosa-medio)}
+.mini-logo span{color:var(--rosa-medio);font-weight:500;font-size:.8rem;letter-spacing:.04em;line-height:1}
+.mini-logo:focus-visible{outline:2px solid var(--tinta);outline-offset:3px}
+.ruta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;min-width:0;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase}
+.ruta a{color:var(--azul);text-decoration:none}
+.ruta a:hover{text-decoration:underline}
+.ruta .sep{opacity:.45}
+.ruta .aca{color:var(--tinta);font-weight:500}
+
+/* ---------- WhatsApp flotante ---------- */
+.wsp{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:6;
+  width:58px;height:58px;border-radius:50%;background:var(--verde);display:grid;place-items:center;box-shadow:0 6px 18px rgba(53,59,120,.22)}
+.wsp svg{width:30px;height:30px}
+.wsp:focus-visible{outline:2px solid var(--tinta);outline-offset:3px}
+
+/* ---------- Inicio ---------- */
+header.inicio{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;padding-top:12px}
+.logo-vid{width:min(240px,66vw);aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--rosa);max-width:100%}
+.logo-vid video{width:100%;height:100%;object-fit:cover;display:block}
+.hola{margin:0;font-size:1.05rem}
+.frase{margin:0;font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;color:var(--azul)}
+.botones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}
+@media (min-width:640px){.botones{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.boton{display:flex;flex-direction:column;gap:10px;align-items:center;min-width:0;text-decoration:none}
+.boton .marco{width:100%;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:var(--rosa);outline:1.5px solid transparent;outline-offset:3px;transition:transform .2s,outline-color .2s}
+.boton video{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.45) contrast(1.06)}
+.boton:hover .marco{transform:translateY(-2px)}
+.boton:focus-visible{outline:none}
+.boton:focus-visible .marco{outline-color:var(--azul)}
+.nombre{font-size:.82rem;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--azul);padding-left:.28em}
+
+/* ---------- Piezas comunes ---------- */
+.vista{display:flex;flex-direction:column;gap:24px}
+.bloque{position:relative;border-radius:22px;overflow:hidden}
+.bloque > .dentro{position:relative;z-index:1}
+.flores{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.flores svg{position:absolute;display:block}
+.titular{background:var(--rosa);padding:clamp(40px,9vw,60px) 24px;text-align:center}
+.titular.t-celeste{background:var(--celeste)}
+.titular h1{margin:0;font-weight:400;font-size:clamp(1.5rem,5.5vw,2rem);letter-spacing:.3em;text-transform:uppercase;color:var(--azul);padding-left:.3em}
+.titular p{margin:8px auto 0;max-width:40ch}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:999px;text-decoration:none;
+  font-size:.78rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;border:1.5px solid var(--azul);background:var(--azul);color:var(--fondo)}
+.btn:hover{background:var(--tinta);border-color:var(--tinta)}
+.btn:focus-visible{outline:2px solid var(--tinta);outline-offset:3px}
+.btn-linea{background:transparent;color:var(--azul)}
+.btn-linea:hover{background:var(--blanco);color:var(--azul)}
+.centro{display:flex;justify-content:center}
+.pronto{margin:0;text-align:center;font-size:.85rem;opacity:.7}
+
+/* ---------- Moda: tipos ---------- */
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.tile{position:relative;overflow:hidden;min-height:150px;border-radius:20px;padding:20px 18px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;
+  text-decoration:none;color:var(--tinta);border:1.5px solid transparent;transition:transform .2s,border-color .2s}
+.tile b,.tile small{position:relative;z-index:1}
+.tile b{font-weight:500;font-size:clamp(1rem,4.4vw,1.2rem);letter-spacing:.14em;text-transform:uppercase;color:var(--azul);line-height:1.2}
+.tile small{font-size:.82rem}
+.tile:hover{transform:translateY(-2px);border-color:var(--celeste-medio)}
+.tile-todo{background:var(--azul)!important}
+.tile-todo b{color:var(--fondo)!important}
+.tile-todo small{color:var(--fondo);opacity:.9}
+.tile.tile-ancho{grid-column:1/-1;min-height:110px}
+.tiles .tile:not(.tile-ancho){justify-content:flex-start;padding-top:64px}
+.tile.btn-comprar{min-height:0;padding:10px 16px;flex-direction:row;align-items:baseline;justify-content:center;gap:10px;border-radius:999px}
+.btn-comprar b{white-space:nowrap}
+.btn-comprar .flores{display:none}
+.btn-comprar b{font-size:.82rem}.btn-comprar small{font-size:.74rem;white-space:nowrap}
+#vista-inicio{gap:12px}
+#vista-inicio .botones{gap:10px 14px}
+#vista-inicio .boton{gap:6px}
+.tile:focus-visible{outline:2px solid var(--azul);outline-offset:3px}
+:root{--v-rosa:var(--rosa);--v-durazno:var(--durazno);--v-amarillo:#F6E0A6;--v-celeste:var(--celeste);--v-verde:#D3E3C8}
+.t-celeste,.titular.t-celeste{background:var(--v-celeste)} .t-rosa,.titular.t-rosa{background:var(--v-rosa)} .t-durazno,.titular.t-durazno{background:var(--v-durazno)} .t-amarillo,.titular.t-amarillo{background:var(--v-amarillo)} .t-verde,.titular.t-verde{background:var(--v-verde)}
+
+/* ---------- Moda circular: cartel vender ---------- */
+.cartel{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;padding:22px 22px;border-radius:20px;background:var(--rosa);text-decoration:none;color:var(--tinta);
+  position:relative;overflow:hidden;border:1.5px solid transparent;transition:border-color .2s,transform .2s}
+.cartel:hover{border-color:var(--rosa-medio);transform:translateY(-1px)}
+.cartel:focus-visible{outline:2px solid var(--azul);outline-offset:3px}
+.cartel .txt{position:relative;z-index:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+.cartel .ceja{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase}
+.cartel b{font-weight:500;font-size:1.15rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azul)}
+.cartel small{font-size:.88rem}
+.cartel .flecha{position:relative;z-index:1;width:42px;height:42px;border-radius:50%;background:var(--azul);color:var(--fondo);display:grid;place-items:center;font-size:1.1rem}
+
+/* ---------- Comenzá a vender ---------- */
+.hero-v{background:var(--rosa);padding:clamp(56px,12vw,90px) clamp(22px,6vw,56px);text-align:center}
+.ceja{margin:0;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase}
+.hero-v h1{margin:18px 0 0;font-weight:400;font-size:clamp(2.4rem,8.5vw,3.8rem);line-height:1.04}
+.hero-v h1 em{display:block;font-family:var(--f-serif);font-style:italic;font-weight:500;color:var(--azul)}
+.hero-v p.bajada{margin:22px auto 0;max-width:36ch;font-size:1.05rem}
+.hero-v p.bajada strong{font-weight:500}
+.seccion{display:flex;flex-direction:column;gap:16px}
+.rotulo{margin:0;padding-top:12px;border-top:1px solid var(--rosa-medio);font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:var(--azul)}
+.requisitos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.requisitos li{background:var(--blanco);border:1px solid var(--rosa);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.requisitos b{font-weight:500;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azul)}
+.requisitos b::before{content:"✓ ";color:var(--coral)}
+.requisitos span{font-size:.88rem;opacity:.8}
+.opciones{display:grid;gap:14px}
+@media (min-width:640px){.opciones{grid-template-columns:1fr 1fr}}
+.opciones:has(> .opcion:only-child){grid-template-columns:1fr;max-width:560px;margin-inline:auto}
+.opcion{border-radius:20px;padding:26px clamp(20px,5vw,28px);display:flex;flex-direction:column;gap:4px;min-width:0}
+.opcion.celeste{background:var(--celeste)} .opcion.rosa{background:var(--rosa)}
+.opcion h3{margin:6px 0 0;font-weight:400;font-size:1.6rem}
+.porc{font-family:var(--f-serif);font-weight:500;font-size:clamp(3.4rem,13vw,4.4rem);line-height:1;color:var(--azul);font-variant-numeric:lining-nums}
+.porc-sub{margin:0;opacity:.8}
+.lema{margin:12px 0 4px;font-family:var(--f-serif);font-size:1.4rem;line-height:1.2}
+.opcion ul{list-style:none;margin:6px 0 0;padding:12px 0 0;border-top:1px solid rgba(53,59,120,.18);display:flex;flex-direction:column;gap:6px}
+.opcion li::before{content:"✓ ";color:var(--azul);font-weight:500}
+.aviso{margin-top:10px;background:var(--blanco);border-radius:14px;padding:12px 14px;font-size:.88rem}
+.aviso b{font-weight:500}
+.confirmar{display:inline-block;align-self:flex-start;margin-top:6px;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;background:var(--amarillo);color:var(--tinta);padding:3px 9px;border-radius:99px;border:1px solid #EBD69A}
+.volumen{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;background:var(--durazno);border-radius:16px;padding:16px 18px}
+.volumen p{margin:0;min-width:0;flex:1 1 220px;font-size:.92rem}
+.volumen b{font-weight:500}
+.pasos{background:var(--celeste);padding:32px clamp(20px,6vw,44px)}
+.pasos ol{list-style:none;margin:0;padding:0}
+.pasos li{padding:16px 0;border-bottom:1px solid rgba(53,59,120,.15);display:grid;grid-template-columns:auto 1fr;gap:0 18px;align-items:baseline}
+.pasos li:last-of-type{border-bottom:0}
+.pasos .n{font-family:var(--f-serif);font-size:2.2rem;color:var(--azul);line-height:1;font-variant-numeric:lining-nums}
+.pasos b{font-weight:500;display:block}
+.pasos span.d{opacity:.8;font-size:.92rem}
+.pasos .centro{margin-top:18px}
+
+/* ---------- Bienvenida ---------- */
+.bienvenida{min-height:calc(100vh - 120px);justify-content:center}
+.bienvenida header.inicio{gap:20px}
+.logo-entrar{display:block;width:min(300px,76vw);cursor:pointer;animation:latido-logo 2.6s ease-in-out infinite}
+.logo-entrar:focus-visible{outline:3px solid var(--azul);outline-offset:6px}
+@keyframes latido-logo{50%{transform:scale(1.035)}}
+.entrar-txt{font-size:.76rem;letter-spacing:.28em;text-transform:uppercase;color:var(--azul);text-decoration:none;padding:8px 16px;border-radius:99px;background:var(--rosa)}
+body.en-bienvenida .barra{display:none}
+@media (prefers-reduced-motion:reduce){.logo-entrar{animation:none}}
+/* ---------- Botón de música del inicio ---------- */
+.musica-btn{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:8px 18px 8px 8px;border-radius:999px;background:var(--blanco);border:1px solid var(--rosa-medio);color:var(--azul);
+  font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;transition:background .2s}
+.musica-btn:hover{background:var(--rosa)}
+.musica-btn:focus-visible{outline:2px solid var(--azul);outline-offset:3px}
+.musica-btn .ico-play,.musica-btn .ico-pausa{width:32px;height:32px;border-radius:50%;background:var(--azul);color:var(--fondo);display:grid;place-items:center;flex:none}
+.musica-btn .ico-play svg,.musica-btn .ico-pausa svg{width:16px;height:16px}
+.musica-btn .ico-pausa{display:none}
+.musica-btn[aria-pressed="true"] .ico-play{display:none}
+.musica-btn[aria-pressed="true"] .ico-pausa{display:grid}
+.ico-son{width:20px;height:20px;flex:none}
+.musica-btn[aria-pressed="true"] .ico-son{animation:latido 1.2s ease-in-out infinite}
+@keyframes latido{50%{transform:scale(1.15)}}
+@media (prefers-reduced-motion:reduce){.musica-btn[aria-pressed="true"] .ico-son{animation:none}}
+
+/* ---------- Casa FOA ---------- */
+.foa-sub{font-family:var(--f-serif);font-style:italic;font-size:1.6rem;color:var(--azul);margin-top:4px!important}
+.foa-video{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:block;width:min(320px,100%);margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 10px 26px rgba(53,59,120,.18)}
+.foa-video img{width:100%;max-width:100%;aspect-ratio:9/16;object-fit:cover;display:block}
+.foa-video .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;font-size:1.3rem}
+.foa-video:focus-visible{outline:2px solid var(--azul);outline-offset:3px}
+.foa-intro{margin:0;font-size:1.02rem;line-height:1.65;max-width:60ch}
+.foa-intro b{font-weight:500;color:var(--azul)}
+.servicios.foa-tend{grid-template-columns:1fr}
+@media (min-width:560px){.servicios.foa-tend{grid-template-columns:1fr 1fr}}
+.foa-cierre{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+.foa-cierre p{margin:0;font-family:var(--f-serif);font-size:1.4rem;line-height:1.25;max-width:26ch}
+a.ep{text-decoration:none}
+
+/* ---------- Gift card ---------- */
+.regalo-btn{position:relative;overflow:hidden;display:grid;grid-template-columns:110px 1fr auto;align-items:center;gap:16px;padding:16px;border-radius:20px;background:var(--amarillo);
+  text-decoration:none;color:var(--tinta);border:1.5px solid transparent;transition:transform .2s,border-color .2s}
+.regalo-btn:hover{transform:translateY(-1px);border-color:#EBD69A}
+.regalo-btn:focus-visible{outline:2px solid var(--azul);outline-offset:3px}
+.regalo-btn img,.regalo-btn .txt,.regalo-btn .flecha{position:relative;z-index:1}
+.regalo-btn.pronto-btn{background:var(--celeste)}
+.pronto-ico{position:relative;z-index:1;width:110px;height:72px;border-radius:10px;background:var(--blanco);display:grid;place-items:center;font-size:2rem}
+.regalo-btn img{width:110px;max-width:100%;border-radius:8px;box-shadow:0 6px 14px rgba(53,59,120,.16);display:block}
+.regalo-btn .txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.regalo-btn .ceja{font-size:.66rem;letter-spacing:.28em;text-transform:uppercase}
+.regalo-btn b{font-weight:500;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;color:var(--azul)}
+.regalo-btn small{font-size:.84rem}
+.regalo-btn .flecha{width:38px;height:38px;border-radius:50%;background:var(--azul);color:var(--fondo);display:grid;place-items:center}
+.tarjetas-regalo{display:grid;gap:18px}
+@media (min-width:640px){.tarjetas-regalo{grid-template-columns:1fr 1fr}}
+.tarjetas-regalo article{display:flex;flex-direction:column;gap:10px;min-width:0}
+.tarjetas-regalo img{width:100%;max-width:100%;border-radius:14px;box-shadow:0 8px 20px rgba(53,59,120,.14);display:block}
+.fila-t{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.fila-t b{font-weight:500;color:var(--azul);font-size:1.05rem}
+.nota-regalo{margin:0;text-align:center;font-size:.86rem;opacity:.8}
+
+/* ---------- Cómo comprar (inicio) ---------- */
+.como-comprar{background:var(--v-celeste);padding:28px clamp(20px,6vw,40px)}
+.como-comprar .rotulo{border-color:rgba(53,59,120,.25)}
+.como-comprar ol{list-style:none;margin:6px 0 0;padding:0}
+.como-comprar li{padding:14px 0;border-bottom:1px solid rgba(53,59,120,.15);display:grid;grid-template-columns:auto 1fr;gap:0 16px;align-items:baseline}
+.como-comprar li:last-child{border-bottom:0}
+.como-comprar .n{font-family:var(--f-serif);font-size:2rem;color:var(--azul);line-height:1;font-variant-numeric:lining-nums}
+.como-comprar b{font-weight:500;display:block}
+.como-comprar span.d{font-size:.92rem;opacity:.85}
+
+/* ---------- Community ---------- */
+.cm-hero{background:var(--rosa);padding:clamp(48px,11vw,80px) clamp(22px,6vw,48px);text-align:center}
+.pronto-chip{display:inline-block;background:var(--amarillo);border:1px solid #EBD69A;padding:5px 14px;border-radius:99px;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase}
+.cm-hero h2{margin:18px 0 0;font-weight:400;font-size:clamp(2rem,7.5vw,3rem);line-height:1.08}
+.cm-hero h2 em{display:block;font-family:var(--f-serif);font-style:italic;font-weight:500;color:var(--azul)}
+.cm-hero p{margin:18px auto 0;max-width:40ch}
+.servicios{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.servicios li{border-radius:18px;padding:18px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.servicios b{font-weight:500;font-size:.86rem;letter-spacing:.12em;text-transform:uppercase;color:var(--azul);line-height:1.3}
+.servicios span{font-size:.88rem}
+.servicios li.ancho{grid-column:1/-1}
+@media (max-width:380px){.servicios{grid-template-columns:1fr}}
+.manifiesto{background:var(--celeste);padding:36px clamp(22px,6vw,44px);text-align:center}
+.manifiesto .grande{margin:0 0 14px;font-family:var(--f-serif);font-size:clamp(1.6rem,5.6vw,2.1rem);line-height:1.2;color:var(--azul)}
+.manifiesto p{margin:0 auto;max-width:40ch}
+.galeria{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (min-width:640px){.galeria{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.galeria figure{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
+.galeria video{width:100%;max-width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:16px;background:var(--rosa);display:block}
+.galeria figcaption{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--azul);text-align:center}
+
+/* ---------- Deco: presentación, episodios, visor ---------- */
+.presenta{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:84px 1fr auto;align-items:center;gap:16px;padding:16px;border-radius:20px;background:var(--celeste);transition:transform .2s}
+.presenta:hover{transform:translateY(-1px)}
+.presenta:focus-visible,.ep:focus-visible{outline:2px solid var(--azul);outline-offset:3px}
+.avatar{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid var(--blanco);max-width:100%}
+.presenta-txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.presenta-txt b{font-weight:500;font-size:1.1rem;color:var(--azul)}
+.presenta-txt small{font-size:.86rem}
+.play{width:42px;height:42px;border-radius:50%;background:var(--azul);color:var(--fondo);display:grid;place-items:center;font-size:.9rem;padding-left:3px;flex:none}
+.bajada-sec{margin:-6px 0 0;font-size:.95rem;opacity:.8}
+.episodios{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.ep{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:62px 1fr auto;align-items:center;gap:14px;padding:10px 14px 10px 10px;border-radius:16px;background:var(--blanco);border:1px solid var(--rosa);transition:border-color .2s}
+.ep:hover{border-color:var(--azul)}
+.ep img{width:62px;height:96px;object-fit:cover;border-radius:10px;display:block;max-width:100%}
+#vista-certificaciones .titular h1{letter-spacing:.16em;font-size:clamp(1.2rem,5vw,1.8rem);padding-left:.16em}
+.carta{position:relative;background:#FFFDF8;border-radius:6px 6px 22px 22px;padding:30px 24px 24px;box-shadow:0 10px 26px rgba(120,60,60,.13);border-top:6px solid var(--rosa-medio);
+  background-image:repeating-linear-gradient(to bottom,transparent 0 31px,rgba(224,122,111,.16) 31px 32px);background-position:0 92px}
+.carta-sello{position:absolute;top:-18px;right:20px;width:62px;height:62px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#F59AA6,#D9536E 60%,#A3304B);color:#FBD3D9;font-family:var(--f-serif);font-size:.9rem;letter-spacing:.08em;display:grid;place-items:center;box-shadow:0 6px 14px rgba(110,31,51,.35)}
+.carta-ceja{margin:0;font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--coral)}
+.carta h2{margin:6px 0 14px;font-family:var(--f-serif);font-weight:500;font-size:1.5rem;color:var(--tinta)}
+.carta p{margin:0 0 12px;font-family:var(--f-serif);font-size:1.02rem;line-height:1.9;color:var(--tinta)}
+.carta p em{color:var(--azul)}
+.carta-firma{font-style:italic;font-size:1.6rem!important;color:var(--coral)!important;text-align:right;margin-top:18px!important}
+.carta-pie{text-align:right;font-family:inherit!important;font-size:.72rem!important;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+.carta-btn{border:0;background:var(--rosa);color:var(--azul);border-radius:99px;padding:10px 20px;font:inherit;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;display:block;margin:6px auto 0}
+.cert-sello{width:110px;height:110px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;box-shadow:0 8px 20px rgba(150,70,80,.18)}
+.certs{display:flex;flex-direction:column;gap:18px}
+.cert{background:#fff;border-radius:20px;border:1px solid var(--rosa);overflow:hidden;box-shadow:0 8px 22px rgba(53,59,120,.07)}
+.cert-img{display:block;width:100%;border:0;padding:14px 14px 0;background:#fff;cursor:zoom-in}
+.cert-img img{width:100%;display:block;border-radius:10px;box-shadow:0 4px 12px rgba(53,59,120,.12)}
+.cert-txt{padding:16px 20px 20px;display:flex;flex-direction:column;gap:4px}
+.cert-txt .ceja{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--coral)}
+.cert-txt > b{font-family:var(--f-serif);font-weight:500;font-size:1.35rem;color:var(--tinta)}
+.cert-txt small{font-size:.82rem;opacity:.75}
+.cert-txt p{margin:6px 0 0;font-size:.92rem;line-height:1.5}
+.cert-txt ul{margin:8px 0 0;padding-left:18px;font-size:.92rem;line-height:1.5}
+.cert-cursos{background:var(--celeste);border-color:transparent}
+.cat-btn.outlet span:first-child{background:var(--coral);color:#fff;padding:4px 12px;border-radius:99px}
+main.cat-abierta > *:not(.catalogo){display:none!important}
+.prenda .colores{font-size:.78rem;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.prenda .colores .pt{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:4px;vertical-align:-1px;box-shadow:0 0 0 1px rgba(42,49,112,.25)}
+.prox{text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;padding:6px 0 10px}
+.prox-ceja{margin:0;font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--coral)}
+.prox h3{margin:0;font-family:var(--f-serif);font-weight:500;font-size:1.5rem;color:var(--tinta)}
+.prox-txt{margin:0 0 10px;font-size:.9rem;opacity:.8}
+.marquee{width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);margin-bottom:14px}
+.marquee-track{display:flex;gap:12px;width:max-content;animation:desfile 45s linear infinite}
+.marquee-track img{width:180px;aspect-ratio:4/5;object-fit:cover;border-radius:16px;box-shadow:0 6px 16px rgba(53,59,120,.12)}
+@keyframes desfile{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee-track{animation:none}.marquee{overflow-x:auto}}
+#confeti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:40}
+.cupon{position:fixed;inset:0;z-index:39;background:rgba(42,49,112,.45);display:flex;align-items:center;justify-content:center;padding:20px}
+.cupon-box{position:relative;background:#FFFDF8;border-radius:24px;padding:30px 24px 24px;max-width:340px;width:100%;text-align:center;box-shadow:0 18px 40px rgba(42,49,112,.3);border-top:6px solid var(--rosa-medio);animation:cuponIn .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes cuponIn{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
+.cupon-x{position:absolute;top:10px;right:12px;border:0;background:none;font-size:1.1rem;color:var(--tinta);cursor:pointer}
+.cupon-ceja{margin:0;font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--coral)}
+.cupon h2{margin:8px 0 12px;font-family:var(--f-serif);font-weight:500;font-size:1.6rem;color:var(--tinta);line-height:1.2}
+.cupon h2 em{color:var(--azul)}
+.cupon-cod{display:inline-block;margin:0 0 8px;padding:8px 16px;border:2px dashed var(--rosa-medio);border-radius:12px;background:var(--rosa);font-size:.9rem}
+.cupon-cod b{letter-spacing:.12em;color:var(--azul)}
+.cupon-txt{margin:6px 0 16px;font-size:.88rem;opacity:.85}
+.prenda .sello-outlet{position:absolute;top:8px;left:8px;background:var(--coral);color:#fff;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:99px;z-index:2}
+.slides-wrap{position:relative;max-width:460px;margin:0 auto;width:100%}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:20px;scrollbar-width:none;box-shadow:0 10px 28px rgba(42,49,112,.14)}
+.slides::-webkit-scrollbar{display:none}
+.slides img{flex:0 0 100%;width:100%;aspect-ratio:4/5;object-fit:cover;scroll-snap-align:start;display:block}
+.sl-flecha{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:var(--azul);font-size:1.5rem;cursor:pointer;display:grid;place-items:center}
+.sl-flecha.izq{left:8px}.sl-flecha.der{right:8px}
+.sl-puntos{display:flex;justify-content:center;gap:6px;margin-top:12px}
+.sl-puntos i{width:7px;height:7px;border-radius:50%;background:var(--rosa-medio)}
+.sl-puntos i.on{background:var(--azul);width:16px;border-radius:4px}
+.ep-ig{cursor:default}
+.ep-txt{display:flex;flex-direction:column;gap:1px;min-width:0}
+.ep-n{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;opacity:.7}
+.ep-txt b{font-weight:500;font-size:.98rem;color:var(--tinta)}
+.ep-txt small{font-size:.8rem;opacity:.7;font-variant-numeric:tabular-nums}
+.titular.titular-chico{padding:16px 18px}
+.titular-chico h1{font-size:clamp(1.05rem,4.4vw,1.4rem);letter-spacing:.24em}
+.titular-chico p{font-size:.84rem;margin-top:4px}
+.titular-chico .flores{opacity:.55}
+#vista-ideas{gap:16px}
+#vista-ideas .portadas{gap:12px 12px}
+#vista-ideas .portada img{aspect-ratio:1.12}
+.portadas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.portada{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--tinta);min-width:0}
+.portada img{width:100%;max-width:100%;aspect-ratio:1;object-fit:cover;border-radius:18px;display:block;transition:transform .2s}
+.portada:hover img{transform:translateY(-2px)}
+.portada:focus-visible{outline:none}
+.portada:focus-visible img{outline:2px solid var(--azul);outline-offset:3px}
+.portada-txt{display:flex;flex-direction:column}
+.portada-txt b{font-weight:500;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--azul);line-height:1.35}
+.portada-txt small{font-size:.8rem;opacity:.7}
+.ep-cuad{grid-template-columns:72px 1fr auto}
+.ep-cuad img{width:72px;height:72px}
+.portada-musica{width:100%;max-width:100%;aspect-ratio:1;object-fit:cover;border-radius:20px;display:block}
+.ep-pronto{cursor:default;background:var(--fondo);border-style:dashed}
+.ep-flor{width:62px;height:62px;border-radius:12px;background:var(--rosa);display:grid;place-items:center}
+.visor{position:fixed;inset:0;z-index:20;background:rgba(53,59,120,.82);display:flex;align-items:center;justify-content:center;
+  padding:calc(12px + env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+.visor-in{display:flex;flex-direction:column;gap:10px;width:min(420px,100%);max-height:100%}
+.visor-top{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--fondo)}
+.visor-top b{font-weight:500;letter-spacing:.06em;min-width:0}
+.visor-cerrar{all:unset;cursor:pointer;padding:8px 14px;border-radius:999px;background:var(--fondo);color:var(--tinta);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;flex:none}
+.visor-cerrar:focus-visible{outline:2px solid var(--fondo);outline-offset:3px}
+.visor video{width:100%;max-height:calc(100vh - 110px);object-fit:contain;background:#000;border-radius:16px;max-width:100%}
+
+.zoom{position:fixed;inset:0;z-index:21;background:rgba(53,59,120,.88);display:flex;align-items:center;justify-content:center;
+  padding:calc(56px + env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+.zoom img{max-width:100%;max-height:100%;border-radius:14px;object-fit:contain;touch-action:pinch-zoom}
+.zoom-cerrar{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:calc(12px + env(safe-area-inset-right,0px))}
+.prenda .foto{cursor:zoom-in}
+.prenda .foto::after{content:"⤢";position:absolute;right:8px;bottom:8px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.85);color:var(--azul);display:grid;place-items:center;font-size:.85rem}
+/* ---------- Catálogo de prendas ---------- */
+.catalogo{display:flex;flex-direction:column;gap:16px;min-width:0}
+.catalogo::after{content:'Las imágenes son de carácter ilustrativo y pueden variar ligeramente del producto real.';display:block;margin:6px auto 0;max-width:36ch;text-align:center;font-size:.78rem;font-style:italic;opacity:.65}
+.chips-caja{overflow-x:auto;margin-inline:-4px;padding:4px;scrollbar-width:none}
+.chips-caja::-webkit-scrollbar{display:none}
+.chips{display:flex;gap:8px;width:max-content}
+.chip{all:unset;box-sizing:border-box;cursor:pointer;white-space:nowrap;padding:9px 16px;border-radius:999px;background:var(--blanco);border:1px solid var(--rosa-medio);
+  font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--azul)}
+.chip:hover{background:var(--rosa)}
+.chip[aria-pressed="true"]{background:var(--azul);border-color:var(--azul);color:var(--fondo)}
+.chip.nuevo:not([aria-pressed="true"]){background:var(--amarillo);border-color:#EBD69A}
+.chip:focus-visible{outline:2px solid var(--tinta);outline-offset:2px}
+.lista-cat{list-style:none;margin:0;padding:0;border-top:1px solid var(--rosa)}
+.lista-cat li{border-bottom:1px solid var(--rosa)}
+.cat-btn{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;padding:14px 6px;
+  font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta)}
+.cat-btn:hover{background:var(--rosa)}
+.cat-btn:focus-visible{outline:2px solid var(--azul);outline-offset:-2px}
+.cat-btn.todos{font-weight:500;color:var(--azul)}
+.cat-btn.nuevo span:first-child{background:var(--amarillo);padding:3px 10px;border-radius:99px;justify-self:start}
+.cat-n{font-size:.72rem;letter-spacing:.05em;opacity:.55}
+.chev{font-size:1.1rem;color:var(--azul);opacity:.7}
+.cat-vista{display:flex;flex-direction:column;gap:12px}
+.cat-volver{all:unset;cursor:pointer;align-self:flex-start;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--azul);padding:6px 0}
+.cat-volver:focus-visible{outline:2px solid var(--azul);outline-offset:3px}
+.cat-titulo{margin:0;font-weight:500;font-size:1.05rem;letter-spacing:.24em;text-transform:uppercase;color:var(--azul)}
+.cuenta{margin:0;font-size:.8rem;opacity:.7}
+.grilla{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}
+@media (min-width:640px){.grilla{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.prenda{display:flex;flex-direction:column;gap:6px;min-width:0}
+.prenda .foto{aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:var(--rosa);position:relative;max-width:100%}
+.prenda .foto img{width:100%;height:100%;object-fit:cover;display:block}
+.prenda .foto.contener{background:var(--rosa);display:grid;place-items:center;padding:10px}
+.prenda .foto.contener img{height:auto;object-fit:contain;border-radius:8px;box-shadow:0 6px 16px rgba(53,59,120,.14)}
+.prenda .etq{position:absolute;bottom:8px;left:8px;background:var(--amarillo);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border-radius:99px}
+.prenda b{font-weight:500;font-size:.92rem}
+.prenda .det{font-size:.8rem;opacity:.75}
+.prenda .precio{font-weight:500;color:var(--azul)}
+.prenda .comprar{align-self:flex-start;margin-top:2px;padding:9px 16px;font-size:.7rem}
+.prenda .carrusel{display:flex;width:100%;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.prenda .carrusel::-webkit-scrollbar{display:none}
+.prenda .carrusel img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start}
+.prenda .puntos{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:5px;pointer-events:none}
+.prenda .puntos i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.7);box-shadow:0 0 0 1px rgba(53,59,120,.25)}
+.prenda .puntos i.on{background:var(--azul);width:14px;border-radius:4px}
+.prenda .flecha{position:absolute;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;border:0;background:rgba(255,255,255,.88);color:var(--azul);font-size:1.1rem;line-height:1;display:grid;place-items:center;cursor:pointer;z-index:2}
+.prenda .flecha.izq{left:6px}.prenda .flecha.der{right:6px}
+.prenda.modelo .foto::after{display:none}
+.prenda .opciones{display:flex;flex-wrap:wrap;align-items:center;gap:5px}
+.prenda .opciones span{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin-right:2px;width:100%}
+.prenda .chip{border:1px solid var(--celeste-medio);background:#fff;color:var(--tinta);border-radius:99px;padding:5px 10px;font:inherit;font-size:.74rem;cursor:pointer}
+.prenda .chip.on{background:var(--azul);border-color:var(--azul);color:#fff}
+.ficha{max-width:460px;margin:0 auto}
+.ficha .ficha-volver{margin-bottom:14px}
+.prenda.portada{cursor:pointer}
+.prenda.portada .foto::after{display:none}
+.prenda.portada .ver{font-size:.74rem;color:var(--azul);letter-spacing:.06em}
+.prenda.modelo b{font-size:1.1rem}
+.prenda.modelo .opciones span{margin-top:4px}
+.prenda .chip{letter-spacing:.02em;text-transform:none;min-width:44px;padding:8px 14px;font-size:.88rem}
+.prenda.modelo .comprar{align-self:stretch;justify-content:center;padding:13px 16px;font-size:.78rem;margin-top:6px}
+.prenda .flecha{width:38px;height:38px;font-size:1.4rem}
+.vacio{position:relative;overflow:hidden;background:var(--rosa);border-radius:20px;padding:36px 22px;text-align:center}
+.vacio .dentro{position:relative;z-index:1}
+.vacio b{display:block;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--azul)}
+.vacio p{margin:6px auto 0;max-width:34ch;font-size:.9rem}
+.entra{animation:entra .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes entra{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+footer{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--azul);opacity:.8}
+@media (prefers-reduced-motion:reduce){.entra{animation:none}.boton .marco,.tile,.cartel{transition:none}}
+</style>
+
+</head>
+<body>
+<div class="barra">
+  <div class="barra-in">
+    <a class="atras" id="atras" href="#inicio" aria-label="Volver" hidden>‹</a>
+    <a class="mini-logo" href="#inicio" aria-label="Ir al inicio"><span>LCO</span></a>
+    <nav class="ruta" id="ruta" aria-label="Dónde estás"></nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ================= BIENVENIDA ================= -->
+<main id="vista-bienvenida" class="vista bienvenida">
+  <header class="inicio">
+    <a class="logo-vid logo-entrar" href="#inicio" aria-label="Entrar"><video src="v/logo.mp4" poster="v/logo.jpg" autoplay muted loop playsinline></video></a>
+    <a class="entrar-txt" href="#inicio">Tocá el logo para entrar ✨</a>
+    <button class="musica-btn" id="musica-btn" aria-pressed="false">
+      <span class="ico-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+      <span class="ico-pausa" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg></span>
+      <span class="musica-txt">Escuchá nuestra música</span>
+      <svg class="ico-son" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+    </button>
+    <audio id="musica-audio" src="v/musica/reina-del-orden-remix.mp3" preload="none"></audio>
+    <p class="hola">Hola, soy Agus de “la chica del orden”</p>
+    <p class="frase">Lo simple es mágico</p>
+  </header>
+</main>
+
+<!-- ================= INICIO ================= -->
+<main id="vista-inicio" class="vista" hidden>
+  <nav class="botones" aria-label="Secciones">
+    <a class="boton" href="#moda"><div class="marco"><video data-vsrc="v/moda.mp4" poster="v/moda.jpg" muted loop playsinline></video></div><span class="nombre">Moda</span></a>
+    <a class="boton" href="#deco"><div class="marco"><video data-vsrc="v/deco.mp4" poster="v/deco.jpg" muted loop playsinline></video></div><span class="nombre">Deco</span></a>
+    <a class="boton" href="#community"><div class="marco"><video data-vsrc="v/community.mp4" poster="v/community.jpg" muted loop playsinline></video></div><span class="nombre">Community</span></a>
+    <a class="boton" href="#ideas"><div class="marco"><video data-vsrc="v/ideas.mp4" poster="v/ideas.jpg" muted loop playsinline></video></div><span class="nombre">Universo LCO</span></a>
+  </nav>
+
+  <a class="tile t-celeste tile-ancho btn-comprar" href="#comprar"><div class="flores" data-flores="tile" aria-hidden="true"></div><b>Cómo comprar</b><small>En 3 pasos, por WhatsApp</small></a>
+
+
+</main>
+
+<!-- ================= MODA ================= -->
+<main id="vista-comprar" class="vista" hidden>
+  <section class="bloque como-comprar">
+    <div class="flores" data-flores="pasos" aria-hidden="true"></div>
+    <div class="dentro">
+      <p class="rotulo">Cómo comprar</p>
+      <ol>
+        <li><span class="n">1</span><div><b>Elegí lo que te gusta</b><span class="d">Una prenda o una tarjeta de regalo.</span></div></li>
+        <li><span class="n">2</span><div><b>Tocá "Comprar"</b><span class="d">Se abre el WhatsApp de LCO con tu mensaje listo.</span></div></li>
+        <li><span class="n">3</span><div><b>Coordinamos juntas</b><span class="d">Por WhatsApp acordamos el pago y la entrega.</span></div></li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<main id="vista-trabajamos" class="vista" hidden>
+  <section class="bloque titular titular-chico t-rosa"><div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><h1>Cómo trabajamos</h1><p>Del plano al render: deslizá para ver el paso a paso.</p></div></section>
+  <div class="slides-wrap">
+    <div class="slides" id="slides-cw"><img src="v/deco/cw-1.jpg" alt="Cómo trabajamos, placa 1" loading="eager"><img src="v/deco/cw-2.jpg" alt="Cómo trabajamos, placa 2" loading="lazy"><img src="v/deco/cw-3.jpg" alt="Cómo trabajamos, placa 3" loading="lazy"><img src="v/deco/cw-4.jpg" alt="Cómo trabajamos, placa 4" loading="lazy"><img src="v/deco/cw-5.jpg" alt="Cómo trabajamos, placa 5" loading="lazy"><img src="v/deco/cw-6.jpg" alt="Cómo trabajamos, placa 6" loading="lazy"><img src="v/deco/cw-7w.jpg" alt="Cómo trabajamos, placa 7" loading="lazy"></div>
+    <button class="sl-flecha izq" aria-label="Anterior">‹</button><button class="sl-flecha der" aria-label="Siguiente">›</button>
+    <div class="sl-puntos"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <div class="centro"><a class="btn" href="#trabajamos" data-wsp="Hola Agus! Te mando una foto de mi espacio para pedir ideas y presupuesto de decoración.">Mandanos tu foto</a></div>
+</main>
+
+<main id="vista-resultado" class="vista" hidden>
+  <section class="bloque titular t-durazno"><div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><h1>El resultado</h1><p>De vestidor a dormitorio: deslizá para recorrerlo.</p></div></section>
+  <div class="slides-wrap">
+    <div class="slides"><img src="v/deco/rs-1.jpg" alt="El resultado, foto 1" loading="eager"><img src="v/deco/rs-2.jpg" alt="El resultado, foto 2" loading="lazy"><img src="v/deco/rs-3.jpg" alt="El resultado, foto 3" loading="lazy"><img src="v/deco/rs-4.jpg" alt="El resultado, foto 4" loading="lazy"><img src="v/deco/rs-5.jpg" alt="El resultado, foto 5" loading="lazy"><img src="v/deco/rs-6.jpg" alt="El resultado, foto 6" loading="lazy"></div>
+    <button class="sl-flecha izq" aria-label="Anterior">‹</button><button class="sl-flecha der" aria-label="Siguiente">›</button>
+    <div class="sl-puntos"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <div class="centro"><a class="btn" href="#resultado" data-wsp="Hola Agus! Vi el resultado de Manos a la Obra y quiero ideas para mi espacio.">Quiero algo así</a></div>
+</main>
+
+<main id="vista-certificaciones" class="vista" hidden>
+  <section class="bloque titular t-rosa"><div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><img src="v/cert/portada-certificaciones.jpg" alt="" class="cert-sello"><h1>Mis certificaciones</h1><p>Lo que aprendí en el camino, y lo que me sigue despertando curiosidad.</p></div></section>
+  <div class="certs">
+    <article class="carta"><span class="carta-sello" aria-hidden="true">LCO</span>
+      <p class="carta-ceja">Carta de presentación</p><h2>Mi historia, mi recorrido</h2>
+      <p>Soy el resultado de muchos caminos, aprendizajes y sueños.</p><p>Vengo de una familia de emprendedores, donde el trabajo nunca tuvo horarios y donde aprendí, gracias a mis padres, el valor del esfuerzo, la perseverancia y la pasión por lo que uno hace.</p><p>Mi primer emprendimiento comenzó a los 16 años, vendiendo empanadas y medialunas caseras junto a una amiga entrañable, recorriendo las calles en un Citroën.</p><div class="carta-mas" hidden><p>Después llegaron Buenos Aires, la universidad y mi título de Contadora Pública. Desarrollé mi profesión en empresas privadas, organismos públicos y el Banco de la Nación Argentina. También tuve mis propios negocios de indumentaria, una pasión que siempre me acompañó.</p><p>Pero con los años descubrí algo maravilloso: <em>no tenemos que ser una sola cosa durante toda la vida.</em></p><p>Mi curiosidad me llevó a explorar nuevos mundos: la pintura, la cerámica, la soldadura, la decoración, el orden, la moda y tantas otras disciplinas que enriquecieron mi mirada.</p><p>Hoy creo profundamente en la libertad de reinventarnos, en el valor de lo simple, en el cuidado del planeta, en el amor por los animales y en una vida guiada por la fe.</p><p>Así nace LCO Estudio, un espacio donde conviven mis experiencias, mis conocimientos y mis pasiones: el orden, la decoración, la moda circular y la creatividad.</p><p>Porque después de tantos caminos recorridos, entendí que no se trata de elegir una sola cosa para ser, sino de animarnos a ser todo aquello que nos apasiona.</p><p><b>Y este es mi nuevo comienzo.</b></p><p>Con gratitud a mis padres, que me enseñaron la cultura del trabajo, y con Dios guiando mis pasos.</p><p class="carta-firma">Agus</p><p class="carta-pie">LCO Estudio · La Chica del Orden</p></div>
+      <button class="carta-btn">Seguir leyendo ↓</button></article>
+    <article class="cert cert-cursos"><div class="cert-txt"><span class="ceja">Últimos tiempos</span><b>Formación reciente</b>
+      <ul><li><b>Carrera en Interiorismo</b> · UTN · Idílica Deco (2024–2025)</li><li><b>Teología</b> · Primer módulo completo, «La vida de Jesús», cursado en la Iglesia Bíblica Cristiana Vida. Certificado Básico en Teología otorgado por la Facultad Internacional de Educación Teológica (FIET)</li><li><b>Conferencias y charlas</b> · a nivel local y en forma virtual</li><li><b>Marketing Digital</b> · Becas Santander</li><li><b>Community Manager</b> · Miguel Florido y Rubén Máñez: cómo gestionar las redes sociales de forma profesional</li></ul>
+      <p>Siempre estoy aprendiendo algo nuevo. Estos cursos me ayudan a contar lo que hago y a acompañar a otras marcas en sus redes.</p></div></article>
+    <article class="cert"><button class="cert-img prenda-zoom" aria-label="Ver certificado"><img loading="lazy" src="v/cert/c-decoradora.jpg" alt="Decoración y Diseño de Interiores"></button>
+      <div class="cert-txt"><span class="ceja">2023 · UTN · Idílica Deco</span><b>Decoración y Diseño de Interiores</b><small>Nivel introductorio · 32 horas</small><p>Teoría y uso del color, la luz, alfombras, textiles, mobiliario, distribución del espacio y estilos decorativos.</p></div></article>
+    <article class="cert"><button class="cert-img prenda-zoom" aria-label="Ver certificado"><img loading="lazy" src="v/cert/c-soldador.jpg" alt="Soldador"></button>
+      <div class="cert-txt"><span class="ceja">2017 · Escuela Técnica N° 1, Gualeguay</span><b>Soldador</b><small>300 horas reloj</small><p>Porque una buena idea también se construye con las manos.</p></div></article>
+    <article class="cert"><button class="cert-img prenda-zoom" aria-label="Ver certificado"><img loading="lazy" src="v/cert/c-contador.jpg?v=2" alt="Contadora Pública"></button>
+      <div class="cert-txt"><span class="ceja">2003 · Universidad Argentina John F. Kennedy</span><b>Contadora Pública</b><small>Título universitario</small><p>El orden y los números, la base de todo lo que vino después.</p></div></article>
+  </div>
+</main>
+
+<main id="vista-moda" class="vista" hidden>
+  <nav class="tiles" aria-label="Tipos de moda">
+    <a class="tile t-rosa" href="#accesorios"><div class="flores" data-flores="tile" aria-hidden="true"></div><b>Accesorios</b><small>Pañuelos, collares y más</small></a>
+    <a class="tile t-amarillo" href="#calzado"><div class="flores" data-flores="tile" aria-hidden="true"></div><b>Calzado</b><small>Por catálogo</small></a>
+    <a class="tile t-rosa tile-ancho tile-todo" href="#todo"><div class="flores" data-flores="tile" aria-hidden="true"></div><b>Ver todo junto</b><small>Toda la ropa mezclada: circular, con etiqueta, fiesta y hombre</small></a>
+    <a class="tile t-verde" href="#circular"><div class="flores" data-flores="tile" aria-hidden="true"></div><b>Moda circular</b><small>Prendas con historia</small></a>
+    <a class="tile t-celeste" href="#etiqueta"><div class="flores" data-flores="tile" aria-hidden="true"></div><b>Con etiqueta</b><small>Ropa nueva</small></a>
+    <a class="tile t-durazno" href="#fiesta"><div class="flores" data-flores="tile" aria-hidden="true"></div><b>Fiesta</b><small>LCO Gala</small></a>
+    <a class="tile t-amarillo" href="#hombre"><div class="flores" data-flores="tile" aria-hidden="true"></div><b>Hombre</b><small>Ropa masculina</small></a>
+  </nav>
+</main>
+
+<!-- ================= MODA CIRCULAR ================= -->
+<main id="vista-circular" class="vista" hidden>
+  <section class="bloque titular t-celeste">
+    <div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><h1>Moda circular</h1><p>Prendas que vuelven a circular.</p></div>
+  </section>
+  <a class="cartel" href="#vender">
+    <div class="flores" data-flores="cartel" aria-hidden="true"></div>
+    <span class="txt"><span class="ceja">¿Tenés ropa que no usás?</span><b>Comenzá a vender</b><small>Traé tus prendas. LCO hace el resto.</small></span>
+    <span class="flecha" aria-hidden="true">→</span>
+  </a>
+  <div class="catalogo" data-linea="circular"></div>
+</main>
+
+<!-- ================= CON ETIQUETA / FIESTA / CALZADO ================= -->
+<main id="vista-etiqueta" class="vista" hidden>
+  <section class="bloque titular t-rosa"><div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><h1>Con etiqueta</h1><p>Ropa nueva, con su etiqueta.</p></div></section>
+  <div class="catalogo" data-linea="etiqueta"></div>
+</main>
+<main id="vista-fiesta" class="vista" hidden>
+  <section class="bloque titular t-durazno"><div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><h1>Fiesta</h1><p>LCO Gala: vestidos para brillar.</p></div></section>
+  <div class="catalogo" data-linea="fiesta"></div>
+</main>
+<main id="vista-calzado" class="vista" hidden>
+  <section class="bloque titular t-amarillo"><div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><h1>Calzado</h1><p>Por catálogo: elegís el modelo y LCO lo encarga para vos.</p></div></section>
+  <div class="catalogo" data-linea="calzado" data-cats="Sandalias"></div>
+</main>
+
+<!-- ================= COMENZÁ A VENDER ================= -->
+<main id="vista-vender" class="vista" hidden>
+  <section class="bloque hero-v">
+    <div class="flores" data-flores="hero" aria-hidden="true"></div>
+    <div class="dentro">
+      <p class="ceja">LCO Estudio · Moda circular</p>
+      <h1>Vender tu ropa <em>nunca fue tan simple</em></h1>
+      <p class="bajada">Vos liberás espacio. LCO evalúa, cotiza y vende tus prendas por vos. <strong>Traé tus prendas. LCO hace el resto.</strong></p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <p class="rotulo">Qué ropa recibe LCO</p>
+    <ul class="requisitos">
+      <li><b>Solo adultos</b><span>Ropa de mujer y hombre.</span></li>
+      <li><b>Ropa actual</b><span>No vintage. Hasta 10 años de antigüedad.</span></li>
+      <li><b>Cualquier marca</b><span>Si es de temporada y está en muy buen estado, la marca no importa.</span></li>
+      <li><b>Excelente estado</b><span>Limpias y listas para evaluar.</span></li>
+    </ul>
+  </section>
+
+  <section class="seccion">
+    <p class="rotulo">Cómo vendemos tu ropa</p>
+    <div class="opciones">
+      <article class="opcion rosa">
+        <p class="ceja">Así trabaja LCO</p>
+        <h3>Consignación</h3>
+        <div class="porc">50%</div>
+        <p class="porc-sub">cuando se vende</p>
+        <p class="lema">LCO hace todo. Vos esperás a cobrar.</p>
+        <ul><li>Fotos y publicación a cargo de LCO</li><li>Cobrás por transferencia</li><li>No hace falta volver para cobrar</li></ul>
+        <p class="aviso"><b>Mínimo 30 días.</b> Pasado ese plazo, si alguna prenda no se vendió, podés retirarla, dejarla un tiempo más o donarla.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="bloque pasos">
+    <div class="flores" data-flores="pasos" aria-hidden="true"></div>
+    <div class="dentro">
+      <p class="rotulo" style="border-color:rgba(53,59,120,.25)">Cómo funciona</p>
+      <ol>
+        <li><span class="n">1</span><div><b>Prepará tu ropa</b><span class="d">Limpia y en excelente estado.</span></div></li>
+        <li><span class="n">2</span><div><b>Reservá tu turno</b><span class="d">Contá cuántas prendas traés.</span></div></li>
+        <li><span class="n">3</span><div><b>LCO las evalúa</b><span class="d">Una por una, en el showroom.</span></div></li>
+        <li><span class="n">4</span><div><b>Quedan en consignación</b><span class="d">Cuando se venden, cobrás el 50% por transferencia.</span></div></li>
+      </ol>
+      <div class="centro"><a class="btn" href="#vender" data-wsp="Hola Agus! Quiero solicitar un turno para vender ropa en LCO.">Solicitar turno →</a></div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= DECO / COMMUNITY / IDEAS ================= -->
+<main id="vista-deco" class="vista" hidden>
+  <section class="bloque titular"><div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><h1>Decoración</h1><p>Asesoría y proyectos de decoración de interiores: distribución, renders y elección de piezas.</p></div></section>
+
+
+  <button class="presenta" data-video="v/deco/presentacion.mp4" data-titulo="Hola, soy Agus">
+    <img loading="lazy" class="avatar" src="v/deco/agus.jpg" alt="Agus, decoradora de interiores">
+    <span class="presenta-txt"><span class="ceja">Decoradora de interiores</span><b>Hola, soy Agus</b><small>Mirá cómo puedo ayudarte con tu espacio.</small></span>
+    <span class="play" aria-hidden="true">▶</span>
+  </button>
+  <div class="centro"><a class="btn" href="#deco" data-wsp="Hola Agus! Quiero pedir un presupuesto de decoración.">Pedí presupuesto</a></div>
+
+  <section class="seccion">
+    <p class="rotulo">Cómo trabajamos</p>
+    <ul class="episodios"><li><a class="ep" href="#trabajamos"><img loading="lazy" src="v/deco/cw-1.jpg" alt=""><span class="ep-txt"><span class="ep-n">Paso a paso</span><b>Del plano al render</b><small>Mandanos tu foto y te mostramos cómo trabajamos</small></span><span class="play" aria-hidden="true">›</span></a></li></ul>
+  </section>
+
+  <section class="seccion">
+    <p class="rotulo">Dossier de interiorismo</p>
+    <ul class="episodios">
+      <li><button class="ep" data-video="v/deco/dossier-quincho.mp4" data-titulo="Dossier de interiorismo · Quincho"><img loading="lazy" src="v/deco/dossier-quincho.jpg" alt=""><span class="ep-txt"><span class="ep-n">Proyecto integral</span><b>Quincho</b><small>Diseño · Renders · Materiales · Presupuestos · Gestión de proveedores</small></span><span class="play" aria-hidden="true">▶</span></button></li>
+    </ul>
+  </section>
+
+  <section class="seccion">
+    <p class="rotulo">Casa FOA 2026</p>
+    <ul class="episodios">
+      <li><a class="ep" href="#casafoa"><img loading="lazy" src="v/deco/casafoa.jpg" alt=""><span class="ep-txt"><span class="ep-n">Tendencias</span><b>Casa FOA 2026 · Alquimia</b><small>Lo que vi y lo que me llevo</small></span><span class="play" aria-hidden="true">→</span></a></li>
+    </ul>
+  </section>
+
+  <section class="seccion">
+    <p class="rotulo">Manos a la Obra</p>
+    <p class="bajada-sec">De vestidor a dormitorio, paso a paso.</p>
+    <ul class="episodios">
+      <li><a class="ep" href="#resultado"><img loading="lazy" src="v/deco/rs-1.jpg" alt=""><span class="ep-txt"><span class="ep-n">Terminado</span><b>El resultado</b><small>Recorrelo foto por foto</small></span><span class="play" aria-hidden="true">›</span></a></li>
+      <li><button class="ep" data-video="v/deco/ep4-textiles.mp4" data-titulo="Textiles y ropa de cama"><img loading="lazy" src="v/deco/ep4-textiles.jpg" alt=""><span class="ep-txt"><span class="ep-n">Episodio 4</span><b>Textiles y ropa de cama</b><small>0:44</small></span><span class="play" aria-hidden="true">▶</span></button></li>
+      <li><div class="ep ep-ig"><img loading="lazy" src="v/deco/manos-portada.jpg" alt="Manos a la Obra"><span class="ep-txt"><span class="ep-n">Episodios 1, 2 y 3</span><b>El antes, las paredes y los murales</b><small>Miralos en el feed de nuestro Instagram</small></span></div></li>
+    </ul>
+  </section>
+</main>
+
+<canvas id="confeti" aria-hidden="true"></canvas>
+<div class="cupon" id="cupon" hidden role="dialog" aria-modal="true" aria-label="Cupón de bienvenida">
+  <div class="cupon-box"><button class="cupon-x" aria-label="Cerrar">✕</button>
+    <p class="cupon-ceja">¡Bienvenida a LCO!</p>
+    <h2>Por entrar, tenés <em>10% de descuento</em></h2>
+    <p class="cupon-cod">Código: <b>PASTELITO</b></p>
+    <p class="cupon-txt">Válido este fin de semana, solo en <b>moda y accesorios</b>. Mandá la palabra <b>PASTELITO</b> por WhatsApp y usá tu descuento.</p>
+    <a class="btn cupon-ok" target="_blank" rel="noopener" href="https://wa.me/5493444518451?text=Hola%20Agus!%20PASTELITO%20%F0%9F%8C%B8%20Quiero%20usar%20mi%2010%25%20de%20descuento.">Mandar PASTELITO</a>
+  </div>
+</div>
+<div class="zoom" id="zoom" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button class="visor-cerrar zoom-cerrar" id="zoom-cerrar">Cerrar ✕</button>
+  <img loading="lazy" id="zoom-img" alt="">
+</div>
+
+<div class="visor" id="visor" hidden role="dialog" aria-modal="true" aria-label="Video">
+  <div class="visor-in">
+    <div class="visor-top"><b id="visor-titulo"></b><button class="visor-cerrar" id="visor-cerrar">Cerrar ✕</button></div>
+    <video id="visor-video" controls playsinline preload="none"></video>
+  </div>
+</div>
+<main id="vista-community" class="vista" hidden>
+  <section class="bloque titular t-celeste"><div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><h1>Community</h1><p>Manejo de Instagram para emprendimientos: contenido, reels y análisis de métricas.</p></div></section>
+  <section class="bloque cm-hero">
+    <div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro">
+      <span class="pronto-chip">Próximamente</span>
+      <h2>Tu marca, con <em>tu propia identidad</em></h2>
+      <p>¿Querés tener tu propia página, mostrar tus productos y que tengan este movimiento y esta onda? Muy pronto te voy a ayudar a lograrlo.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <p class="rotulo">Lo que te ofrezco</p>
+    <ul class="servicios">
+      <li class="t-celeste"><b>Auditoría de redes</b><span>Analizo tu cuenta y te entrego un informe de métricas claro: qué funciona, qué no y por dónde seguir.</span></li>
+      <li class="t-rosa"><b>Tu propia página</b><span>Te ayudo a desarrollarla y te acompaño en el proceso, para que muestres y vendas tus productos.</span></li>
+      <li class="t-durazno"><b>Logos, reels y carruseles</b><span>Contenido con movimiento y una estética propia, como el que ves acá.</span></li>
+      <li class="t-amarillo"><b>Identidad de marca</b><span>Colores, letras y un estilo que hablen de vos y de nadie más.</span></li>
+      <li class="t-celeste ancho"><b>Modelos con IA</b><span>Tus prendas puestas en una modelo, en movimiento y en la calle, sin necesidad de producción de fotos.</span></li>
+    </ul>
+  </section>
+
+  <section class="bloque manifiesto">
+    <div class="flores" data-flores="pasos" aria-hidden="true"></div>
+    <div class="dentro">
+      <p class="grande">Sé original. Mostrá tu esencia.<br>Poné tu cara: nadie vende lo tuyo como vos.</p>
+      <p>En tu local, quien vende tus productos sos vos. En internet pasa lo mismo: tu identidad es tu mejor vidriera.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <p class="rotulo">Así se ve</p>
+    <div class="galeria">
+      <figure><video data-src="v/cm/modelo-ia.mp4" poster="v/cm/modelo-ia.jpg" muted loop playsinline preload="none"></video><figcaption>Modelo con IA</figcaption></figure>
+      <figure><video data-src="v/cm/logo-remolino.mp4" poster="v/cm/logo-remolino.jpg" muted loop playsinline preload="none"></video><figcaption>Animación de logo</figcaption></figure>
+      <figure><video data-src="v/cm/reel-blusa.mp4" poster="v/cm/reel-blusa.jpg" muted loop playsinline preload="none"></video><figcaption>Reel de producto</figcaption></figure>
+      <figure><video data-src="v/cm/maniqui.mp4" poster="v/cm/maniqui.jpg" muted loop playsinline preload="none"></video><figcaption>Reel de marca</figcaption></figure>
+      <figure><video data-src="v/cm/reel-camisa.mp4" poster="v/cm/reel-camisa.jpg" muted loop playsinline preload="none"></video><figcaption>Reel de producto</figcaption></figure>
+      <figure><video data-src="v/logo.mp4" poster="v/logo.jpg" muted loop playsinline preload="none"></video><figcaption>Animación de logo</figcaption></figure>
+      <figure><video data-src="v/ideas.mp4" poster="v/ideas.jpg" muted loop playsinline preload="none"></video><figcaption>Mockup de marca</figcaption></figure>
+      <figure><video data-src="v/cm/logo-bordo.mp4" poster="v/cm/logo-bordo.jpg" muted loop playsinline preload="none"></video><figcaption>Animación de logo</figcaption></figure>
+      <figure><video data-src="v/deco.mp4" poster="v/deco.jpg" muted loop playsinline preload="none"></video><figcaption>Mockup de marca</figcaption></figure>
+    </div>
+  </section>
+
+  <div class="centro"><a class="btn" href="#community" data-wsp="Hola Agus! Me interesa el servicio de community manager. Avisame cuando arranques.">Quiero que me avises</a></div>
+</main>
+<main id="vista-ideas" class="vista" hidden>
+  <section class="bloque titular titular-chico"><div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><h1>Universo LCO</h1><p>Música, gift cards, cursos y todo lo lindo de La Chica del Orden.</p></div></section>
+
+  <nav class="portadas" aria-label="Universo LCO">
+    <a class="portada" href="#musica"><img loading="lazy" src="v/musica/portada-cassette-2.jpg" alt="" style="object-fit:contain;background:#FDF3EE"><span class="portada-txt"><b>Música de La Chica del Orden</b><small>6 temas</small></span></a>
+    <a class="portada" href="#regalo"><img loading="lazy" src="v/portada-giftcard.jpg" alt=""><span class="portada-txt"><b>Gift cards</b><small>Tarjetas de regalo</small></span></a>
+    <a class="portada" href="#certificaciones"><img loading="lazy" src="v/cert/portada-certificaciones.jpg" alt=""><span class="portada-txt"><b>Mis certificaciones</b><small>Formación y cursos</small></span></a>
+    <a class="portada" href="#pronto"><img loading="lazy" src="v/portada-cursos.jpg" alt=""><span class="portada-txt"><b>Cursos</b><small>Próximamente</small></span></a>
+  </nav>
+
+</main>
+
+<!-- ================= MÚSICA ================= -->
+<main id="vista-musica" class="vista" hidden>
+  <img loading="lazy" class="portada-musica" src="v/musica/portada-cassette-2.jpg" alt="Música de La Chica del Orden: Dale otra vuelta">
+  <section class="seccion">
+    <ul class="episodios">
+      <li><button class="ep ep-cuad" data-video="v/musica/reina-del-orden-remix.mp4" data-titulo="La Reina del Orden (Remix)"><img loading="lazy" src="v/musica/reina-del-orden-remix.jpg" alt=""><span class="ep-txt"><span class="ep-n">Tema</span><b>La Reina del Orden (Remix)</b><small>4:45</small></span><span class="play" aria-hidden="true">▶</span></button></li>
+      <li><button class="ep ep-cuad" data-video="v/musica/dale-otra-vuelta.mp4" data-titulo="Dale otra vuelta"><img loading="lazy" src="v/musica/dale-otra-vuelta.jpg" alt=""><span class="ep-txt"><span class="ep-n">Tema</span><b>Dale otra vuelta</b><small>3:46</small></span><span class="play" aria-hidden="true">▶</span></button></li>
+      <li><button class="ep ep-cuad" data-video="v/musica/todo-vuelve-a-empezar.mp4" data-titulo="Todo vuelve a empezar"><img loading="lazy" src="v/musica/todo-vuelve-a-empezar.jpg" alt=""><span class="ep-txt"><span class="ep-n">Tema</span><b>Todo vuelve a empezar</b><small>5:32</small></span><span class="play" aria-hidden="true">▶</span></button></li>
+      <li><button class="ep ep-cuad" data-video="v/musica/cumbia-pastelito.mp4" data-titulo="Cumbia de Pastelito"><img loading="lazy" src="v/musica/cumbia-pastelito.jpg" alt=""><span class="ep-txt"><span class="ep-n">Tema</span><b>Cumbia de Pastelito</b><small>2:03</small></span><span class="play" aria-hidden="true">▶</span></button></li>
+      <li><button class="ep ep-cuad" data-video="v/musica/tema-corazon.mp4" data-titulo="Lo simple es mágico"><img loading="lazy" src="v/musica/lo-simple-tapa.jpg" alt=""><span class="ep-txt"><span class="ep-n">Tema</span><b>Lo simple es mágico</b><small>1:00</small></span><span class="play" aria-hidden="true">▶</span></button></li>
+      <li><button class="ep ep-cuad" data-video="v/musica/vos-tambien-podes-brillar.mp4" data-titulo="Vos también podés brillar"><img loading="lazy" src="v/musica/brillar-tapa.jpg" alt=""><span class="ep-txt"><span class="ep-n">Tema</span><b>Vos también podés brillar</b><small>3:38</small></span><span class="play" aria-hidden="true">▶</span></button></li>
+    </ul>
+  </section>
+</main>
+
+<!-- ================= VER TODO ================= -->
+<main id="vista-todo" class="vista" hidden>
+  <section class="bloque titular"><div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><h1>Todo junto</h1><p>Todas las prendas de LCO en un solo lugar. Elegí qué buscás: abrigos, pantalones, blusas…</p></div></section>
+  <div class="catalogo" data-linea="todo" data-cats="Bermudas y shorts|Blazers y chalecos|Camisas|Camisas y blusas|Camperas y abrigos|Denim|Pantalones|Remeras|Remeras y tops|Shorts|Tejidos|Vestidos de fiesta|Vestidos y polleras"></div>
+</main>
+
+<!-- ================= ACCESORIOS ================= -->
+<main id="vista-accesorios" class="vista" hidden>
+  <div class="catalogo" data-linea="accesorios" data-cats="Anillos|Aros|Broches para el pelo|Carteras|Cintos|Collares|Pañuelos|Prendedores|Pulseras|Vinchas"></div>
+</main>
+
+<!-- ================= HOMBRE ================= -->
+<main id="vista-hombre" class="vista" hidden>
+  <section class="bloque titular t-celeste"><div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><h1>Hombre</h1><p>Ropa masculina con historia: para él, o para regalar.</p></div></section>
+  <div class="catalogo" data-linea="hombre" data-cats="Bermudas y shorts|Buzos y joggings|Calzado|Camisas|Camperas y abrigos|Denim|Pantalones|Remeras"></div>
+</main>
+
+<!-- ================= PRÓXIMAMENTE ================= -->
+<main id="vista-pronto" class="vista" hidden>
+  <section class="bloque cm-hero"><div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><span class="pronto-chip">Próximamente</span><h2>Algo nuevo <em>se está preparando</em></h2>
+    <p>Cursos de decoración y orden, y más novedades de LCO Estudio. Muy pronto, acá.</p></div></section>
+  <div class="centro"><a class="btn" href="#pronto" data-wsp="Hola Agus! Quiero que me avises cuando lancen los cursos y novedades de LCO.">Quiero que me avises</a></div>
+</main>
+
+<!-- ================= CASA FOA ================= -->
+<main id="vista-casafoa" class="vista" hidden>
+  <section class="bloque titular t-celeste"><div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><h1>Casa FOA 2026</h1><p class="foa-sub">Alquimia</p></div></section>
+
+  <button class="foa-video" data-video="v/deco/casafoa.mp4" data-titulo="Casa FOA 2026 · Alquimia">
+    <img loading="lazy" src="v/deco/casafoa.jpg" alt="Recorrido por Casa FOA 2026">
+    <span class="play" aria-hidden="true">▶</span>
+  </button>
+
+  <p class="foa-intro">Este año la muestra se mudó al <b>Palacio Molina</b>, en Barracas: la primera fábrica de Alpargatas, de 1885. Ladrillo a la vista, arcos enormes, columnas de hierro y techos altísimos. La idea no fue tapar esa historia, sino transformarla. Y eso es lo que más me gustó.</p>
+
+  <section class="seccion">
+    <p class="rotulo">Las tendencias</p>
+    <ul class="servicios foa-tend">
+      <li class="t-celeste"><b>El color construye</b><span>Azules profundos (Azul Mediterráneo y Azul de Bohemia), bordó o borravino, tierras, ocres, tonos arcilla y verdes suaves.</span></li>
+      <li class="t-rosa"><b>Adiós a la pared lisa</b><span>Estucos símil mármol, terminaciones aterciopeladas, revoques estriados y revestimientos acanalados que cambian con la luz.</span></li>
+      <li class="t-durazno"><b>La curva manda</b><span>Sofás, mesas, arcos y biombos redondeados para que los espacios se sientan más cálidos y contenedores.</span></li>
+      <li class="t-amarillo"><b>Volvió lo vintage</b><span>Mezcla de estilos, objetos heredados, arte y piezas con historia. Casas con identidad, no de catálogo.</span></li>
+    </ul>
+  </section>
+
+  <section class="bloque manifiesto">
+    <div class="flores" data-flores="pasos" aria-hidden="true"></div>
+    <div class="dentro">
+      <p class="ceja" style="margin-bottom:12px">Lo que me llevo</p>
+      <p class="grande">Para renovar un espacio, a veces alcanza con mirar lo que ya tenés con otros ojos.</p>
+    </div>
+  </section>
+
+  <div class="foa-cierre">
+    <p>¿Cuál de estas tendencias te animarías a usar en tu casa?</p>
+    <a class="btn" href="#casafoa" data-wsp="Hola Agus! Vi lo de Casa FOA 2026 en tu web y me gustaría usar alguna de esas tendencias en mi casa.">Contame por WhatsApp</a>
+  </div>
+</main>
+
+<!-- ================= TARJETAS DE REGALO ================= -->
+<main id="vista-regalo" class="vista" hidden>
+  <section class="bloque titular"><div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><h1>Gift card</h1><p>Un regalo con historia: elegí el monto y quien la recibe elige su prenda.</p></div></section>
+  <div class="tarjetas-regalo">
+    <article><img loading="lazy" src="v/tarjeta-20000.png" alt="Tarjeta de regalo de 20.000 pesos"><div class="fila-t"><b>20.000 pesos</b><a class="btn" href="#regalo" data-wsp="Hola Agus! Quiero una tarjeta de regalo de 20.000 pesos.">Comprar</a></div></article>
+    <article><img loading="lazy" src="v/tarjeta-30000.png" alt="Tarjeta de regalo de 30.000 pesos"><div class="fila-t"><b>30.000 pesos</b><a class="btn" href="#regalo" data-wsp="Hola Agus! Quiero una tarjeta de regalo de 30.000 pesos.">Comprar</a></div></article>
+    <article><img loading="lazy" src="v/tarjeta-50000.png" alt="Tarjeta de regalo de 50.000 pesos"><div class="fila-t"><b>50.000 pesos</b><a class="btn" href="#regalo" data-wsp="Hola Agus! Quiero una tarjeta de regalo de 50.000 pesos.">Comprar</a></div></article>
+    <article><img loading="lazy" src="v/tarjeta-100000.png" alt="Tarjeta de regalo de 100.000 pesos"><div class="fila-t"><b>100.000 pesos</b><a class="btn" href="#regalo" data-wsp="Hola Agus! Quiero una tarjeta de regalo de 100.000 pesos.">Comprar</a></div></article>
+  </div>
+  <p class="nota-regalo">Válida por 90 días desde la fecha de compra. Se canjea por prendas en el showroom o en la web.</p>
+</main>
+
+<footer>LCO Estudio · Gualeguay</footer>
+</div>
+
+<a class="wsp" id="wsp" href="#inicio" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.2 1.4 3.5 2.4 3.6 5.8 5c2.1.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5s.3-1.3.2-1.5-.3-.2-.6-.4z"/></svg>
+</a>
+
+<script>
+/* Número de WhatsApp (con código de país, sin + ni espacios). Ej: 5493444000000 */
+const WHATSAPP='5493444518451';
+const SITIO=/claude|localhost/.test(location.hostname)||!/^http/.test(location.protocol)?'':location.origin;
+const linkFoto=f=>SITIO&&f?' Foto: '+SITIO+'/'+String(f).replace(/^\.?\//,''):'';
+if(WHATSAPP){document.querySelectorAll('[data-wsp],#wsp').forEach(a=>{const m=a.dataset.wsp||'Hola Agus! Te escribo desde la web de LCO Estudio.';a.href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(m);a.target='_blank';a.rel='noopener'})}
+
+/* ---------- Flores pastel ---------- */
+const C={blanco:'#FFFFFF',coral:'#E07A6F',durazno:'#F2C9A0',amarillo:'#F3D58B',rosa:'#E9AFA2',celeste:'#9DB8E3',crema:'#FFF6EE'};
+function margarita(size,petal,centro,rot){
+  let p='';for(let i=0;i<5;i++){const a=(i*72+rot)*Math.PI/180,x=50+Math.cos(a)*24,y=50+Math.sin(a)*24;p+=`<ellipse cx="${x}" cy="${y}" rx="20" ry="17" transform="rotate(${i*72+rot} ${x} ${y})" fill="${petal}"/>`}
+  return `<svg viewBox="0 0 100 100" width="${size}" height="${size}">${p}<circle cx="50" cy="50" r="15" fill="${centro}"/></svg>`;
+}
+const mancha=(s,c)=>`<svg viewBox="0 0 100 100" width="${s}" height="${s}"><path d="M50 4c14 0 18 14 30 18s18 16 14 30-2 24-14 32-24 14-36 10S20 84 12 72 2 46 10 32 36 4 50 4z" fill="${c}"/></svg>`;
+const punto=(s,c)=>`<svg viewBox="0 0 10 10" width="${s}" height="${s}"><circle cx="5" cy="5" r="5" fill="${c}"/></svg>`;
+const sets={
+  hero:[['mancha',300,'-90px','-80px',null,null,C.crema],['marg',180,'-50px','-40px',null,null,C.blanco,C.coral,10],
+        ['mancha',240,null,null,'-70px','-90px',C.durazno],['marg',120,null,null,'26px','-20px',C.blanco,C.coral,30],
+        ['punto',18,'38%','12%',null,null,C.amarillo],['punto',12,'30%','20%',null,null,C.amarillo],['punto',16,null,null,'26%','20%',C.amarillo]],
+  titular:[['mancha',200,'-80px','-70px',null,null,C.crema],['marg',110,'-40px','-30px',null,null,C.blanco,C.coral,10],
+           ['mancha',170,null,null,'-70px','-60px',C.durazno],['marg',90,null,null,'-20px','-14px',C.blanco,C.coral,35],['punto',14,'30%',null,null,'22%',C.amarillo]],
+  esquina:[['mancha',120,null,null,'-50px','-30px',C.crema],['marg',70,null,null,'-22px','62px',C.blanco,C.coral,20]],
+  tile:[['mancha',130,'-50px',null,null,'-45px',C.crema],['marg',80,'-22px',null,null,'-20px',C.blanco,C.coral,20],['punto',11,'58px',null,null,'70px',C.amarillo]],
+  cartel:[['mancha',150,'-60px',null,null,'20px',C.crema],['marg',70,'-18px',null,null,'70px',C.blanco,C.coral,25]],
+  pasos:[['mancha',200,'-70px',null,null,'-60px',C.crema],['marg',100,'-25px',null,null,'-25px',C.blanco,C.coral,0]]
+};
+document.querySelectorAll('[data-flores]').forEach(box=>{
+  (sets[box.dataset.flores]||[]).forEach(([t,s,top,left,bottom,right,c1,c2,r])=>{
+    const w=document.createElement('div');w.innerHTML=t==='marg'?margarita(s,c1,c2,r):t==='mancha'?mancha(s,c1):punto(s,c1);
+    const el=w.firstChild;Object.assign(el.style,{top:top??'auto',left:left??'auto',bottom:bottom??'auto',right:right??'auto'});box.appendChild(el);
+  });
+});
+
+/* ---------- Catálogo de prendas ----------
+   Cada prenda: {linea:'circular'|'etiqueta'|'fiesta'|'calzado', categoria, nombre, marca, talle, precio (número), foto (archivo), fecha:'AAAA-MM-DD'} */
+const PRODUCTOS=[
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 celeste con estrellas',marca:'',talle:'',precio:5500,foto:'v/p/pan1.jpg',art:'80255',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 floreado con borde naranja',marca:'',talle:'',precio:5500,foto:'v/p/pan2.jpg',art:'80240',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 con cadenas y animal print',marca:'',talle:'',precio:5500,foto:'v/p/pan3.jpg',art:'80248',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 rojo con ramo de flores',marca:'',talle:'',precio:5500,foto:'v/p/pan4b.jpg',art:'80204',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 celeste con corazones y perlas',marca:'',talle:'',precio:5500,foto:'v/p/pan5b.jpg',art:'40904',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 rosa con corazones y perlas',marca:'',talle:'',precio:5500,foto:'v/p/pan6b.jpg',art:'40908',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 ecuestre con escocés rojo',marca:'',talle:'',precio:5500,foto:'v/p/pan7.jpg',art:'80188',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 rojo con lunares blancos',marca:'',talle:'',precio:5500,foto:'v/p/pan8.jpg',art:'4899',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 blanco con lunares rojos',marca:'',talle:'',precio:5500,foto:'v/p/pan9.jpg',art:'4898',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 rojo con rosas y cordones',marca:'',talle:'',precio:5500,foto:'v/p/pan10.jpg',art:'80209',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 celeste con flor y paisley',marca:'',talle:'',precio:5500,foto:'v/p/pan11.jpg',art:'80225',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 fucsia ecuestre con cintos rosa',marca:'',talle:'',precio:5500,foto:'v/p/pan12.jpg',art:'80191',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 con franjas de colores',marca:'',talle:'',precio:5500,foto:'v/p/pan13.jpg',art:'40902',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 crema floreado con borde rojo',marca:'',talle:'',precio:5500,foto:'v/p/pan14.jpg',art:'80184',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 blanco con mariposas azules',marca:'',talle:'',precio:5500,foto:'v/p/pan15.jpg',art:'80305',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 rojo con cadenas y animal print',marca:'',talle:'',precio:5500,foto:'v/p/pan16.jpg',art:'80243',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 rojo ecuestre con cintos dorados',marca:'',talle:'',precio:5500,foto:'v/p/pan17.jpg',art:'80192',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 rojo y crema con caballo',marca:'',talle:'',precio:5500,foto:'v/p/pan18.jpg',art:'80211',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 naranja con flores lilas y borde violeta',marca:'',talle:'',precio:5500,foto:'v/p/pan19.jpg',art:'80281',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 celeste con margaritas y paisley',marca:'',talle:'',precio:5500,foto:'v/p/pan20.jpg',art:'80280',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 fucsia con ondas de colores',marca:'',talle:'',precio:5500,foto:'v/p/pan21.jpg',art:'80279',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 con franjas violeta, amarillo y fucsia',marca:'',talle:'',precio:5500,foto:'v/p/pan22.jpg',art:'40901',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 crema floreado con borde naranja',marca:'',talle:'',precio:5500,foto:'v/p/pan23.jpg',art:'80182',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 abstracto con borde naranja',marca:'',talle:'',precio:5500,foto:'v/p/pan24.jpg',art:'80218',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 blanco con flores fucsia y azul',marca:'',talle:'',precio:5500,foto:'v/p/pan25.jpg',art:'80237',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 abstracto fucsia con borde azul',marca:'',talle:'',precio:5500,foto:'v/p/pan26.jpg',art:'80217',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 con franjas multicolor y borde azul',marca:'',talle:'',precio:5500,foto:'v/p/pan27.jpg',art:'40903',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 azul y amarillo con cordones y borlas',marca:'',talle:'',precio:5500,foto:'v/p/pan28.jpg',art:'80226',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 turquesa con rosas y cordones',marca:'',talle:'',precio:5500,foto:'v/p/pan29.jpg',art:'80210',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 blanco floreado con borde rojo',marca:'',talle:'',precio:5500,foto:'v/p/pan30.jpg',art:'80236',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 rosa con flores doradas y borde violeta',marca:'',talle:'',precio:5500,foto:'v/p/pan31.jpg',art:'80199',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 rojo con margaritas',marca:'',talle:'',precio:5500,foto:'v/p/pan32.jpg',art:'40897',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 blanco con flores fucsia y naranja',marca:'',talle:'',precio:5500,foto:'v/p/pan33.jpg',art:'80263',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 lila con cintas y perlas',marca:'',talle:'',precio:5500,foto:'v/p/pan34.jpg',art:'40905',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 85 x 85 turquesa y violeta con cadenas doradas',marca:'',talle:'',precio:7500,foto:'v/p/pan37.jpg',art:'80273',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 85 x 85 blanco con cadenas doradas y franjas',marca:'',talle:'',precio:7500,foto:'v/p/pan38.jpg',art:'40943',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 aqua con cadenas y borla',marca:'',talle:'',precio:5500,foto:'v/p/pan39.jpg',art:'80256',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 turquesa con cadenas y animal print',marca:'',talle:'',precio:5500,foto:'v/p/pan40.jpg',art:'80247',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 rojo con cadenas doradas',marca:'',talle:'',precio:5500,foto:'v/p/pan41.jpg',art:'80206',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 rosa con abejas',marca:'',talle:'',precio:5500,foto:'v/p/pan42.jpg',art:'40910',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 negro con abejas y franja roja',marca:'',talle:'',precio:5500,foto:'v/p/pan43.jpg',art:'40909',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 con rayas de colores y borde azul marino',marca:'',talle:'',precio:5500,foto:'v/p/pan44.jpg',art:'80265',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 ecuestre en azules con borde turquesa',marca:'',talle:'',precio:5500,foto:'v/p/pan45.jpg',art:'80193',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 turquesa ecuestre con cintos dorados',marca:'',talle:'',precio:5500,foto:'v/p/pan46.jpg',art:'80290',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 fucsia con flores azules y naranjas',marca:'',talle:'',precio:5500,foto:'v/p/pan47.jpg',art:'80297',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 con mariposas y borde fucsia',marca:'',talle:'',precio:5500,foto:'v/p/pan48.jpg',art:'80250',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 rosa con líneas de colores',marca:'',talle:'',precio:5500,foto:'v/p/pan49.jpg',art:'80216',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 blanco con flores rojas',marca:'',talle:'',precio:5500,foto:'v/p/pan50.jpg',art:'80261',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 rosa con flores violetas y borde fucsia',marca:'',talle:'',precio:5500,foto:'v/p/pan51.jpg',art:'80289',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 rojo con cadenas y animal print',marca:'',talle:'',precio:5500,foto:'v/p/pan52.jpg',art:'80224',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 azul marino con paisley',marca:'',talle:'',precio:5500,foto:'v/p/pan53.jpg',art:'80278',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 fucsia con cintas y borde animal print',marca:'',talle:'',precio:5500,foto:'v/p/pan54.jpg',art:'40906',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 rojo ecuestre con borlas negras',marca:'',talle:'',precio:5500,foto:'v/p/pan55.jpg',art:'80228',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 blanco con flores naranjas y verdes',marca:'',talle:'',precio:5500,foto:'v/p/pan56.jpg',art:'80260',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 azul y fucsia ecuestre con borlas',marca:'',talle:'',precio:5500,foto:'v/p/pan57.jpg',art:'80229',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 blanco floreado con borde turquesa',marca:'',talle:'',precio:5500,foto:'v/p/pan58.jpg',art:'80239',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 naranja con cintas y joyas',marca:'',talle:'',precio:5500,foto:'v/p/pan59.jpg',art:'80241',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Gargantilla de cuero y perlas',marca:'',talle:'',precio:4500,foto:'v/p/garg-cuero-perlas.jpg',art:'0432',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Broches para el pelo'],nombre:'Broche para el pelo flor con pequeños strass',marca:'',talle:'',precio:5500,foto:'v/p/acc2-1.jpg',art:'0245',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Broches para el pelo'],nombre:'Broche para el pelo flor con brillantes en forma de gota',marca:'',talle:'',precio:5500,foto:'v/p/acc2-2.jpg',art:'0244',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Broches para el pelo'],nombre:'Par de clips para el pelo con piedra ámbar',marca:'',talle:'',precio:3500,foto:'v/p/acc2-3.jpg',art:'0247',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Prendedores'],nombre:'Prendedor lluvia de strass',marca:'',talle:'',precio:12000,foto:'v/p/acc2-4.jpg',art:'0243',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Anillos'],nombre:'Anillo con piedra aqua',marca:'',talle:'',precio:3500,foto:'v/p/acc2-5.jpg',art:'0240',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Anillos'],nombre:'Anillo con piedra coral',marca:'',talle:'',precio:3500,foto:'v/p/acc2-6.jpg',art:'0241',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Anillos'],nombre:'Anillo plateado',marca:'',talle:'',precio:3500,foto:'v/p/acc2-7.jpg',art:'0239',fecha:''},
+  {linea:'hombre',categoria:'Bermudas y shorts',nombre:'Bermuda de jean celeste',marca:'Kevingston',talle:'18',precio:11900,foto:'v/p/berm-1.jpg',art:'0305',fecha:''},
+  {linea:'hombre',categoria:'Bermudas y shorts',nombre:'Bermuda de gabardina azul',marca:'Milion',talle:'18',precio:11900,foto:'v/p/berm-2.jpg',art:'0306',fecha:''},
+  {linea:'hombre',categoria:'Bermudas y shorts',nombre:'Bermuda de jean negro',marca:'Trend',talle:'L',precio:11900,foto:'v/p/berm-3.jpg',art:'0076',fecha:''},
+  {linea:'hombre',categoria:'Bermudas y shorts',nombre:'Bermuda de gabardina verde',marca:'Khakys',talle:'44',precio:11900,foto:'v/p/berm-4.jpg',art:'0079',fecha:''},
+  {linea:'hombre',categoria:'Bermudas y shorts',nombre:'Bermuda de gabardina azul',marca:'SSW',talle:'40',precio:11900,foto:'v/p/berm-5.jpg',art:'0080',fecha:''},
+  {linea:'hombre',categoria:'Bermudas y shorts',nombre:'Bermuda de jean azul gastado',marca:'Kevingston',talle:'16',precio:11900,foto:'v/p/berm-6.jpg',art:'0307',fecha:''},
+  {linea:'hombre',categoria:'Bermudas y shorts',nombre:'Bermuda de jean celeste gastado',marca:'Midway',talle:'30',precio:11900,foto:'v/p/berm-7.jpg',art:'0308',fecha:''},
+  {linea:'hombre',categoria:'Bermudas y shorts',nombre:'Bermuda de jean celeste',marca:'Kevingston',talle:'40',precio:11900,foto:'v/p/berm-8.jpg',art:'0309',fecha:''},
+  {linea:'hombre',categoria:'Bermudas y shorts',nombre:'Bermuda de jean azul 511',marca:"Levi's",talle:'30',precio:11900,foto:'v/p/berm-9.jpg',art:'0310',fecha:''},
+  {linea:'hombre',categoria:'Calzado',nombre:'Zapatillas Converse negras de cuero',marca:'Converse · cuero negro',art:'0115',precio:19000,colores:[],talles:['41'],fotos:[['v/p/hom-conv-2.jpg','Perfil'],['v/p/hom-conv.jpg','Frente']],fecha:''},
+  {linea:'hombre',categoria:'Calzado',nombre:'Zapatos de vestir de cuero negro con cordón',marca:'Blengio',talle:'39',precio:19000,foto:'v/p/hom-blengio.jpg',art:'0117',fecha:''},
+  {linea:'hombre',categoria:'Calzado',nombre:'Zapatos de vestir de cuero negro con cordón',marca:'Storkman',talle:'39',precio:19000,foto:'v/p/hom-stork.jpg',art:'0116',fecha:''},
+  {linea:'hombre',categoria:'Remeras',nombre:'Remera manga corta negra con estampa Element',marca:'Element',talle:'S',precio:8900,foto:'v/p/rem-element.jpg',art:'0185',fecha:''},
+  {linea:'hombre',categoria:'Remeras',nombre:'Remera manga corta azul con estampa 501',marca:"Levi's",talle:'S',precio:8900,foto:'v/p/rem-levis.jpg',art:'0186',fecha:''},
+  {linea:'hombre',categoria:'Bermudas y shorts',nombre:'Short deportivo azul con tres rayas blancas',marca:'Adidas',talle:'M',precio:11900,foto:'v/p/hom2-1.jpg',art:'0401',fecha:''},
+  {linea:'hombre',categoria:'Buzos y joggings',nombre:'Buzo deportivo azul con capucha y puños',marca:'Fila',talle:'L',precio:9900,foto:'v/p/hom2-2.jpg',art:'0097',fecha:''},
+  {linea:'hombre',categoria:'Buzos y joggings',nombre:'Jogging azul con puño y cordón blanco',marca:'Fila',talle:'L',precio:6900,foto:'v/p/hom2-3.jpg',art:'0099',fecha:''},
+  {linea:'hombre',categoria:'Buzos y joggings',nombre:'Jogging negro con elástico en la cintura y puño',marca:'Fila',talle:'S',precio:6900,foto:'v/p/hom2-4.jpg',art:'0098',fecha:''},
+  {linea:'hombre',categoria:'Buzos y joggings',nombre:'Jogging azul marino con puño, grueso con frisa',marca:'Siete 72',talle:'M',precio:6900,foto:'v/p/hom2-5.jpg',art:'0100',fecha:''},
+  {linea:'hombre',categoria:'Remeras',nombre:'Remera manga larga gris con estampa',marca:'Waiting Boys',talle:'16',precio:5000,foto:'v/p/hom2-6.jpg',art:'0398',fecha:'',outlet:true},
+  {linea:'hombre',categoria:'Remeras',nombre:'Remera manga corta blanca con estampa de surf',marca:'Waiting Boys',talle:'16',precio:5000,foto:'v/p/hom2-7.jpg',art:'0400',fecha:'',outlet:true},
+  {linea:'hombre',categoria:'Remeras',nombre:'Remera manga corta blanca clásica',marca:'Rasta',talle:'M',precio:5000,foto:'v/p/hom2-8.jpg',art:'0399',fecha:'',outlet:true},
+  {linea:'hombre',categoria:'Remeras',nombre:'Remera manga corta blanca clásica',marca:'Rasta',talle:'S',precio:5000,foto:'v/p/hom2-9.jpg',art:'0397',fecha:'',outlet:true},
+  {linea:'hombre',categoria:'Pantalones',nombre:'Pantalón de gabardina azul marino',marca:'Stretch',talle:'32',precio:12900,foto:'v/p/hom2-10.jpg',art:'0311',fecha:''},
+  {linea:'hombre',categoria:'Pantalones',nombre:'Pantalón cargo azul marino con bolsillos laterales',marca:'Leoba',talle:'33',precio:12900,foto:'v/p/hom2-11.jpg',art:'0168',fecha:''},
+  {linea:'hombre',categoria:'Pantalones',nombre:'Pantalón verde militar con elástico en la cintura',marca:'Du Australia',talle:'40',precio:9900,foto:'v/p/hom2-12.jpg',art:'0166',fecha:''},
+  {linea:'hombre',categoria:'Denim',nombre:'Jean negro gastado ancho',marca:'Rip Curl',talle:'32',precio:12900,foto:'v/p/hom2-13.jpg',art:'0170',fecha:''},
+  {linea:'hombre',categoria:'Denim',nombre:'Jean azul gastado',marca:'Wrangler',talle:'33',precio:9900,foto:'v/p/hom2-14.jpg',art:'0167',fecha:'',outlet:true},
+  {linea:'hombre',categoria:'Camisas',nombre:'Camisa manga larga blanca',marca:'Huapi',talle:'S',precio:19900,foto:'v/p/cam-1.jpg',art:'0101',fecha:''},
+  {linea:'hombre',categoria:'Camisas',nombre:'Camisa manga larga cuadrillé blanco y celeste',marca:'Polo',talle:'XXL',precio:9900,foto:'v/p/cam-2.jpg',art:'0103',fecha:''},
+  {linea:'hombre',categoria:'Camisas',nombre:'Camisa manga larga cuadrillé blanco y azul violáceo',marca:'Zara Kids',talle:'13-14',precio:9900,foto:'v/p/cam-3.jpg',art:'0106',fecha:''},
+  {linea:'hombre',categoria:'Camisas',nombre:'Camisa manga corta escocesa verde y gris',marca:'Ranger',talle:'M',precio:5900,foto:'v/p/cam-4.jpg',art:'0105',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 azul marino con escocés y dorados',marca:'',talle:'',precio:5500,foto:'v/p/pan35.jpg',art:'80271',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pañuelos'],nombre:'Pañuelo de seda 50 x 50 blanco ecuestre con borde azul',marca:'',talle:'',precio:5500,foto:'v/p/pan36.jpg',art:'80294',fecha:''},
+  {linea:'calzado',categoria:['Sandalias'],nombre:'Sandalia Atenas',marca:'Taco fino con tiras de strass',art:'28762',precio:54900,colores:['Negro','Plata','Platino'],talles:['35','36','37','38','39','40'],fotos:[['v/p/cal-atenas-7.jpg','Negro'],['v/p/cal-atenas-1.jpg','Plata'],['v/p/cal-atenas-2.jpg','Plata'],['v/p/cal-atenas-3.jpg','Plata'],['v/p/cal-atenas-4.jpg','Platino'],['v/p/cal-atenas-5.jpg','Platino'],['v/p/cal-atenas-6.jpg','Platino']],fecha:''},
+  {linea:'calzado',categoria:['Sandalias'],nombre:'Sandalia Bella',marca:'Taco ancho con pulsera',art:'29141',precio:54900,colores:['Nude','Negro'],talles:['35','36','37','38','39','40'],fotos:[['v/p/cal-bella-3.jpg','Nude'],['v/p/cal-bella-4.jpg','Nude'],['v/p/cal-bella-1.jpg','Negro'],['v/p/cal-bella-2.jpg','Negro']],fecha:''},
+  {linea:'calzado',categoria:['Sandalias'],nombre:'Sandalia Zenda',marca:'Plataforma con tiras cruzadas',art:'29386',precio:54900,colores:['Plata','Platino'],talles:['35','36','37','38','39','40'],fotos:[['v/p/cal-zenda-1.jpg','Plata'],['v/p/cal-zenda-2.jpg','Plata'],['v/p/cal-zenda-3.jpg','Plata'],['v/p/cal-zenda-4.jpg','Platino'],['v/p/cal-zenda-5.jpg','Platino'],['v/p/cal-zenda-6.jpg','Platino']],fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Pulsera de canutillos negros',marca:'Cápsula Corazón',talle:'',precio:6900,foto:'v/p/pul15.jpg',art:'0063',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Pulsera trenzada con detalles dorados y fucsia',marca:'Cápsula Corazón',talle:'',precio:5900,foto:'v/p/pul14.jpg',art:'0051',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Set de 4 pulseras con dijes verdes',marca:'Cápsula Corazón',talle:'',precio:5900,foto:'v/p/pul13.jpg',art:'0052',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Set de 5 pulseras con dijes coral',marca:'Cápsula Corazón',talle:'',precio:5900,foto:'v/p/pul12.jpg',art:'0053',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Set de 4 pulseras multicolor',marca:'Cápsula Corazón',talle:'',precio:5500,foto:'v/p/pul11.jpg',art:'0061',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Set de 6 pulseras doradas',marca:'Cápsula Corazón',talle:'',precio:4500,foto:'v/p/pul10.jpg',art:'0059',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Set de 4 pulseras de metal y nácar',marca:'Cápsula Corazón',talle:'',precio:6500,foto:'v/p/pul9.jpg',art:'0055',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Set de 2 pulseras crema de metal y nácar',marca:'Cápsula Corazón',talle:'',precio:4500,foto:'v/p/pul8.jpg',art:'0058',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Set de 3 pulseras de metal color beige',marca:'Cápsula Corazón',talle:'',precio:4500,foto:'v/p/pul7.jpg',art:'0058',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Set de 4 pulseras doradas y negras',marca:'Cápsula Corazón',talle:'',precio:6500,foto:'v/p/pul6.jpg',art:'0060',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Set de 3 pulseras de metal en negro y dorado',marca:'Cápsula Corazón',talle:'',precio:5500,foto:'v/p/pul5.jpg',art:'0057',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Pulsera de madera con detalles de metal',marca:'Cápsula Corazón',talle:'',precio:4500,foto:'v/p/pul4.jpg',art:'0056',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Brazalete dorado de metal',marca:'Cápsula Corazón',talle:'',precio:5900,foto:'v/p/pul3.jpg',art:'0099',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Set de 2 pulseras de madera y metal multicolor',marca:'Cápsula Corazón',talle:'',precio:5500,foto:'v/p/pul2.jpg',art:'0054',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Brazalete de metal con detalle coral',marca:'Cápsula Corazón',talle:'',precio:5900,foto:'v/p/pul1.jpg',art:'0050',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Pulseras'],nombre:'Set de 3 pulseras de canutillos plateados',marca:'Cápsula Corazón',talle:'',precio:3000,foto:'v/p/pul16.jpg',art:'0062',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Gargantilla tejida con dijes en forma de gota',marca:'Cápsula Corazón',talle:'',precio:11900,foto:'v/p/tejida.jpg',art:'0064',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Colgante de cuero con libélula de metal',marca:'Cápsula Corazón',talle:'',precio:4500,foto:'v/p/col-libelula.jpg',art:'0045',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Colgante de cuero con hojas de metal y dijes de colores',marca:'Cápsula Corazón',talle:'',precio:4500,foto:'v/p/col-hojas-color.jpg',art:'0043',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Colgante de cuero con dije doble de madera negra',marca:'Cápsula Corazón',talle:'',precio:4500,foto:'v/p/col-doble-negro.jpg',art:'0267',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Colgante de cuero con flor de metal',marca:'Cápsula Corazón',talle:'',precio:4500,foto:'v/p/col-flor.jpg',art:'0265',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Colgante de cuero con dije ovalado negro',marca:'Cápsula Corazón',talle:'',precio:4500,foto:'v/p/col-ovalo.jpg',art:'0266',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Colgante naturaleza · dije de nácar verde',marca:'Cápsula Corazón',talle:'',precio:4500,foto:'v/p/col-naturaleza.jpg',art:'0264',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Colgante de cuero con dijes de círculos de metal',marca:'Cápsula Corazón',talle:'',precio:4500,foto:'v/p/col-discos.jpg',art:'0044',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Cadena de metal con mano y piedrita negra',marca:'Cápsula Corazón',talle:'',precio:4900,foto:'v/p/mano.jpg',art:'0035',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar con dije plateado y piedra negra',marca:'Cápsula Corazón',talle:'',precio:11900,foto:'v/p/medallon-negro.jpg',art:'0034',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Cadena de metal con dijes negros y plateados',marca:'Cápsula Corazón',talle:'',precio:7900,foto:'v/p/negro-plata.jpg',art:'0037',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Cadena de metal con dije labrado y detalles negros',marca:'Cápsula Corazón',talle:'',precio:7500,foto:'v/p/pluma-piedra.jpg',art:'0271',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Cadena de metal con dije colgante y flecos',marca:'Cápsula Corazón',talle:'',precio:7900,foto:'v/p/cuadrado-flecos.jpg',art:'0033',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar con canutillos de madera y esferas de arpillera',marca:'Cápsula Corazón',talle:'',precio:7900,foto:'v/p/arpillera.jpg',art:'0042',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar de madera negro y marrón',marca:'Cápsula Corazón',talle:'',precio:7900,foto:'v/p/negro-marron.jpg',art:'0040',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar de círculos de madera',marca:'Cápsula Corazón',talle:'',precio:4500,foto:'v/p/circulos-madera.jpg',art:'0041',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar doble vuelta de canutillos y dijes de colores',marca:'Cápsula Corazón',talle:'',precio:7900,foto:'v/p/canutillos-dijes.jpg',art:'0032',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar de nudos de hilo rosa Dior',marca:'Cápsula Corazón',talle:'',precio:7500,foto:'v/p/rosa.jpg',art:'0273',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar de hilo con dije de nácar',marca:'Cápsula Corazón',talle:'',precio:4900,foto:'v/p/nacar.jpg',art:'0029',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Cruz · hilo y madera',marca:'Cápsula Corazón',talle:'',precio:4900,foto:'v/p/hilo-madera.jpg',art:'0030',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Gargantilla de hueso y madera',marca:'Cápsula Corazón',talle:'',precio:9900,foto:'v/p/hueso.jpg',art:'0031',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar doble vuelta de cuentas caramelo y chocolate',marca:'Cápsula Corazón',talle:'',precio:5500,foto:'v/p/choco.jpg',art:'0269',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar bohemio turquesa con círculo de tela',marca:'Cápsula Corazón',talle:'',precio:5900,foto:'v/p/bohemio.jpg',art:'0028',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar cadena de metal con piedra cuadrada violeta',marca:'Cápsula Corazón',talle:'',precio:5900,foto:'v/p/violeta.jpg',art:'0213',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar cadena de metal con piedras de colores',marca:'Cápsula Corazón',talle:'',precio:8900,foto:'v/p/piedras.jpg',art:'0027',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar de círculos de tela y cadena de metal',marca:'Cápsula Corazón',talle:'',precio:8900,foto:'v/p/circulos-tela.jpg',art:'0026',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar de canutillos naranja',marca:'Cápsula Corazón',talle:'',precio:4500,foto:'v/p/canutillos.jpg',art:'0046',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar doble vuelta de piedras multicolor',marca:'Cápsula Corazón',talle:'',precio:8900,foto:'v/p/multicolor.jpg',art:'0025',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar largo blanco',marca:'Cápsula Corazón',talle:'',precio:6900,foto:'v/p/blanco.jpg',art:'0023',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Gargantilla de metal con lluvia roja',marca:'Cápsula Corazón',talle:'',precio:11900,foto:'v/p/lluvia.jpg',art:'0022',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar de metal gastado con hojitas',marca:'Cápsula Corazón',talle:'',precio:5500,foto:'v/p/hojitas.jpg',art:'0270',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar de tiritas de cuero y pimientos · metal dorado gastado',marca:'Cápsula Corazón',talle:'',precio:7900,foto:'v/p/tiritas.jpg',art:'0021',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar largo con círculo rojo',marca:'Cápsula Corazón',talle:'',precio:6900,foto:'v/p/circulo.jpg',art:'0015',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Cadena larga de metal con cruz labrada',marca:'Cápsula Corazón',talle:'',precio:6900,foto:'v/p/cruz.jpg',art:'0015',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Rosario de metal color peltre',marca:'Cápsula Corazón',talle:'',precio:11900,foto:'v/p/rosario.jpg',art:'0018',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar dorado estilo egipcio con piedras de colores',marca:'Cápsula Corazón',talle:'',precio:6900,foto:'v/p/egipcio.jpg',art:'0014',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Gargantilla caballito de mar · aqua y coral',marca:'Cápsula Corazón',talle:'',precio:5900,foto:'v/p/caballito.jpg',art:'0017',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar pimientos rojos · dijes rojo y agua',marca:'Cápsula Corazón',talle:'',precio:7900,foto:'v/p/pimientos.jpg',art:'004',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Gargantilla de dijes grandes de carey',marca:'Cápsula Corazón',talle:'',precio:7900,foto:'v/p/carey.jpg',art:'00396',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar largo con dijes de metal y cuero',marca:'Cápsula Corazón',talle:'',precio:7900,foto:'v/p/largo.jpg',art:'0020',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar de dijes labrados dorados',marca:'Cápsula Corazón',talle:'',precio:7500,foto:'v/p/labrado.jpg',art:'0272',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar de perlas con strass',marca:'Cápsula Corazón',talle:'',precio:11900,foto:'v/p/perlas.jpg',art:'0038',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar de cristalitos caramelo con flores de metal',marca:'Cápsula Corazón',talle:'',precio:7900,foto:'v/p/caramelo.jpg',art:'0013',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar tigre · metal dorado y strass',marca:'Cápsula Corazón',talle:'',precio:9900,foto:'v/p/tigre.jpg',art:'0011',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar péndulo de cristal',marca:'Cápsula Corazón',talle:'',precio:4500,foto:'v/p/pendulo.jpg',art:'0012',fecha:''},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Relicarios · dije libro o corazón',marca:'Cápsula Corazón · Cordón negro, crudo o verde',talle:'',precio:9900,foto:'v/p/relicarios.jpg',art:'0431',fecha:'',msg:'Hola Agus! Me interesan los relicarios de Cápsula Corazón (Art. 0431). ¿Qué combinaciones de cordón y dije tenés?'},
+  {linea:'etiqueta',categoria:['Accesorios','Collares'],nombre:'Collar de cuentas en tonos coral',marca:'Cápsula Corazón',talle:'',precio:5900,foto:'v/p/prenda-24.jpg',art:'0268',fecha:''},
+  {linea:'etiqueta',categoria:['Denim','Pantalones'],nombre:'Recto azul oscuro 7516',marca:'NAM',talle:'38 al 42',precio:29900,foto:'v/p/prenda-23.jpg',art:'0133',fecha:''},
+  {linea:'etiqueta',categoria:['Denim','Pantalones'],nombre:'Recto con ruedo desflecado 7504',marca:'NAM',talle:'38 al 42',precio:29900,foto:'v/p/prenda-20.jpg',art:'0134',fecha:''},
+  {linea:'etiqueta',categoria:['Denim','Pantalones'],nombre:'Recto corto 7513 Higo',marca:'NAM',talle:'38 al 42',precio:29900,foto:'v/p/prenda-21.jpg',art:'0141',fecha:''},
+  {linea:'etiqueta',categoria:['Denim','Pantalones'],nombre:'Recto largo 7515 Olga',marca:'NAM',talle:'38 al 42',precio:29900,foto:'v/p/prenda-22.jpg',art:'0145',fecha:''},
+  {linea:'etiqueta',categoria:['Denim','Pantalones'],nombre:'Mom Flora 7511 · celeste y negro',marca:'NAM',talle:'38 al 42',precio:29900,foto:'v/p/prenda-19.jpg',fecha:''},
+  {linea:'etiqueta',categoria:['Denim','Camperas y abrigos'],nombre:'Campera de jean bordada',marca:'RO',talle:'M/L',precio:35000,foto:'v/p/prenda-15.jpg',art:'0225',fecha:''},
+  {linea:'circular',categoria:'Vestidos y polleras',nombre:'Pollera de lentejuelas',marca:'',talle:'38',precio:19900,foto:'v/p/prenda-16.jpg',art:'0124',fecha:''},
+  {linea:'circular',categoria:'Remeras y tops',nombre:'Musculosa gris Dare',marca:'',talle:'S',precio:7900,foto:'v/p/prenda-17.jpg',art:'0172',fecha:''},
+  {linea:'circular',categoria:'Camisas y blusas',fiesta:true,nombre:'Blusa de encaje elastizado',marca:'Kosiuko',talle:'40',precio:32900,foto:'v/p/prenda-18.jpg',art:'0089',fecha:''},
+  {linea:'circular',categoria:'Vestidos de fiesta',nombre:'Vestido bordó de encaje con perlas',marca:"",talle:'M',precio:45000,foto:'v/p/fiesta-1.jpg',art:'0349',fecha:''},
+  {linea:'etiqueta',categoria:'Vestidos de fiesta',nombre:'Vestido lila de volados',marca:"",talle:'S',precio:45000,foto:'v/p/fiesta-2.jpg',art:'0347',fecha:''},
+  {linea:'etiqueta',categoria:'Vestidos de fiesta',nombre:'Vestido negro cruzado con volados',marca:"Claudia Larreta",talle:'M',precio:49000,foto:'v/p/fiesta-3.jpg',art:'0128',fecha:''},
+  {linea:'etiqueta',categoria:'Vestidos de fiesta',nombre:'Vestido negro de satén plisado',marca:"Akiabara",talle:'S',precio:55000,foto:'v/p/fiesta-4.jpg',art:'0344',fecha:''},
+  {linea:'etiqueta',categoria:'Vestidos de fiesta',nombre:'Vestido negro con flores en el hombro',marca:"Ciara",talle:'M',precio:65000,foto:'v/p/fiesta-5.jpg',art:'0403',fecha:''},
+  {linea:'circular',categoria:'Vestidos de fiesta',nombre:'Vestido naranja con canutillos',marca:"",talle:'S',precio:55000,foto:'v/p/fiesta-6.jpg',art:'0342',fecha:''},
+  {linea:'etiqueta',categoria:'Vestidos de fiesta',nombre:'Vestido de gasa con rosas',marca:"",talle:'1',precio:45000,foto:'v/p/fiesta-7.jpg',art:'0341',fecha:''},
+  {linea:'etiqueta',categoria:'Vestidos de fiesta',nombre:'Vestido coral con encaje negro',marca:"",talle:'M',precio:45000,foto:'v/p/fiesta-8.jpg',art:'0340',fecha:''},
+  {linea:'circular',categoria:'Vestidos de fiesta',nombre:'Vestido negro con trenzas doradas',marca:"Bar's",talle:'M',precio:49000,foto:'v/p/fiesta-9.jpg',art:'0127',fecha:''},
+  {linea:'circular',categoria:'Camisas y blusas',nombre:'Musculosa de seda',marca:'SBA',talle:'M',precio:15000,foto:'v/p/prenda-14.jpg',art:'0317',fecha:'2026-10-31'},
+  {linea:'circular',categoria:'Camisas y blusas',nombre:'Blusa rosa plumetí con puntillas',marca:'',talle:'M',precio:7000,foto:'v/p/prenda-13.jpg',art:'0083',fecha:''},
+  {linea:'circular',categoria:'Camisas y blusas',nombre:'Blusa coral calada con puntillas',marca:'',talle:'M',precio:8500,foto:'v/p/prenda-12.jpg',art:'0295',fecha:''},
+  {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Blusa de gasa con puntillas y moños',marca:'DeLucca',talle:'3',precio:26000,foto:'v/p/prenda-11.jpg',fecha:'2026-10-31'},
+  {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Camisa Xime',marca:'RO',talle:'S/M',precio:34900,foto:'v/p/prenda-10.jpg',art:'0230',fecha:''},
+  {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Blusa marfil con volados y pompones',marca:'',talle:'L/Oversize',precio:39000,foto:'v/p/prenda-9.jpg',art:'0315',fecha:'2026-10-31'},
+  {linea:'circular',categoria:'Camisas y blusas',nombre:'Top blanco fruncido con volado',marca:'Stradivarius',talle:'XS',precio:9900,foto:'v/p/prenda-8.jpg',art:'0314',fecha:'2026-10-31'},
+  {linea:'etiqueta',categoria:'Blazers y chalecos',nombre:'Chaleco sastrero rosa con hebillas',marca:'DeLucca',talle:'2',precio:40000,foto:'v/p/prenda-1.jpg',art:'0333',fecha:'2026-10-31'},
+  {linea:'circular',categoria:'Camisas y blusas',nombre:'Blusa bordada con canutillos y lentejuelas',marca:'',talle:'M',precio:15000,foto:'v/p/prenda-2.jpg',art:'0316',fecha:'2026-10-31'},
+  {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Musculosa con nudos en los hombros',marca:'',talle:'M',precio:20000,foto:'v/p/prenda-3.jpg',art:'0322',fecha:'2026-10-31'},
+  {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Blusa bordada con botones',marca:'',talle:'M/L',precio:39000,foto:'v/p/prenda-4.jpg',art:'0313',fecha:'2026-10-31'},
+  {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Blusa de tul bordado con puntillas',marca:'',talle:'M/L',precio:39000,foto:'v/p/prenda-5.jpg',art:'0312',fecha:'2026-10-31'},
+  {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Blusa liviana estampada',marca:'',talle:'M',precio:29000,foto:'v/p/prenda-6.jpg',art:'0321',fecha:'2026-10-31'},
+  {linea:'circular',categoria:'Camisas y blusas',nombre:'Túnica bordada',marca:"Bar's",talle:'XL',precio:24900,foto:'v/p/prenda-7.jpg',art:'0327',fecha:'2026-10-31'},
+  {linea:'circular',categoria:'Vestidos y polleras',nombre:'Pollera pantalón beige con botones',marca:'',talle:'1',precio:9900,foto:'v/p/circ2-1.jpg',art:'0303',fecha:''},
+  {linea:'circular',categoria:'Shorts',nombre:'Short de cuero negro con cordón',marca:'',talle:'38',precio:12900,foto:'v/p/circ2-2.jpg',art:'0126',fecha:''},
+  {linea:'circular',categoria:'Vestidos y polleras',nombre:'Pollera de ecocuero negra bordada',marca:'',talle:'30',precio:19900,foto:'v/p/circ2-3.jpg',art:'0123',fecha:''},
+  {linea:'circular',categoria:'Vestidos y polleras',nombre:'Pollera de jean negra cargo',marca:'',talle:'M',precio:9900,foto:'v/p/circ2-4.jpg',art:'0153',fecha:''},
+  {linea:'circular',categoria:'Shorts',nombre:'Short de jean negro',marca:'',talle:'40',precio:9900,foto:'v/p/circ2-5.jpg',art:'0209',fecha:''},
+  {linea:'circular',categoria:'Vestidos y polleras',nombre:'Pollera blanca de volados',marca:'',talle:'S',precio:19900,foto:'v/p/circ2-6.jpg',art:'0304',fecha:''},
+  {linea:'circular',categoria:'Tejidos',nombre:'Sweater calado beige',marca:'',talle:'S',precio:5000,foto:'v/p/circ2-7.jpg',art:'0199',fecha:''},
+  {linea:'circular',categoria:'Tejidos',nombre:'Sweater calado verde',marca:'',talle:'M',precio:6900,foto:'v/p/circ2-8.jpg',art:'0288',fecha:''},
+  {linea:'circular',categoria:'Vestidos y polleras',nombre:'Vestido largo de lino con moños',marca:'DeLucca',talle:'Único',precio:30000,foto:'v/p/circ2-9.jpg',art:'0429',fecha:''},
+  {linea:'circular',categoria:'Shorts',nombre:'Short de jean blanco desflecado',marca:'',talle:'40',precio:9900,foto:'v/p/circ2-10.jpg',art:'0204',fecha:''},
+  {linea:'circular',categoria:'Vestidos y polleras',nombre:'Vestido floreado con frufrú azul',marca:'',talle:'M',precio:17500,foto:'v/p/circ2-11.jpg',art:'0395',fecha:''},
+  {linea:'circular',categoria:'Vestidos y polleras',nombre:'Vestido celeste y rojo con paisley',marca:'Akiabara',talle:'S',precio:17900,foto:'v/p/circ2-12.jpg',art:'0415',fecha:''},
+  {linea:'circular',categoria:'Vestidos y polleras',nombre:'Vestido de voile India style',marca:'',talle:'L',precio:13900,foto:'v/p/circ2-13.jpg',art:'0413',fecha:''},
+  ...[20000,30000,50000,100000].map(m=>({linea:'todas',categoria:'Tarjetas de regalo',nombre:'Tarjeta de regalo',talle:'',marca:'Válida por 90 días',precio:m,foto:`v/tarjeta-${m}.png`,ajuste:'contain',
+    msg:`Hola Agus! Quiero una tarjeta de regalo de ${m.toLocaleString('es-AR')} pesos.`}))
+];
+const CATEGORIAS=['Blazers y chalecos','Camisas y blusas','Camperas y abrigos','Denim','Pantalones','Remeras y tops','Shorts','Tarjetas de regalo','Tejidos','Vestidos de fiesta','Vestidos y polleras'];
+const DIAS_NUEVO=15;
+const LINEA_NOMBRE={circular:'Moda circular',etiqueta:'Con etiqueta',fiesta:'Fiesta',calzado:'Calzado',hombre:'Hombre'};
+const esNuevo=p=>p.fecha&&(Date.now()-new Date(p.fecha+'T12:00:00'))/864e5<=DIAS_NUEVO;
+const pesos=n=>Number(n).toLocaleString('es-AR')+' pesos';
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.querySelectorAll('.catalogo').forEach(cat=>{
+  const linea=cat.dataset.linea;
+  const filtros=['Todos',...(linea==='accesorios'?['Cápsula Corazón','Accesorios importados']:[]),'Nuevos ingresos',...(cat.dataset.cats?cat.dataset.cats.split('|'):CATEGORIAS),...(['accesorios','circular','fiesta','hombre','etiqueta','todo'].includes(linea)?['Outlet del outlet']:[])];
+  let elegido=null;
+  const cats=p=>[].concat(p.categoria);
+  const esAcc=p=>cats(p).includes('Accesorios');
+  const enLinea=p=>(linea==='todo'&&p.linea!=='todas'&&p.linea!=='calzado'&&!esAcc(p))||(linea==='accesorios'&&esAcc(p))||(!esAcc(p)&&linea!=='accesorios')&&(p.linea===linea||(linea==='fiesta'&&(p.fiesta||cats(p).includes('Vestidos de fiesta'))));
+  const grupoAcc=(p,f)=>f==='Cápsula Corazón'?p.marca==='Cápsula Corazón':f==='Accesorios importados'?!!p.importado:null;
+  const enCat=f=>(f==='Cápsula Corazón'||f==='Accesorios importados')?PRODUCTOS.filter(p=>enLinea(p)&&grupoAcc(p,f)).length:f==='Outlet del outlet'?PRODUCTOS.filter(p=>p.outlet).length:PRODUCTOS.filter(p=>enLinea(p)||(p.linea==='todas'&&f==='Tarjetas de regalo')).filter(p=>f==='Todos'?p.linea!=='todas':f==='Nuevos ingresos'?esNuevo(p):cats(p).includes(f)).length;
+  cat.innerHTML=`<ul class="lista-cat">${filtros.map(f=>{const n=enCat(f);return `<li><button class="cat-btn${f==='Outlet del outlet'?' outlet':''}${f==='Nuevos ingresos'?' nuevo':''}${f==='Todos'?' todos':''}" data-f="${f}"><span>${f==='Outlet del outlet'?'🏷️ '+f:f}</span><span class="cat-n">${n||''}</span><span class="chev" aria-hidden="true">›</span></button></li>`}).join('')}</ul>
+    <div class="cat-vista" hidden><button class="cat-volver">‹ Categorías</button><h2 class="cat-titulo"></h2><p class="cuenta"></p><div class="grilla"></div><div class="ficha" hidden></div></div>`;
+  const lista=cat.querySelector('.lista-cat'),vistaCat=cat.querySelector('.cat-vista'),grilla=cat.querySelector('.grilla'),ficha=cat.querySelector('.ficha'),cuenta=cat.querySelector('.cuenta'),tit=cat.querySelector('.cat-titulo');
+  cat.querySelectorAll('.cat-btn').forEach(b=>b.addEventListener('click',()=>{if(!cat.dataset.directo)history.pushState({cat:1},'',location.href);elegido=b.dataset.f;tit.textContent=elegido;cat.closest('main').classList.add('cat-abierta');lista.hidden=true;vistaCat.hidden=false;
+    vistaCat.classList.remove('entra');void vistaCat.offsetWidth;vistaCat.classList.add('entra');pintar();window.scrollTo(0,0)}));
+  cat.querySelector('.cat-volver').addEventListener('click',()=>{if(history.state&&history.state.cat){history.back();return}cat.closest('main').classList.remove('cat-abierta');elegido=null;vistaCat.hidden=true;lista.hidden=false;lista.classList.remove('entra');void lista.offsetWidth;lista.classList.add('entra')});
+  const volverBtn=cat.querySelector('.cat-volver');
+  cat.cerrarFicha=()=>{if(ficha.hidden)return;ficha.hidden=true;ficha.innerHTML='';[volverBtn,tit,cuenta,grilla].forEach(e=>e.hidden=false);if(cat.dataset.directo)volverBtn.hidden=true;window.scrollTo(0,0)};
+  cat.abrirFicha=p=>{history.pushState({cat:1,ficha:1},'',location.href);
+    ficha.innerHTML=`<button class="cat-volver ficha-volver">‹ ${esc(elegido==='Todos'?'Volver':elegido)}</button>`+tarjetaModelo(p);
+    [volverBtn,tit,cuenta,grilla].forEach(e=>e.hidden=true);ficha.hidden=false;ficha.classList.remove('entra');void ficha.offsetWidth;ficha.classList.add('entra');window.scrollTo(0,0)};
+  cat.addEventListener('click',e=>{
+    if(e.target.closest('.ficha-volver')){history.back();return}
+    if(e.target.closest('.comprar'))return;const c=e.target.closest('.prenda.portada');if(!c)return;
+    const p=PRODUCTOS.find(x=>x.fotos&&(x.art||x.nombre)===c.dataset.modelo);if(p)cat.abrirFicha(p)});
+  cat.reset=()=>{cat.closest('main').classList.remove('cat-abierta');if(!ficha.hidden){ficha.hidden=true;ficha.innerHTML='';[volverBtn,tit,cuenta,grilla].forEach(e=>e.hidden=false)}elegido=null;vistaCat.hidden=true;lista.hidden=false;
+    if(cat.dataset.directo){elegido='Todos';tit.textContent='';lista.hidden=true;vistaCat.hidden=false;cat.querySelector('.cat-volver').hidden=true;pintar()}};
+  cat.reset();
+  function pintar(){
+    const lista=elegido==='Outlet del outlet'?PRODUCTOS.filter(p=>p.outlet):PRODUCTOS.filter(p=>enLinea(p)||(p.linea==='todas'&&elegido==='Tarjetas de regalo')).filter(p=>elegido==='Todos'||(grupoAcc(p,elegido)!==null?grupoAcc(p,elegido):elegido==='Nuevos ingresos'?esNuevo(p):cats(p).includes(elegido)))
+      .sort((a,b)=>(b.fecha||'').localeCompare(a.fecha||''));
+    const pal=elegido==='Tarjetas de regalo'?['tarjeta','tarjetas']:linea==='accesorios'?['pieza','piezas']:linea==='calzado'?['modelo','modelos']:['prenda','prendas'];cuenta.textContent=lista.length?`${lista.length} ${lista.length===1?pal[0]:pal[1]}`:'';
+    if(!lista.length&&elegido==='Accesorios importados'){grilla.style.display='block';
+      const ims=[1,2,3,4,5,6,7,8,9,10,11].map(k=>`<img src="v/p/imp-${k}.jpg" alt="" loading="lazy">`).join('');
+      grilla.innerHTML=`<div class="prox"><p class="prox-ceja">Próximo ingreso</p><h3>Accesorios importados</h3><p class="prox-txt">Pulseras, brazaletes y cintos que llegan muy pronto a LCO.</p><div class="marquee"><div class="marquee-track">${ims}${ims}</div></div><a class="btn" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola Agus! Quiero que me avises cuando lleguen los accesorios importados.')}">Avisame cuando lleguen</a></div>`;
+      return;}
+    if(!lista.length){grilla.style.display='block';
+      grilla.innerHTML=`<div class="vacio"><div class="flores" data-f aria-hidden="true"></div><div class="dentro"><b>${elegido==='Todos'?'Muy pronto':esc(elegido)}</b><p>${elegido==='Todos'?'Estamos cargando las prendas. Mientras tanto, escribile a Agus por WhatsApp.':elegido==='Outlet del outlet'?'Muy pronto: prendas y accesorios en súper liquidación. ¡Volvé a mirar!':elegido==='Accesorios importados'?'Muy pronto: nuestra selección de accesorios importados.':'Todavía no hay prendas en esta categoría.'}</p></div></div>`;
+      const f=grilla.querySelector('[data-f]');[['mancha',140,'-50px','-40px',null,null,C.crema],['marg',80,'-20px','-14px',null,null,C.blanco,C.coral,15],['mancha',120,null,null,'-50px','-40px',C.durazno]].forEach(([t,s,top,left,bottom,right,c1,c2,r])=>{const w=document.createElement('div');w.innerHTML=t==='marg'?margarita(s,c1,c2,r):mancha(s,c1);const el=w.firstChild;Object.assign(el.style,{top:top??'auto',left:left??'auto',bottom:bottom??'auto',right:right??'auto'});f.appendChild(el)});
+      return;}
+    grilla.style.display='';
+    grilla.innerHTML=lista.map(p=>{
+      const msg=(p.msg||`Hola Agus! Me interesa esta prenda de ${LINEA_NOMBRE[p.linea]||LINEA_NOMBRE[linea]}: ${p.nombre}${p.art?' (Art. '+p.art+')':''}${p.marca?' ('+p.marca+')':''}${p.precio?' · '+pesos(p.precio):''}${p.talle&&/ al /.test(p.talle)?'. ¿Qué talles tenés disponibles?':(p.talle?', talle '+p.talle+'.':'.')}`)+linkFoto(p.foto);
+      if(p.fotos) return `<article class="prenda portada" data-modelo="${esc(p.art||p.nombre)}" role="button" tabindex="0"><div class="foto"><img src="${esc(p.fotos[0][0])}" alt="${esc(p.nombre)}" loading="lazy"></div><b>${esc(p.nombre)}</b><span class="det">${[p.talles&&p.talles.length===1?'Talle '+p.talles[0]:(p.talles&&p.talles.length?'Talles '+p.talles[0]+' al '+p.talles[p.talles.length-1]:''),p.art&&'Art. '+p.art].filter(Boolean).map(esc).join(' · ')}</span>${p.colores&&p.colores.length?`<span class="colores">${p.colores.map(c=>`<i class="pt" style="background:${({Negro:'#222',Nude:'#E3BFA6',Plata:'#C9CCD1',Platino:'#E6DCC8',Dorado:'#D8B45A'})[c]||'#ccc'}"></i>${esc(c)}`).join(' ')}</span>`:''}<span class="precio">${p.precio?pesos(p.precio):'Consultar precio'}</span><span class="ver">Ver fotos y talles ›</span><a class="btn comprar" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msgModelo(p))}">Comprar</a></article>`;
+      return `<article class="prenda"><div class="foto${p.ajuste==='contain'?' contener':''}">${p.foto?`<img src="${esc(p.foto)}" alt="${esc(p.nombre)}" loading="lazy">`:''}${esNuevo(p)?'<span class="etq">Nuevo</span>':''}${p.outlet?'<span class="sello-outlet">Outlet del outlet</span>':''}</div>
+        <b>${esc(p.nombre)}</b><span class="det">${[(linea==='fiesta'||linea==='todo')&&p.linea!==linea?LINEA_NOMBRE[p.linea]:'',p.outlet?'Outlet del outlet':'',p.linea==='hombre'?'Moda circular':'',p.marca,p.talle&&'Talle '+p.talle,p.art&&'Art. '+p.art].filter(Boolean).map(esc).join(' · ')}</span>
+        <span class="precio">${p.precio?pesos(p.precio):'Consultar precio'}</span>
+        <a class="btn comprar" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}">Comprar</a></article>`}).join('');
+  }
+});
+
+
+/* ---------- Calzado: tarjeta con carrusel de fotos, colores y talles ---------- */
+function msgModelo(p,color,talle){
+  if(!talle&&p.talles&&p.talles.length===1)talle=p.talles[0];
+  return `Hola Agus! Me interesa este calzado: ${p.nombre}${p.art?' (Art. '+p.art+')':''}${p.precio?' · '+pesos(p.precio):''}.`+
+    (color?` Color: ${color}.`:(p.colores&&p.colores.length?' ¿Qué colores tenés?':''))+
+    (talle?` Talle: ${talle}.`:' ¿Qué talles tenés disponibles?')+linkFoto(p.fotos&&p.fotos[0]&&p.fotos[0][0]);
+}
+function tarjetaModelo(p){
+  const href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msgModelo(p))}`;
+  return `<article class="prenda modelo" data-modelo="${esc(p.art||p.nombre)}">
+    <div class="foto carrusel-wrap"><div class="carrusel">${p.fotos.map(([src,c],i)=>`<img src="${esc(src)}" alt="${esc(p.nombre+' '+c)}" data-color="${esc(c)}" loading="${i?'lazy':'eager'}">`).join('')}</div>
+      <div class="puntos">${p.fotos.map((_,i)=>`<i${i?'':' class="on"'}></i>`).join('')}</div>
+      ${p.fotos.length>1?'<button class="flecha izq" aria-label="Foto anterior">‹</button><button class="flecha der" aria-label="Foto siguiente">›</button>':''}</div>
+    <b>${esc(p.nombre)}</b><span class="det">${[p.marca,p.art&&'Art. '+p.art].filter(Boolean).map(esc).join(' · ')}</span>
+    <span class="precio">${p.precio?pesos(p.precio):'Consultar precio'}</span>
+    ${p.colores&&p.colores.length?`<div class="opciones" data-tipo="color"><span>Color</span>${p.colores.map(c=>`<button class="chip">${esc(c)}</button>`).join('')}</div>`:''}
+    ${p.talles&&p.talles.length?`<div class="opciones" data-tipo="talle"><span>Talle</span>${p.talles.map(t=>`<button class="chip">${esc(t)}</button>`).join('')}</div>`:''}
+    <a class="btn comprar" target="_blank" rel="noopener" href="${href}">Comprar</a></article>`;
+}
+const modeloDe=el=>{const art=el.closest('.modelo').dataset.modelo;return PRODUCTOS.find(p=>p.fotos&&(p.art||p.nombre)===art)};
+function actualizarModelo(card){
+  const p=modeloDe(card),sel=t=>{const b=card.querySelector(`.opciones[data-tipo="${t}"] .chip.on`);return b?b.textContent:''};
+  card.querySelector('.comprar').href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msgModelo(p,sel('color'),sel('talle')))}`;
+}
+const fotoActual=car=>Math.round(car.scrollLeft/Math.max(1,car.clientWidth));
+document.addEventListener('click',e=>{
+  const chip=e.target.closest('.modelo .chip');
+  if(chip){const grupo=chip.parentElement,card=chip.closest('.modelo');const ya=chip.classList.contains('on');
+    grupo.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));if(!ya)chip.classList.add('on');
+    if(!ya&&grupo.dataset.tipo==='color'){const car=card.querySelector('.carrusel');const i=[...car.children].findIndex(im=>im.dataset.color===chip.textContent);if(i>=0)car.scrollTo({left:i*car.clientWidth,behavior:'smooth'})}
+    actualizarModelo(card);return;}
+  const fl=e.target.closest('.modelo .flecha');
+  if(fl){e.stopPropagation();const car=fl.parentElement.querySelector('.carrusel');const n=car.children.length;let i=fotoActual(car)+(fl.classList.contains('der')?1:-1);i=(i+n)%n;car.scrollTo({left:i*car.clientWidth,behavior:'smooth'});}
+},true);
+document.addEventListener('scroll',e=>{const car=e.target;if(!(car instanceof Element)||!car.classList.contains('carrusel'))return;
+  const i=fotoActual(car);car.parentElement.querySelectorAll('.puntos i').forEach((d,k)=>d.classList.toggle('on',k===i));},true);
+
+
+/* ---------- Cómo trabajamos: carrusel ---------- */
+document.querySelectorAll('.slides').forEach(sl=>{const w=sl.parentElement,ds=[...w.querySelectorAll('.sl-puntos i')];
+ const idx=()=>Math.round(sl.scrollLeft/Math.max(1,sl.clientWidth));const pint=()=>ds.forEach((d,k)=>d.classList.toggle('on',k===idx()));
+ sl.addEventListener('scroll',pint,{passive:true});pint();
+ w.querySelectorAll('.sl-flecha').forEach(b=>b.addEventListener('click',()=>{const n=ds.length;let i=idx()+(b.classList.contains('der')?1:-1);i=Math.max(0,Math.min(n-1,i));sl.scrollTo({left:i*sl.clientWidth,behavior:'smooth'})}));});
+
+document.querySelectorAll('.carta-btn').forEach(b=>b.addEventListener('click',()=>{const m=b.parentElement.querySelector('.carta-mas');m.hidden=!m.hidden;b.textContent=m.hidden?'Seguir leyendo ↓':'Cerrar carta ↑';if(m.hidden)b.parentElement.scrollIntoView({behavior:'smooth',block:'start'})}));
+
+/* ---------- Bienvenida: confeti de flores + cupón ---------- */
+(function(){
+  const cv=document.getElementById('confeti'),cup=document.getElementById('cupon');if(!cv||!cup)return;
+  let visto=false;try{visto=localStorage.getItem('lco-cupon')==='1'}catch(e){}
+  const cerrar=()=>{cup.hidden=true;try{localStorage.setItem('lco-cupon','1')}catch(e){}};
+  cup.querySelector('.cupon-x').addEventListener('click',cerrar);
+  cup.querySelector('.cupon-ok').addEventListener('click',cerrar);
+  cup.addEventListener('click',e=>{if(e.target===cup)cerrar()});
+  function confeti(){
+    const ctx=cv.getContext('2d'),dpr=window.devicePixelRatio||1;
+    const W=cv.width=innerWidth*dpr,H=cv.height=innerHeight*dpr;
+    const cols=['#F4D3CA','#E9AFA2','#E07A6F','#F3D58B','#C3D5EF','#9DB8E3','#FFFFFF','#B3D6A6'];
+    const ps=Array.from({length:110},()=>({x:W/2+(Math.random()-.5)*W*.2,y:H*.45,vx:(Math.random()-.5)*16*dpr,vy:(-8-Math.random()*12)*dpr,r:(5+Math.random()*7)*dpr,rot:Math.random()*6,vr:(Math.random()-.5)*.3,c:cols[Math.random()*cols.length|0],flor:Math.random()<.45}));
+    let t=0;(function frame(){ctx.clearRect(0,0,W,H);t++;
+      ps.forEach(p=>{p.vy+=.35*dpr;p.vx*=.985;p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.fillStyle=p.c;
+        if(p.flor){for(let k=0;k<5;k++){ctx.rotate(Math.PI*2/5);ctx.beginPath();ctx.ellipse(0,p.r*.6,p.r*.42,p.r*.62,0,0,Math.PI*2);ctx.fill()}ctx.fillStyle='#F3D58B';ctx.beginPath();ctx.arc(0,0,p.r*.32,0,Math.PI*2);ctx.fill()}
+        else{ctx.fillRect(-p.r/2,-p.r/4,p.r,p.r/2)}ctx.restore()});
+      if(t<200)requestAnimationFrame(frame);else ctx.clearRect(0,0,W,H)})();
+  }
+  window.addEventListener('hashchange',()=>{if(visto)return;if(location.hash==='#inicio'){visto=true;confeti();setTimeout(()=>{cup.hidden=false},450)}});
+})();
+/* ---------- Visor de videos ---------- */
+const visor=document.getElementById('visor'),vv=document.getElementById('visor-video'),vt=document.getElementById('visor-titulo');
+function cerrarVisor(){vv.pause();vv.removeAttribute('src');vv.load();visor.hidden=true}
+const mb=document.getElementById('musica-btn'),ma=document.getElementById('musica-audio');
+mb.addEventListener('click',()=>{if(ma.paused){const p=ma.play();if(p&&p.catch)p.catch(()=>{})}else ma.pause()});
+ma.addEventListener('play',()=>{mb.setAttribute('aria-pressed','true');mb.querySelector('.musica-txt').textContent='Sonando: La Reina del Orden'});
+ma.addEventListener('pause',()=>{mb.setAttribute('aria-pressed','false');mb.querySelector('.musica-txt').textContent='Escuchá nuestra música'});
+ma.addEventListener('ended',()=>{ma.currentTime=0});
+document.querySelectorAll('[data-video]').forEach(b=>b.addEventListener('click',()=>{
+  ma.pause();
+  vt.textContent=b.dataset.titulo||'';vv.src=b.dataset.video;visor.hidden=false;const p=vv.play();if(p&&p.catch)p.catch(()=>{});
+}));
+document.getElementById('visor-cerrar').addEventListener('click',cerrarVisor);
+visor.addEventListener('click',e=>{if(e.target===visor)cerrarVisor()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!visor.hidden)cerrarVisor()});
+document.querySelectorAll('[data-flor-item]').forEach(b=>{if(!b.innerHTML)b.innerHTML=margarita(40,C.blanco,C.coral,15)});
+
+/* ---------- Galería: los videos cargan y se mueven solo cuando se ven ---------- */
+const galVids=[...document.querySelectorAll('.galeria video')];
+const io=('IntersectionObserver' in window)?new IntersectionObserver(es=>es.forEach(e=>{
+  const v=e.target;if(e.isIntersecting){if(!v.src)v.src=v.dataset.src;const p=v.play();if(p&&p.catch)p.catch(()=>{})}else v.pause();
+}),{threshold:.25}):null;
+galVids.forEach(v=>{if(io)io.observe(v);else{v.src=v.dataset.src;v.autoplay=true}});
+
+/* ---------- Ampliar foto de prenda ---------- */
+const zoom=document.getElementById('zoom'),zimg=document.getElementById('zoom-img');
+function cerrarZoom(){zoom.hidden=true;zimg.removeAttribute('src')}
+document.addEventListener('click',e=>{if(e.target.closest('.flecha')||e.target.closest('.portada'))return;const f=e.target.closest('.prenda .foto, .cert-img');if(!f)return;const car=f.querySelector('.carrusel');const im=car?car.children[fotoActual(car)]:f.querySelector('img');if(!im)return;zimg.src=im.src;zimg.alt=im.alt;zoom.hidden=false});
+document.getElementById('zoom-cerrar').addEventListener('click',cerrarZoom);
+zoom.addEventListener('click',e=>{if(e.target===zoom)cerrarZoom()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!zoom.hidden)cerrarZoom()});
+
+/* ---------- Videos: cargan solo cuando su pantalla se ve ---------- */
+function activarVideos(v){
+  document.querySelectorAll('main.vista video[data-vsrc]').forEach(vd=>{
+    const enVista=vd.closest('main.vista')===v;
+    if(enVista){ if(!vd.src) vd.src=vd.dataset.vsrc; vd.muted=true; vd.loop=true; const p=vd.play(); if(p&&p.catch)p.catch(()=>{}); }
+    else if(!vd.paused) vd.pause();
+  });
+}
+
+/* ---------- Pantallas + barra "dónde estás" ---------- */
+const rutas={
+  etiqueta:[['Inicio','inicio'],['Moda','moda'],['Con etiqueta']],
+  fiesta:[['Inicio','inicio'],['Moda','moda'],['Fiesta']],
+  calzado:[['Inicio','inicio'],['Moda','moda'],['Calzado']],
+  hombre:[['Inicio','inicio'],['Moda','moda'],['Hombre']],
+  todo:[['Inicio','inicio'],['Moda','moda'],['Todo junto']],
+  accesorios:[['Inicio','inicio'],['Moda','moda'],['Accesorios']],
+  pronto:[['Inicio','inicio'],['Universo LCO','ideas'],['Próximamente']],
+  certificaciones:[['Inicio','inicio'],['Universo LCO','ideas'],['Certificaciones']],
+  bienvenida:[['Bienvenida']],
+  inicio:[['Inicio']],
+  comprar:[['Inicio','inicio'],['Cómo comprar']],
+  moda:[['Inicio','inicio'],['Moda']],
+  circular:[['Inicio','inicio'],['Moda','moda'],['Circular']],
+  vender:[['Moda','moda'],['Circular','circular'],['Vender']],
+  deco:[['Inicio','inicio'],['Deco']],
+  community:[['Inicio','inicio'],['Community']],
+  ideas:[['Inicio','inicio'],['Universo LCO']],
+  musica:[['Inicio','inicio'],['Universo LCO','ideas'],['Música']],
+  regalo:[['Inicio','inicio'],['Universo LCO','ideas'],['Gift card']],
+  casafoa:[['Inicio','inicio'],['Deco','deco'],['Casa FOA']],
+  trabajamos:[['Inicio','inicio'],['Deco','deco'],['Cómo trabajamos']],
+  resultado:[['Inicio','inicio'],['Deco','deco'],['El resultado']]
+};
+let actual=null;
+function mostrar(){
+  let v=(location.hash||'#bienvenida').slice(1); if(!rutas[v]) v='bienvenida';
+  document.body.classList.toggle('en-bienvenida',v==='bienvenida');
+  if(v===actual) return;
+  Object.keys(rutas).forEach(n=>document.getElementById('vista-'+n).hidden=(n!==v));
+  document.querySelectorAll('.catalogo').forEach(c=>c.reset&&c.reset());
+  if(!visor.hidden) cerrarVisor();
+  if(!zoom.hidden) cerrarZoom();
+  const el=document.getElementById('vista-'+v); el.classList.remove('entra'); void el.offsetWidth; el.classList.add('entra');
+  const at=document.getElementById('atras'),r=rutas[v],padre=r.length>1?r[r.length-2][1]:(v==='inicio'?'bienvenida':null);
+  at.hidden=!padre; if(padre) at.href='#'+padre;
+  document.getElementById('ruta').innerHTML=rutas[v].map(([t,h],i,a)=>(h?`<a href="#${h}">${t}</a>`:`<span class="aca">${t}</span>`)+(i<a.length-1?'<span class="sep">›</span>':'')).join('');
+  activarVideos(document.getElementById('vista-'+v));
+  actual=v; window.scrollTo(0,0);
+}
+document.getElementById('atras').addEventListener('click',e=>{
+  const c=document.querySelector('.vista:not([hidden]) .cat-vista:not([hidden])');
+  if(c&&!c.querySelector('.cat-volver').hidden){e.preventDefault();c.querySelector('.cat-volver').click();window.scrollTo(0,0)}
+});
+/* Mientras se ve la portada, el inicio va cargando en segundo plano */
+(function(){const lv=document.querySelector('.logo-entrar video');
+  const pre=()=>document.querySelectorAll('#vista-inicio video[data-vsrc]').forEach(vd=>{if(!vd.src){vd.preload='auto';vd.src=vd.dataset.vsrc}});
+  if(lv){ if(lv.readyState>=4) pre(); else lv.addEventListener('canplaythrough',pre,{once:true}); }
+  setTimeout(pre,12000);
+})();
+window.addEventListener('popstate',()=>{document.querySelectorAll('.catalogo').forEach(c=>{const f=c.querySelector('.ficha');if(f&&!f.hidden&&!(history.state&&history.state.ficha)){c.cerrarFicha();return}const v=c.querySelector('.cat-vista');if(v&&!v.hidden&&!c.dataset.directo&&!(history.state&&history.state.cat)){c.reset();window.scrollTo(0,0)}})});
+window.addEventListener('hashchange',mostrar); mostrar();
+</script>
+
+</body>
+</html>
