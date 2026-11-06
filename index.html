@@ -855,7 +855,7 @@ footer{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:upp
 /* Número de WhatsApp (con código de país, sin + ni espacios). Ej: 5493444000000 */
 const WHATSAPP='5493444518451';
 const SITIO=/claude|localhost/.test(location.hostname)||!/^http/.test(location.protocol)?'':location.origin;
-const linkFoto=f=>SITIO&&f?' Foto: '+SITIO+'/'+String(f).replace(/^\.?\//,''):'';
+const linkFoto=f=>SITIO&&f?' Foto: '+SITIO+'/#foto='+String(f).replace(/^\.?\//,''):'';
 if(WHATSAPP){document.querySelectorAll('[data-wsp],#wsp').forEach(a=>{const m=a.dataset.wsp||'Hola Agus! Te escribo desde la web de LCO Estudio.';a.href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(m);a.target='_blank';a.rel='noopener'})}
 
 /* ---------- Flores pastel ---------- */
@@ -1292,7 +1292,10 @@ const rutas={
 };
 let actual=null;
 function mostrar(){
+  let fotoLink=null;
+  if(location.hash.startsWith('#foto=')){const f=decodeURIComponent(location.hash.slice(6));if(/^v\/[\w\/.-]+\.(jpe?g|png)$/i.test(f))fotoLink=f;history.replaceState(null,'','#moda');}
   let v=(location.hash||'#bienvenida').slice(1); if(!rutas[v]) v='bienvenida';
+  if(fotoLink){setTimeout(()=>{zimg.src=fotoLink;zoom.hidden=false},60);}
   document.body.classList.toggle('en-bienvenida',v==='bienvenida');
   if(v===actual) return;
   Object.keys(rutas).forEach(n=>document.getElementById('vista-'+n).hidden=(n!==v));
