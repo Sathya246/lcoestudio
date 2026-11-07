@@ -354,7 +354,7 @@ main.cat-abierta > *:not(.catalogo){display:none!important}
 .visor-top b{font-weight:500;letter-spacing:.06em;min-width:0}
 .visor-cerrar{all:unset;cursor:pointer;padding:8px 14px;border-radius:999px;background:var(--fondo);color:var(--tinta);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;flex:none}
 .visor-cerrar:focus-visible{outline:2px solid var(--fondo);outline-offset:3px}
-.visor video{width:100%;max-height:calc(100vh - 110px);object-fit:contain;background:#000;border-radius:16px;max-width:100%}
+.visor video{width:100%;aspect-ratio:9/16;height:auto;max-height:calc(100vh - 110px);object-fit:contain;background:#000;border-radius:16px;max-width:100%}
 
 .zoom{position:fixed;inset:0;z-index:21;background:rgba(53,59,120,.88);display:flex;align-items:center;justify-content:center;
   padding:calc(56px + env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
@@ -1138,7 +1138,7 @@ document.querySelectorAll('.catalogo').forEach(cat=>{
       .sort((a,b)=>(b.fecha||'').localeCompare(a.fecha||''));
     const pal=elegido==='Tarjetas de regalo'?['tarjeta','tarjetas']:linea==='accesorios'?['pieza','piezas']:linea==='calzado'?['modelo','modelos']:['prenda','prendas'];cuenta.textContent=lista.length?`${lista.length} ${lista.length===1?pal[0]:pal[1]}`:'';
     if(!lista.length&&elegido==='Accesorios importados'){grilla.style.display='block';
-      const ims=[1,2,3,4,5,6,7,8,9,10,11].map(k=>`<img src="v/p/imp-${k}.jpg" alt="" loading="lazy">`).join('');
+      const ims=[1,2,3,4,5,6,7,8,9,10,11].map(k=>`<img src="v/p/imp-${k}.jpg" alt="" decoding="async">`).join('');
       grilla.innerHTML=`<div class="prox"><p class="prox-ceja">Próximo ingreso</p><h3>Accesorios importados</h3><p class="prox-txt">Pulseras, brazaletes y cintos que llegan muy pronto a LCO.</p><div class="marquee"><div class="marquee-track">${ims}${ims}</div></div><a class="btn" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola Agus! Quiero que me avises cuando lleguen los accesorios importados.')}">Avisame cuando lleguen</a></div>`;
       return;}
     if(!lista.length){grilla.style.display='block';
@@ -1234,7 +1234,7 @@ ma.addEventListener('pause',()=>{mb.setAttribute('aria-pressed','false');mb.quer
 ma.addEventListener('ended',()=>{ma.currentTime=0});
 document.querySelectorAll('[data-video]').forEach(b=>b.addEventListener('click',()=>{
   ma.pause();
-  vt.textContent=b.dataset.titulo||'';vv.src=b.dataset.video;visor.hidden=false;const p=vv.play();if(p&&p.catch)p.catch(()=>{});
+  vt.textContent=b.dataset.titulo||'';vv.style.aspectRatio=/reina-del-orden|dale-otra|todo-vuelve|tema-corazon/.test(b.dataset.video)?'1/1':(/ep4-textiles/.test(b.dataset.video)?'720/1570':'9/16');vv.src=b.dataset.video;visor.hidden=false;const p=vv.play();if(p&&p.catch)p.catch(()=>{});
 }));
 document.getElementById('visor-cerrar').addEventListener('click',cerrarVisor);
 visor.addEventListener('click',e=>{if(e.target===visor)cerrarVisor()});
