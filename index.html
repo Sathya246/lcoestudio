@@ -1296,7 +1296,7 @@ document.getElementById('prod-mas').addEventListener('click',cerrarProd);
 document.getElementById('prod').addEventListener('click',e=>{if(e.target.id==='prod')cerrarProd()});
 function toast(t){const el=document.getElementById('toast');el.textContent=t;el.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>el.hidden=true,2200)}
 document.addEventListener('click',async e=>{const b=e.target.closest('.compartir');if(!b)return;e.stopPropagation();
-  const url=(SITIO||'https://lcoestudio.pages.dev')+'/#p='+encodeURIComponent(b.dataset.art);
+  const url=(SITIO||'https://lcoestudio.pages.dev')+'/p/'+encodeURIComponent(b.dataset.art);
   try{await navigator.clipboard.writeText(url);toast('Link copiado ✨ '+url.replace('https://',''))}catch(err){prompt('Copiá este link:',url)}});
 const rutas={
   etiqueta:[['Inicio','inicio'],['Moda','moda'],['Con etiqueta']],
