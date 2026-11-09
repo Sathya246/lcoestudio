@@ -356,6 +356,15 @@ main.cat-abierta > *:not(.catalogo){display:none!important}
 .visor-cerrar:focus-visible{outline:2px solid var(--fondo);outline-offset:3px}
 .visor video{width:100%;aspect-ratio:9/16;height:auto;max-height:calc(100vh - 110px);object-fit:contain;background:#000;border-radius:16px;max-width:100%}
 
+.compartir{align-self:flex-start;background:none;border:0;padding:4px 2px;font:inherit;font-size:.72rem;letter-spacing:.04em;color:var(--azul);opacity:.8;cursor:pointer}
+.prod-modal{position:fixed;inset:0;z-index:22;background:rgba(53,59,120,.82);display:flex;align-items:center;justify-content:center;padding:16px}
+.prod-in{position:relative;background:var(--fondo);border-radius:22px;padding:18px;width:min(400px,100%);max-height:100%;overflow:auto;display:flex;flex-direction:column;gap:8px;text-align:center;align-items:center}
+.prod-in img{width:100%;border-radius:16px;aspect-ratio:4/5;object-fit:cover;background:var(--rosa)}
+.prod-in b{font-family:var(--f-serif);font-size:1.4rem;font-weight:500}
+.prod-in .comprar{align-self:stretch;justify-content:center;padding:13px 16px}
+.prod-cerrar{position:absolute;top:10px;right:10px;z-index:1}
+.prod-mas{font-size:.8rem;color:var(--azul);letter-spacing:.06em}
+.toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:30;background:var(--tinta);color:#fff;padding:10px 18px;border-radius:999px;font-size:.85rem;box-shadow:0 8px 20px rgba(0,0,0,.2)}
 .zoom{position:fixed;inset:0;z-index:21;background:rgba(53,59,120,.88);display:flex;align-items:center;justify-content:center;
   padding:calc(56px + env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
 .zoom img{max-width:100%;max-height:100%;border-radius:14px;object-fit:contain;touch-action:pinch-zoom}
@@ -681,6 +690,12 @@ footer{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:upp
     <a class="btn cupon-ok" target="_blank" rel="noopener" href="https://wa.me/5493444518451?text=Hola%20Agus!%20PASTELITO%20%F0%9F%8C%B8%20Quiero%20usar%20mi%2010%25%20de%20descuento.">Mandar PASTELITO</a>
   </div>
 </div>
+<div class="prod-modal" id="prod" hidden role="dialog" aria-modal="true" aria-label="Prenda">
+  <div class="prod-in"><button class="visor-cerrar prod-cerrar" id="prod-cerrar">Cerrar ✕</button>
+    <img id="prod-img" alt=""><b id="prod-nom"></b><span class="det" id="prod-det"></span><span class="precio" id="prod-pre"></span>
+    <a class="btn comprar" id="prod-comprar" target="_blank" rel="noopener">Comprar</a><a class="prod-mas" id="prod-mas" href="#moda">Ver más prendas ›</a></div>
+</div>
+<div class="toast" id="toast" hidden></div>
 <div class="zoom" id="zoom" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
   <button class="visor-cerrar zoom-cerrar" id="zoom-cerrar">Cerrar ✕</button>
   <img loading="lazy" id="zoom-img" alt="">
@@ -1105,6 +1120,7 @@ const DIAS_NUEVO=15;
 const LINEA_NOMBRE={circular:'Moda circular',etiqueta:'Con etiqueta',fiesta:'Fiesta',calzado:'Calzado',hombre:'Hombre'};
 const esNuevo=p=>p.fecha&&(Date.now()-new Date(p.fecha+'T12:00:00'))/864e5<=DIAS_NUEVO;
 const pesos=n=>Number(n).toLocaleString('es-AR')+' pesos';
+const msgPrenda=(p,linea)=>(p.msg||`Hola Agus! Me interesa esta prenda de ${LINEA_NOMBRE[p.linea]||LINEA_NOMBRE[linea]||'LCO'}: ${p.nombre}${p.art?' (Art. '+p.art+')':''}${p.marca?' ('+p.marca+')':''}${p.precio?' · '+pesos(p.precio):''}${p.talle&&/ al /.test(p.talle)?'. ¿Qué talles tenés disponibles?':(p.talle?', talle '+p.talle+'.':'.')}`)+linkFoto(p.foto);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 document.querySelectorAll('.catalogo').forEach(cat=>{
   const linea=cat.dataset.linea;
@@ -1147,12 +1163,12 @@ document.querySelectorAll('.catalogo').forEach(cat=>{
       return;}
     grilla.style.display='';
     grilla.innerHTML=lista.map(p=>{
-      const msg=(p.msg||`Hola Agus! Me interesa esta prenda de ${LINEA_NOMBRE[p.linea]||LINEA_NOMBRE[linea]}: ${p.nombre}${p.art?' (Art. '+p.art+')':''}${p.marca?' ('+p.marca+')':''}${p.precio?' · '+pesos(p.precio):''}${p.talle&&/ al /.test(p.talle)?'. ¿Qué talles tenés disponibles?':(p.talle?', talle '+p.talle+'.':'.')}`)+linkFoto(p.foto);
+      const msg=msgPrenda(p,linea);
       if(p.fotos) return `<article class="prenda portada" data-modelo="${esc(p.art||p.nombre)}" role="button" tabindex="0"><div class="foto"><img src="${esc(p.fotos[0][0])}" alt="${esc(p.nombre)}" loading="lazy"></div><b>${esc(p.nombre)}</b><span class="det">${[p.talles&&p.talles.length===1?'Talle '+p.talles[0]:(p.talles&&p.talles.length?'Talles '+p.talles[0]+' al '+p.talles[p.talles.length-1]:''),p.art&&'Art. '+p.art].filter(Boolean).map(esc).join(' · ')}</span>${p.colores&&p.colores.length?`<span class="colores">${p.colores.map(c=>`<i class="pt" style="background:${({Negro:'#222',Nude:'#E3BFA6',Plata:'#C9CCD1',Platino:'#E6DCC8',Dorado:'#D8B45A'})[c]||'#ccc'}"></i>${esc(c)}`).join(' ')}</span>`:''}<span class="precio">${p.precio?pesos(p.precio):'Consultar precio'}</span><span class="ver">Ver fotos y talles ›</span><a class="btn comprar" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msgModelo(p))}">Comprar</a></article>`;
       return `<article class="prenda"><div class="foto${p.ajuste==='contain'?' contener':''}">${p.foto?`<img src="${esc(p.foto)}" alt="${esc(p.nombre)}" loading="lazy">`:''}${esNuevo(p)?'<span class="etq">Nuevo</span>':''}${p.outlet?'<span class="sello-outlet">Outlet del outlet</span>':''}</div>
         <b>${esc(p.nombre)}</b><span class="det">${[(linea==='fiesta'||linea==='todo')&&p.linea!==linea?LINEA_NOMBRE[p.linea]:'',p.outlet?'Outlet del outlet':'',p.linea==='hombre'?'Moda circular':'',p.marca,p.talle&&'Talle '+p.talle,p.art&&'Art. '+p.art].filter(Boolean).map(esc).join(' · ')}</span>
         <span class="precio">${p.precio?pesos(p.precio):'Consultar precio'}</span>
-        <a class="btn comprar" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}">Comprar</a></article>`}).join('');
+        <a class="btn comprar" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}">Comprar</a>${p.art?`<button class="compartir" type="button" data-art="${esc(p.art)}">🔗 Copiar link</button>`:''}</article>`}).join('');
   }
 });
 
@@ -1266,6 +1282,20 @@ function activarVideos(v){
 }
 
 /* ---------- Pantallas + barra "dónde estás" ---------- */
+function abrirProd(p,vista){const m=document.getElementById('prod');const src=p.fotos?p.fotos[0][0]:p.foto;
+  document.getElementById('prod-img').src=src||'';document.getElementById('prod-nom').textContent=p.nombre;
+  document.getElementById('prod-det').textContent=[LINEA_NOMBRE[p.linea]||'',p.marca,p.talle&&'Talle '+p.talle,p.art&&'Art. '+p.art].filter(Boolean).join(' · ');
+  document.getElementById('prod-pre').textContent=p.precio?pesos(p.precio):'Consultar precio';
+  document.getElementById('prod-comprar').href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(p.fotos?msgModelo(p):msgPrenda(p,vista));
+  document.getElementById('prod-mas').href='#'+vista;m.hidden=false;}
+function cerrarProd(){document.getElementById('prod').hidden=true}
+document.getElementById('prod-cerrar').addEventListener('click',cerrarProd);
+document.getElementById('prod-mas').addEventListener('click',cerrarProd);
+document.getElementById('prod').addEventListener('click',e=>{if(e.target.id==='prod')cerrarProd()});
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>el.hidden=true,2200)}
+document.addEventListener('click',async e=>{const b=e.target.closest('.compartir');if(!b)return;e.stopPropagation();
+  const url=(SITIO||'https://lcoestudio.pages.dev')+'/#p='+encodeURIComponent(b.dataset.art);
+  try{await navigator.clipboard.writeText(url);toast('Link copiado ✨ '+url.replace('https://',''))}catch(err){prompt('Copiá este link:',url)}});
 const rutas={
   etiqueta:[['Inicio','inicio'],['Moda','moda'],['Con etiqueta']],
   fiesta:[['Inicio','inicio'],['Moda','moda'],['Fiesta']],
@@ -1292,6 +1322,9 @@ const rutas={
 };
 let actual=null;
 function mostrar(){
+  let prodArt=null;
+  if(location.hash.startsWith('#p=')){prodArt=decodeURIComponent(location.hash.slice(3));const pp=PRODUCTOS.find(x=>x.art===prodArt);const vista=pp?((Array.isArray(pp.categoria)&&pp.categoria.includes('Accesorios'))?'accesorios':(rutas[pp.linea]?pp.linea:'moda')):'moda';history.replaceState(null,'','#'+vista);if(pp)setTimeout(()=>abrirProd(pp,vista),80);}
+  if(!prodArt)cerrarProd();
   let fotoLink=null;
   if(location.hash.startsWith('#foto=')){const f=decodeURIComponent(location.hash.slice(6));if(/^v\/[\w\/.-]+\.(jpe?g|png)$/i.test(f))fotoLink=f;history.replaceState(null,'','#moda');}
   let v=(location.hash||'#bienvenida').slice(1); if(!rutas[v]) v='bienvenida';
