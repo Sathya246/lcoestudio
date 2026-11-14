@@ -643,6 +643,10 @@ footer{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:upp
     <div class="dentro"><h1>Decoración</h1><p>Asesoría y proyectos de decoración de interiores: distribución, renders y elección de piezas.</p></div></section>
 
 
+  <nav class="tiles" aria-label="Tienda deco">
+    <a class="tile t-durazno tile-ancho" href="#gangas"><div class="flores" data-flores="tile" aria-hidden="true"></div><b>Gangas Deco LCO 🏡</b><small>Objetos para tu casa a súper precio · Comprá acá</small></a>
+  </nav>
+
   <button class="presenta" data-video="v/deco/presentacion.mp4" data-titulo="Hola, soy Agus">
     <img loading="lazy" class="avatar" src="v/deco/agus.jpg" alt="Agus, decoradora de interiores">
     <span class="presenta-txt"><span class="ceja">Decoradora de interiores</span><b>Hola, soy Agus</b><small>Mirá cómo puedo ayudarte con tu espacio.</small></span>
@@ -793,6 +797,13 @@ footer{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:upp
 <!-- ================= ACCESORIOS ================= -->
 <main id="vista-accesorios" class="vista" hidden>
   <div class="catalogo" data-linea="accesorios" data-cats="Anillos|Aros|Broches para el pelo|Carteras|Cintos|Collares|Pañuelos|Prendedores|Pulseras|Vinchas"></div>
+</main>
+
+<!-- ================= GANGAS DECO ================= -->
+<main id="vista-gangas" class="vista" hidden>
+  <section class="bloque titular t-durazno"><div class="flores" data-flores="titular" aria-hidden="true"></div>
+    <div class="dentro"><h1>Gangas Deco LCO</h1><p>Objetos con historia para tu casa, a súper precio. También podés verlos en el showroom.</p></div></section>
+  <div class="catalogo" data-linea="gangas" data-cats="Adornos|Cajas y canastos|Cuadros y espejos|Floreros y jarrones|Frascos y botellas|Lámparas|Textiles|Vajilla|Velas y portavelas"></div>
 </main>
 
 <!-- ================= HOMBRE ================= -->
@@ -1143,10 +1154,10 @@ const PRODUCTOS=[
 ];
 const CATEGORIAS=['Blazers y chalecos','Camisas y blusas','Camperas y abrigos','Denim','Pantalones','Remeras y tops','Shorts','Tarjetas de regalo','Tejidos','Vestidos de fiesta','Vestidos y polleras'];
 const DIAS_NUEVO=15;
-const LINEA_NOMBRE={circular:'Moda circular',etiqueta:'Con etiqueta',fiesta:'Fiesta',calzado:'Calzado',hombre:'Hombre'};
+const LINEA_NOMBRE={circular:'Moda circular',etiqueta:'Con etiqueta',fiesta:'Fiesta',calzado:'Calzado',hombre:'Hombre',gangas:'Gangas Deco LCO'};
 const esNuevo=p=>p.fecha&&(Date.now()-new Date(p.fecha+'T12:00:00'))/864e5<=DIAS_NUEVO;
 const pesos=n=>Number(n).toLocaleString('es-AR')+' pesos';
-const msgPrenda=(p,linea)=>(p.msg||`Hola Agus! Me interesa esta prenda de ${LINEA_NOMBRE[p.linea]||LINEA_NOMBRE[linea]||'LCO'}: ${p.nombre}${p.art?' (Art. '+p.art+')':''}${p.marca?' ('+p.marca+')':''}${p.precio?' · '+pesos(p.precio):''}${p.talle&&/ al /.test(p.talle)?'. ¿Qué talles tenés disponibles?':(p.talle?', talle '+p.talle+'.':'.')}`)+linkFoto(p.foto);
+const msgPrenda=(p,linea)=>(p.msg||`Hola Agus! Me interesa esta ${p.linea==='gangas'?'pieza':'prenda'} de ${LINEA_NOMBRE[p.linea]||LINEA_NOMBRE[linea]||'LCO'}: ${p.nombre}${p.art?' (Art. '+p.art+')':''}${p.marca?' ('+p.marca+')':''}${p.precio?' · '+pesos(p.precio):''}${p.talle&&/ al /.test(p.talle)?'. ¿Qué talles tenés disponibles?':(p.talle?', talle '+p.talle+'.':'.')}`)+linkFoto(p.foto);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 document.querySelectorAll('.catalogo').forEach(cat=>{
   const linea=cat.dataset.linea;
@@ -1154,10 +1165,10 @@ document.querySelectorAll('.catalogo').forEach(cat=>{
   let elegido=null;
   const cats=p=>[].concat(p.categoria);
   const esAcc=p=>cats(p).includes('Accesorios');
-  const enLinea=p=>(linea==='todo'&&p.linea!=='todas'&&p.linea!=='calzado'&&!esAcc(p))||(linea==='accesorios'&&esAcc(p))||(!esAcc(p)&&linea!=='accesorios')&&(p.linea===linea||(linea==='fiesta'&&(p.fiesta||cats(p).includes('Vestidos de fiesta'))));
+  const enLinea=p=>(linea==='todo'&&p.linea!=='todas'&&p.linea!=='calzado'&&p.linea!=='gangas'&&!esAcc(p))||(linea==='accesorios'&&esAcc(p))||(!esAcc(p)&&linea!=='accesorios')&&(p.linea===linea||(linea==='fiesta'&&(p.fiesta||cats(p).includes('Vestidos de fiesta'))));
   const grupoAcc=(p,f)=>f==='Cápsula Corazón'?p.marca==='Cápsula Corazón':f==='Accesorios importados'?!!p.importado:null;
   const enCat=f=>(f==='Cápsula Corazón'||f==='Accesorios importados')?PRODUCTOS.filter(p=>enLinea(p)&&grupoAcc(p,f)).length:f==='Outlet del outlet'?PRODUCTOS.filter(p=>p.outlet).length:PRODUCTOS.filter(p=>enLinea(p)||(p.linea==='todas'&&f==='Tarjetas de regalo')).filter(p=>f==='Todos'?p.linea!=='todas':f==='Nuevos ingresos'?esNuevo(p):cats(p).includes(f)).length;
-  cat.innerHTML=`<ul class="lista-cat">${filtros.map(f=>{const n=enCat(f);return `<li><button class="cat-btn${f==='Outlet del outlet'?' outlet':''}${f==='Nuevos ingresos'?' nuevo':''}${f==='Todos'?' todos':''}" data-f="${f}"><span>${f==='Outlet del outlet'?'🏷️ '+f:f}</span><span class="cat-n">${n||''}</span><span class="chev" aria-hidden="true">›</span></button></li>`}).join('')}</ul>
+  cat.innerHTML=`<ul class="lista-cat">${filtros.map(f=>{const n=enCat(f);if(linea==='gangas'&&f!=='Todos'&&!n)return '';return `<li><button class="cat-btn${f==='Outlet del outlet'?' outlet':''}${f==='Nuevos ingresos'?' nuevo':''}${f==='Todos'?' todos':''}" data-f="${f}"><span>${f==='Outlet del outlet'?'🏷️ '+f:f}</span><span class="cat-n">${n||''}</span><span class="chev" aria-hidden="true">›</span></button></li>`}).join('')}</ul>
     <div class="cat-vista" hidden><button class="cat-volver">‹ Categorías</button><h2 class="cat-titulo"></h2><p class="cuenta"></p><div class="grilla"></div><div class="ficha" hidden></div></div>`;
   const lista=cat.querySelector('.lista-cat'),vistaCat=cat.querySelector('.cat-vista'),grilla=cat.querySelector('.grilla'),ficha=cat.querySelector('.ficha'),cuenta=cat.querySelector('.cuenta'),tit=cat.querySelector('.cat-titulo');
   cat.querySelectorAll('.cat-btn').forEach(b=>b.addEventListener('click',()=>{if(!cat.dataset.directo)history.pushState({cat:1},'',location.href);elegido=b.dataset.f;tit.textContent=elegido;cat.closest('main').classList.add('cat-abierta');lista.hidden=true;vistaCat.hidden=false;
@@ -1178,13 +1189,13 @@ document.querySelectorAll('.catalogo').forEach(cat=>{
   function pintar(){
     const lista=elegido==='Outlet del outlet'?PRODUCTOS.filter(p=>p.outlet):PRODUCTOS.filter(p=>enLinea(p)||(p.linea==='todas'&&elegido==='Tarjetas de regalo')).filter(p=>elegido==='Todos'||(grupoAcc(p,elegido)!==null?grupoAcc(p,elegido):elegido==='Nuevos ingresos'?esNuevo(p):cats(p).includes(elegido)))
       .sort((a,b)=>(b.fecha||'').localeCompare(a.fecha||''));
-    const pal=elegido==='Tarjetas de regalo'?['tarjeta','tarjetas']:linea==='accesorios'?['pieza','piezas']:linea==='calzado'?['modelo','modelos']:['prenda','prendas'];cuenta.textContent=lista.length?`${lista.length} ${lista.length===1?pal[0]:pal[1]}`:'';
+    const pal=elegido==='Tarjetas de regalo'?['tarjeta','tarjetas']:(linea==='accesorios'||linea==='gangas')?['pieza','piezas']:linea==='calzado'?['modelo','modelos']:['prenda','prendas'];cuenta.textContent=lista.length?`${lista.length} ${lista.length===1?pal[0]:pal[1]}`:'';
     if(!lista.length&&elegido==='Accesorios importados'){grilla.style.display='block';
       const ims=[1,2,3,4,5,6,7,8,9,10,11].map(k=>`<img src="v/p/imp-${k}.jpg" alt="" decoding="async">`).join('');
       grilla.innerHTML=`<div class="prox"><p class="prox-ceja">Próximo ingreso</p><h3>Accesorios importados</h3><p class="prox-txt">Pulseras, brazaletes y cintos que llegan muy pronto a LCO.</p><div class="marquee"><div class="marquee-track">${ims}${ims}</div></div><a class="btn" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola Agus! Quiero que me avises cuando lleguen los accesorios importados.')}">Avisame cuando lleguen</a></div>`;
       return;}
     if(!lista.length){grilla.style.display='block';
-      grilla.innerHTML=`<div class="vacio"><div class="flores" data-f aria-hidden="true"></div><div class="dentro"><b>${elegido==='Todos'?'Muy pronto':esc(elegido)}</b><p>${elegido==='Todos'?'Estamos cargando las prendas. Mientras tanto, escribile a Agus por WhatsApp.':elegido==='Outlet del outlet'?'Muy pronto: prendas y accesorios en súper liquidación. ¡Volvé a mirar!':elegido==='Accesorios importados'?'Muy pronto: nuestra selección de accesorios importados.':'Todavía no hay prendas en esta categoría.'}</p></div></div>`;
+      grilla.innerHTML=`<div class="vacio"><div class="flores" data-f aria-hidden="true"></div><div class="dentro"><b>${elegido==='Todos'?'Muy pronto':esc(elegido)}</b><p>${elegido==='Todos'?(linea==='gangas'?'Estamos cargando las piezas de deco. Mientras tanto':'Estamos cargando las prendas. Mientras tanto')+', escribile a Agus por WhatsApp.':elegido==='Outlet del outlet'?'Muy pronto: prendas y accesorios en súper liquidación. ¡Volvé a mirar!':elegido==='Accesorios importados'?'Muy pronto: nuestra selección de accesorios importados.':'Todavía no hay prendas en esta categoría.'}</p></div></div>`;
       const f=grilla.querySelector('[data-f]');[['mancha',140,'-50px','-40px',null,null,C.crema],['marg',80,'-20px','-14px',null,null,C.blanco,C.coral,15],['mancha',120,null,null,'-50px','-40px',C.durazno]].forEach(([t,s,top,left,bottom,right,c1,c2,r])=>{const w=document.createElement('div');w.innerHTML=t==='marg'?margarita(s,c1,c2,r):mancha(s,c1);const el=w.firstChild;Object.assign(el.style,{top:top??'auto',left:left??'auto',bottom:bottom??'auto',right:right??'auto'});f.appendChild(el)});
       return;}
     grilla.style.display='';
@@ -1327,6 +1338,7 @@ const rutas={
   fiesta:[['Inicio','inicio'],['Moda','moda'],['Fiesta']],
   calzado:[['Inicio','inicio'],['Moda','moda'],['Calzado']],
   hombre:[['Inicio','inicio'],['Moda','moda'],['Hombre']],
+  gangas:[['Inicio','inicio'],['Deco','deco'],['Gangas Deco']],
   todo:[['Inicio','inicio'],['Moda','moda'],['Todo junto']],
   accesorios:[['Inicio','inicio'],['Moda','moda'],['Accesorios']],
   pronto:[['Inicio','inicio'],['Universo LCO','ideas'],['Próximamente']],
