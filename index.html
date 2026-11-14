@@ -644,7 +644,7 @@ footer{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:upp
 
 
   <nav class="tiles" aria-label="Tienda deco">
-    <a class="tile t-durazno tile-ancho" href="#gangas"><div class="flores" data-flores="tile" aria-hidden="true"></div><b>Gangas Deco LCO 🏡</b><small>Objetos para tu casa a súper precio · Comprá acá</small></a>
+    <a class="tile t-durazno tile-ancho" href="#gangas"><div class="flores" data-flores="tile" aria-hidden="true"></div><b>LCO Home · Tienda 🏡</b><small>Objetos para tu casa a súper precio · Comprá acá</small></a>
   </nav>
 
   <button class="presenta" data-video="v/deco/presentacion.mp4" data-titulo="Hola, soy Agus">
@@ -799,7 +799,7 @@ footer{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:upp
   <div class="catalogo" data-linea="accesorios" data-cats="Anillos|Aros|Broches para el pelo|Carteras|Cintos|Collares|Pañuelos|Prendedores|Pulseras|Vinchas"></div>
 </main>
 
-<!-- ================= GANGAS DECO ================= -->
+<!-- ================= LCO HOME · TIENDA ================= -->
 <main id="vista-gangas" class="vista" hidden>
   <div class="catalogo" data-linea="gangas" data-cats="Adornos|Cajas y canastos|Cuadros y espejos|Floreros y jarrones|Frascos y botellas|Lámparas|Textiles|Vajilla|Velas y portavelas"></div>
 </main>
@@ -1152,7 +1152,7 @@ const PRODUCTOS=[
 ];
 const CATEGORIAS=['Blazers y chalecos','Camisas y blusas','Camperas y abrigos','Denim','Pantalones','Remeras y tops','Shorts','Tarjetas de regalo','Tejidos','Vestidos de fiesta','Vestidos y polleras'];
 const DIAS_NUEVO=15;
-const LINEA_NOMBRE={circular:'Moda circular',etiqueta:'Con etiqueta',fiesta:'Fiesta',calzado:'Calzado',hombre:'Hombre',gangas:'Gangas Deco LCO'};
+const LINEA_NOMBRE={circular:'Moda circular',etiqueta:'Con etiqueta',fiesta:'Fiesta',calzado:'Calzado',hombre:'Hombre',gangas:'LCO Home'};
 const esNuevo=p=>p.fecha&&(Date.now()-new Date(p.fecha+'T12:00:00'))/864e5<=DIAS_NUEVO;
 const pesos=n=>Number(n).toLocaleString('es-AR')+' pesos';
 const msgPrenda=(p,linea)=>(p.msg||`Hola Agus! Me interesa esta ${p.linea==='gangas'?'pieza':'prenda'} de ${LINEA_NOMBRE[p.linea]||LINEA_NOMBRE[linea]||'LCO'}: ${p.nombre}${p.art?' (Art. '+p.art+')':''}${p.marca?' ('+p.marca+')':''}${p.precio?' · '+pesos(p.precio):''}${p.talle&&/ al /.test(p.talle)?'. ¿Qué talles tenés disponibles?':(p.talle?', talle '+p.talle+'.':'.')}`)+linkFoto(p.foto);
@@ -1336,7 +1336,7 @@ const rutas={
   fiesta:[['Inicio','inicio'],['Moda','moda'],['Fiesta']],
   calzado:[['Inicio','inicio'],['Moda','moda'],['Calzado']],
   hombre:[['Inicio','inicio'],['Moda','moda'],['Hombre']],
-  gangas:[['Inicio','inicio'],['Deco','deco'],['Gangas Deco']],
+  gangas:[['Inicio','inicio'],['Deco','deco'],['LCO Home']],
   todo:[['Inicio','inicio'],['Moda','moda'],['Todo junto']],
   accesorios:[['Inicio','inicio'],['Moda','moda'],['Accesorios']],
   pronto:[['Inicio','inicio'],['Universo LCO','ideas'],['Próximamente']],
