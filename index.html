@@ -808,7 +808,7 @@ footer{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:upp
 <main id="vista-hombre" class="vista" hidden>
   <section class="bloque titular t-celeste"><div class="flores" data-flores="titular" aria-hidden="true"></div>
     <div class="dentro"><h1>Hombre</h1><p>Ropa masculina con historia: para él, o para regalar.</p></div></section>
-  <div class="catalogo" data-linea="hombre" data-cats="Bermudas y shorts|Buzos y joggings|Calzado|Camisas|Camperas y abrigos|Denim|Pantalones|Remeras"></div>
+  <div class="catalogo" data-linea="hombre" data-cats="Bermudas y shorts|Buzos y joggings|Calzado|Camisas|Camperas y abrigos|Denim|Pantalones|Remeras|Trajes y sacos"></div>
 </main>
 
 <!-- ================= PRÓXIMAMENTE ================= -->
@@ -1008,6 +1008,10 @@ const PRODUCTOS=[
   {linea:'hombre',categoria:'Bermudas y shorts',nombre:'Bermuda de jean celeste gastado',marca:'Midway',talle:'30',precio:11900,foto:'v/p/berm-7.jpg',art:'0309',fecha:''},
   {linea:'hombre',categoria:'Bermudas y shorts',nombre:'Bermuda de jean celeste',marca:'Kevingston',talle:'40',precio:11900,foto:'v/p/berm-8.jpg',art:'0404',fecha:''},
   {linea:'hombre',categoria:'Bermudas y shorts',nombre:'Bermuda de jean azul 511',marca:"Levi's",talle:'30',precio:11900,foto:'v/p/berm-9.jpg',art:'0310',fecha:''},
+  {linea:'hombre',categoria:'Trajes y sacos',nombre:'Saco cruzado azul con botones dorados',marca:'Macowens · tela exclusiva',talle:'50L',precio:45000,foto:'v/p/traje-0470.jpg',art:'0470',fecha:'2026-11-16'},
+  {linea:'hombre',categoria:'Trajes y sacos',nombre:'Saco azul hecho a medida',marca:'Hecho a medida',talle:'46',precio:45000,foto:'v/p/traje-0471.jpg',art:'0471',fecha:'2026-11-16'},
+  {linea:'hombre',categoria:'Trajes y sacos',nombre:'Traje azul de tela tramada · saco y pantalón',marca:'Aquascutum of London',art:'0472',precio:55000,talles:['54 (XL)'],fotos:[['v/p/traje-0472-1.jpg','Saco'],['v/p/traje-0472-2.jpg','Pantalón'],['v/p/traje-0472-3.jpg','Detalle de la tela']],fecha:'2026-11-16'},
+  {linea:'hombre',categoria:'Trajes y sacos',nombre:'Ambo gris de 3 piezas · saco, chaleco y pantalón',marca:'Spinofer',art:'0473',precio:55000,talles:['50/L'],fotos:[['v/p/traje-0473-1.jpg','Saco'],['v/p/traje-0473-2.jpg','Pantalón'],['v/p/traje-0473-3.jpg','Chaleco'],['v/p/traje-0473-4.jpg','Detalle de la tela']],fecha:'2026-11-16'},
   {linea:'hombre',categoria:'Calzado',nombre:'Zapatillas Converse negras de cuero',marca:'Converse · cuero negro',art:'0115',precio:19000,colores:[],talles:['41'],fotos:[['v/p/hom-conv-2.jpg','Perfil'],['v/p/hom-conv.jpg','Frente']],fecha:''},
   {linea:'hombre',categoria:'Calzado',nombre:'Zapatos de vestir de cuero negro con cordón',marca:'Blengio',talle:'39',precio:19000,foto:'v/p/hom-blengio.jpg',art:'0117',fecha:''},
   {linea:'hombre',categoria:'Calzado',nombre:'Zapatos de vestir de cuero negro con cordón',marca:'Storkman',talle:'39',precio:19000,foto:'v/p/hom-stork.jpg',art:'0116',fecha:''},
@@ -1237,7 +1241,7 @@ document.querySelectorAll('.catalogo').forEach(cat=>{
 function msgModelo(p,color,talle){
   if(p.linea==='gangas')return `Hola Agus! Me interesa esta pieza de LCO Home: ${p.nombre}${p.art?' (Art. '+p.art+')':''}${p.precio?' · '+pesos(p.precio):''}.`+(color?` Elijo: ${color}.`:(p.colores&&p.colores.length?' ¿Cuál tenés disponible?':''))+linkFoto(p.fotos&&p.fotos[0]&&p.fotos[0][0]);
   if(!talle&&p.talles&&p.talles.length===1)talle=p.talles[0];
-  return `Hola Agus! Me interesa este calzado: ${p.nombre}${p.art?' (Art. '+p.art+')':''}${p.precio?' · '+pesos(p.precio):''}.`+
+  return `Hola Agus! Me interesa ${[].concat(p.categoria).includes('Calzado')||p.linea==='calzado'?'este calzado':'esta prenda'}: ${p.nombre}${p.marca?' ('+p.marca+')':''}${p.art?' (Art. '+p.art+')':''}${p.precio?' · '+pesos(p.precio):''}.`+
     (color?` Color: ${color}.`:(p.colores&&p.colores.length?' ¿Qué colores tenés?':''))+
     (talle?` Talle: ${talle}.`:' ¿Qué talles tenés disponibles?')+linkFoto(p.fotos&&p.fotos[0]&&p.fotos[0][0]);
 }
