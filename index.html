@@ -1152,6 +1152,7 @@ const PRODUCTOS=[
   {linea:'circular',categoria:'Vestidos y polleras',nombre:'Vestido floreado con frufrú azul',marca:'',talle:'M',precio:17500,foto:'v/p/circ2-11.jpg',art:'0395',fecha:''},
   {linea:'circular',categoria:'Vestidos y polleras',nombre:'Vestido celeste y rojo con paisley',marca:'Akiabara',talle:'S',precio:17900,foto:'v/p/circ2-12.jpg',art:'0415',fecha:''},
   {linea:'circular',categoria:'Vestidos y polleras',nombre:'Vestido de voile India style',marca:'',talle:'L',precio:13900,foto:'v/p/circ2-13.jpg',art:'0413',fecha:''},
+  {linea:'circular',categoria:'Camisas y blusas',nombre:'Túnica de colores con bordados',marca:'',talle:'Único',precio:16900,foto:'v/p/circ-0324.jpg',art:'0324',fecha:'2026-11-17'},
   {linea:'circular',categoria:'Vestidos y polleras',nombre:'Vestido negro · escote bote al frente y en V en la espalda',marca:'',art:'0343',precio:39000,talles:['M'],fotos:[['v/p/circ-0343-frente.jpg','Frente · cuello bote'],['v/p/circ-0343.jpg','Espalda · escote en V']],fecha:'2026-11-17'},
   {linea:'circular',categoria:'Camisas y blusas',nombre:'Túnica blanca de tul bordado, romántica',marca:'',talle:'Único',precio:24000,foto:'v/p/circ-0368.jpg',art:'0368',fecha:'2026-11-17'},
   {linea:'circular',categoria:'Vestidos y polleras',nombre:'Vestido blanco con bordados',marca:'',talle:'',precio:24900,foto:'v/p/circ-0369.jpg',art:'0369',fecha:'2026-11-15'},
@@ -1394,6 +1395,9 @@ function mostrar(){
   let prodArt=null;
   if(location.hash.startsWith('#p=')){prodArt=decodeURIComponent(location.hash.slice(3));const pp=PRODUCTOS.find(x=>x.art===prodArt);const vista=pp?((Array.isArray(pp.categoria)&&pp.categoria.includes('Accesorios'))?'accesorios':(rutas[pp.linea]?pp.linea:'moda')):'moda';history.replaceState(null,'','#'+vista);if(pp)setTimeout(()=>abrirProd(pp,vista),80);}
   if(!prodArt)cerrarProd();
+  let catLink=null;
+  if(location.hash.startsWith('#c=')){const [cv,cc]=decodeURIComponent(location.hash.slice(3)).split(':');if(rutas[cv]){catLink=[cv,cc];history.replaceState(null,'','#'+cv);}}
+  if(catLink)setTimeout(()=>{const bt=[...document.querySelectorAll('#vista-'+catLink[0]+' .cat-btn')].find(x=>x.dataset.f===catLink[1]);if(bt)bt.click()},120);
   let fotoLink=null;
   if(location.hash.startsWith('#foto=')){const f=decodeURIComponent(location.hash.slice(6));if(/^v\/[\w\/.-]+\.(jpe?g|png)$/i.test(f))fotoLink=f;history.replaceState(null,'','#moda');}
   let v=(location.hash||'#bienvenida').slice(1); if(!rutas[v]) v='bienvenida';
