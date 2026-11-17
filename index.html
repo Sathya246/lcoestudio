@@ -405,6 +405,9 @@ main.cat-abierta > *:not(.catalogo){display:none!important}
 .prenda .foto img{width:100%;height:100%;object-fit:cover;display:block}
 .prenda .foto.contener{background:var(--rosa);display:grid;place-items:center;padding:10px}
 .prenda .foto.contener img{height:auto;object-fit:contain;border-radius:8px;box-shadow:0 6px 16px rgba(53,59,120,.14)}
+.prenda.vendida .foto img{filter:grayscale(.55) opacity(.75)}
+.sello-vendido{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-12deg);background:rgba(224,122,111,.95);color:#fff;font-weight:500;letter-spacing:.22em;text-transform:uppercase;font-size:.95rem;padding:8px 22px;border-radius:999px;box-shadow:0 6px 16px rgba(0,0,0,.2);pointer-events:none;z-index:2}
+.btn.agotado{background:#c9c3c6!important;color:#fff;pointer-events:none}
 .prenda .etq{position:absolute;bottom:8px;left:8px;background:var(--amarillo);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border-radius:99px}
 .prenda b{font-weight:500;font-size:.92rem}
 .prenda .det{font-size:.8rem;opacity:.75}
@@ -1124,7 +1127,7 @@ const PRODUCTOS=[
   {linea:'circular',categoria:'Camisas y blusas',nombre:'Musculosa de seda',marca:'SBA',talle:'M',precio:15000,foto:'v/p/prenda-14.jpg',art:'0317',fecha:'2026-10-31'},
   {linea:'circular',categoria:'Camisas y blusas',nombre:'Blusa rosa plumetí con puntillas',marca:'',talle:'M',precio:7000,foto:'v/p/prenda-13.jpg',art:'0083',fecha:''},
   {linea:'circular',categoria:'Camisas y blusas',nombre:'Blusa coral calada con puntillas',marca:'',talle:'M',precio:8500,foto:'v/p/prenda-12.jpg',art:'0295',fecha:''},
-  {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Blusa de gasa con puntillas y moños',marca:'DeLucca',talle:'3',precio:26000,foto:'v/p/prenda-11.jpg',art:'0411',fecha:'2026-10-31'},
+  {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Blusa de gasa con puntillas y moños',marca:'DeLucca',talle:'3',precio:26000,foto:'v/p/prenda-11.jpg',art:'0411',vendido:true,fecha:'2026-10-31'},
   {linea:'circular',categoria:'Remeras y tops',nombre:'Musculosa blanca polerita con manga americana',marca:'',talle:'S',precio:6900,foto:'v/p/prenda-0177.jpg',art:'0177',fecha:'2026-11-16'},
   {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Camisa Leila de lino',marca:'',talle:'',precio:44900,foto:'v/p/prenda-0231.jpg',art:'0231',fecha:'2026-11-16'},
   {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Camisa Xime',marca:'RO',talle:'S/M',precio:34900,foto:'v/p/prenda-10.jpg',art:'0230',fecha:''},
@@ -1133,7 +1136,7 @@ const PRODUCTOS=[
   {linea:'etiqueta',categoria:'Blazers y chalecos',nombre:'Chaleco sastrero rosa con hebillas',marca:'DeLucca',talle:'2',precio:40000,foto:'v/p/prenda-1.jpg',art:'0333',fecha:'2026-10-31'},
   {linea:'circular',categoria:'Camisas y blusas',nombre:'Blusa bordada con canutillos y lentejuelas',marca:'',talle:'M',precio:15000,foto:'v/p/prenda-2.jpg',art:'0316',fecha:'2026-10-31'},
   {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Musculosa con nudos en los hombros',marca:'',talle:'M',precio:20000,foto:'v/p/prenda-3.jpg',art:'0322',fecha:'2026-10-31'},
-  {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Blusa bordada con botones',marca:'',talle:'M/L',precio:39000,foto:'v/p/prenda-4.jpg',art:'0313',fecha:'2026-10-31'},
+  {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Blusa bordada con botones',marca:'',talle:'M/L',precio:39000,foto:'v/p/prenda-4.jpg',art:'0313',vendido:true,fecha:'2026-10-31'},
   {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Blusa de tul bordado con puntillas',marca:'',talle:'M/L',precio:39000,foto:'v/p/prenda-5.jpg',art:'0312',fecha:'2026-10-31'},
   {linea:'etiqueta',categoria:'Camisas y blusas',nombre:'Blusa liviana estampada',marca:'',talle:'M',precio:29000,foto:'v/p/prenda-6.jpg',art:'0321',fecha:'2026-10-31'},
   {linea:'circular',categoria:'Camisas y blusas',nombre:'Túnica bordada',marca:"Bar's",talle:'XL',precio:24900,foto:'v/p/prenda-7.jpg',art:'0327',fecha:'2026-10-31'},
@@ -1167,7 +1170,7 @@ const PRODUCTOS=[
   {linea:'etiqueta',categoria:['Accesorios','Carteras'],nombre:'Cartera de charol rojo con correa',marca:'Blaqué · Circular',art:'0505',precio:9999,fotos:[['v/p/cart-0505-1.jpg','Frente'],['v/p/cart-0505-3.jpg','Con correa a rayas'],['v/p/cart-0505-2.jpg','Espalda']],fecha:''},
   {linea:'etiqueta',categoria:['Accesorios','Carteras'],nombre:'Bolso canasto tejido de algodón con flecos',marca:'Cód. prov. 34UC2551',talle:'',precio:35600,foto:'v/p/cart-0508.jpg',art:'0508',fecha:'2026-11-17'},
   {linea:'etiqueta',categoria:['Accesorios','Carteras'],nombre:'Canasto de algodón a cuadros camel',marca:'Cód. prov. 34UC2553',talle:'',precio:35600,foto:'v/p/cart-0509.jpg',art:'0509',fecha:'2026-11-17'},
-  {linea:'etiqueta',categoria:['Accesorios','Carteras'],nombre:'Bolso canasto de yute tejido con rayas finas rojas',marca:'Cód. prov. 34UC2579',talle:'',precio:25000,foto:'v/p/cart-0510.jpg',art:'0510',fecha:'2026-11-17'},
+  {linea:'etiqueta',categoria:['Accesorios','Carteras'],nombre:'Bolso canasto de yute tejido con rayas finas rojas',marca:'Cód. prov. 34UC2579',talle:'',precio:25000,foto:'v/p/cart-0510.jpg',art:'0510',vendido:true,fecha:'2026-11-17'},
   {linea:'etiqueta',categoria:['Accesorios','Carteras'],nombre:'Canasto de red tejido de algodón caramelo',marca:'Cód. prov. 12U07667',talle:'',precio:19000,foto:'v/p/cart-0511.jpg',art:'0511',fecha:'2026-11-17'},
   {linea:'etiqueta',categoria:['Accesorios','Carteras'],nombre:'Bolso shopper mesh negro',marca:'Cód. prov. 12U07148',talle:'',precio:21600,foto:'v/p/cart-0512.jpg',art:'0512',fecha:'2026-11-17'},
   {linea:'etiqueta',categoria:['Accesorios','Carteras'],nombre:'Canasto de algodón a rombos camel',marca:'Cód. prov. 34UC2552',talle:'',precio:35600,foto:'v/p/cart-0518.jpg',art:'0518',fecha:'2026-11-17'},
@@ -1204,7 +1207,7 @@ const PRODUCTOS=[
 const CATEGORIAS=['Blazers y chalecos','Camisas y blusas','Camperas y abrigos','Denim','Pantalones','Remeras y tops','Shorts','Tarjetas de regalo','Tejidos','Vestidos de fiesta','Vestidos y polleras'];
 const DIAS_NUEVO=15;
 const LINEA_NOMBRE={circular:'Moda circular',etiqueta:'Con etiqueta',fiesta:'Fiesta',calzado:'Calzado',hombre:'Hombre',gangas:'LCO Home'};
-const esNuevo=p=>p.fecha&&(Date.now()-new Date(p.fecha+'T12:00:00'))/864e5<=DIAS_NUEVO;
+const esNuevo=p=>!p.vendido&&p.fecha&&(Date.now()-new Date(p.fecha+'T12:00:00'))/864e5<=DIAS_NUEVO;
 const pesos=n=>Number(n).toLocaleString('es-AR')+' pesos';
 const msgPrenda=(p,linea)=>(p.msg||`Hola Agus! Me interesa esta ${p.linea==='gangas'?'pieza':'prenda'} de ${LINEA_NOMBRE[p.linea]||LINEA_NOMBRE[linea]||'LCO'}: ${p.nombre}${p.art?' (Art. '+p.art+')':''}${p.marca?' ('+p.marca+')':''}${p.precio?' · '+pesos(p.precio):''}${p.talle&&/ al /.test(p.talle)?'. ¿Qué talles tenés disponibles?':(p.talle?', talle '+p.talle+'.':'.')}`)+linkFoto(p.foto);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1237,7 +1240,7 @@ document.querySelectorAll('.catalogo').forEach(cat=>{
   cat.reset();
   function pintar(){
     const lista=elegido==='Outlet del outlet'?PRODUCTOS.filter(p=>p.outlet):PRODUCTOS.filter(p=>enLinea(p)||(p.linea==='todas'&&elegido==='Tarjetas de regalo')).filter(p=>elegido==='Todos'||(grupoAcc(p,elegido)!==null?grupoAcc(p,elegido):elegido==='Nuevos ingresos'?esNuevo(p):cats(p).includes(elegido)))
-      .sort((a,b)=>(b.fecha||'').localeCompare(a.fecha||''));
+      .sort((a,b)=>(!!a.vendido-!!b.vendido)||(b.fecha||'').localeCompare(a.fecha||''));
     const pal=elegido==='Tarjetas de regalo'?['tarjeta','tarjetas']:(linea==='accesorios'||linea==='gangas')?['pieza','piezas']:linea==='calzado'?['modelo','modelos']:['prenda','prendas'];cuenta.textContent=lista.length?`${lista.length} ${lista.length===1?pal[0]:pal[1]}`:'';
     if(!lista.length&&elegido==='Accesorios importados'){grilla.style.display='block';
       const ims=[1,2,3,4,5,6,7,8,9,10,11].map(k=>`<img src="v/p/imp-${k}.jpg" alt="" decoding="async">`).join('');
@@ -1251,10 +1254,10 @@ document.querySelectorAll('.catalogo').forEach(cat=>{
     grilla.innerHTML=lista.map(p=>{
       const msg=msgPrenda(p,linea);
       if(p.fotos) return `<article class="prenda portada" data-modelo="${esc(p.art||p.nombre)}" role="button" tabindex="0"><div class="foto"><img src="${esc(p.fotos[0][0])}" alt="${esc(p.nombre)}" loading="lazy"></div><b>${esc(p.nombre)}</b><span class="det">${[(p.linea==='gangas'||esAcc(p))?p.marca:'',p.talles&&p.talles.length===1?'Talle '+p.talles[0]:(p.talles&&p.talles.length?'Talles '+p.talles[0]+' al '+p.talles[p.talles.length-1]:''),p.art&&'Art. '+p.art].filter(Boolean).map(esc).join(' · ')}</span>${p.colores&&p.colores.length&&!p.opcion?`<span class="colores">${p.colores.map(c=>`<i class="pt" style="background:${({Negro:'#222',Nude:'#E3BFA6',Plata:'#C9CCD1',Platino:'#E6DCC8',Dorado:'#D8B45A'})[c]||'#ccc'}"></i>${esc(c)}`).join(' ')}</span>`:''}<span class="precio">${p.precio?pesos(p.precio):'Consultar precio'}</span><span class="ver">${(p.linea==='gangas'||!(p.talles&&p.talles.length))?'Ver fotos ›':'Ver fotos y talles ›'}</span><a class="btn comprar" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msgModelo(p))}">Comprar</a>${p.art?`<button class="compartir" type="button" data-art="${esc(p.art)}">🔗 Copiar link</button>`:''}</article>`;
-      return `<article class="prenda"><div class="foto${p.ajuste==='contain'?' contener':''}">${p.foto?`<img src="${esc(p.foto)}" alt="${esc(p.nombre)}" loading="lazy">`:''}${esNuevo(p)?'<span class="etq">Nuevo</span>':''}${p.outlet?'<span class="sello-outlet">Outlet del outlet</span>':''}</div>
+      return `<article class="prenda${p.vendido?' vendida':''}"><div class="foto${p.ajuste==='contain'?' contener':''}">${p.foto?`<img src="${esc(p.foto)}" alt="${esc(p.nombre)}" loading="lazy">`:''}${p.vendido?'<span class="sello-vendido">Vendido</span>':esNuevo(p)?'<span class="etq">Nuevo</span>':''}${p.outlet?'<span class="sello-outlet">Outlet del outlet</span>':''}</div>
         <b>${esc(p.nombre)}</b><span class="det">${[(linea==='fiesta'||linea==='todo')&&p.linea!==linea?LINEA_NOMBRE[p.linea]:'',p.outlet?'Outlet del outlet':'',p.linea==='hombre'?'Moda circular':'',p.marca,p.talle&&'Talle '+p.talle,p.art&&'Art. '+p.art].filter(Boolean).map(esc).join(' · ')}</span>
         <span class="precio">${p.precio?pesos(p.precio):'Consultar precio'}</span>
-        <a class="btn comprar" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}">Comprar</a>${p.art?`<button class="compartir" type="button" data-art="${esc(p.art)}">🔗 Copiar link</button>`:''}</article>`}).join('');
+        ${p.vendido?'<span class="btn comprar agotado">Vendido</span>':`<a class="btn comprar" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}">Comprar</a>`}${p.art&&!p.vendido?`<button class="compartir" type="button" data-art="${esc(p.art)}">🔗 Copiar link</button>`:''}</article>`}).join('');
   }
 });
 
@@ -1373,7 +1376,7 @@ function activarVideos(v){
 function abrirProd(p,vista){const m=document.getElementById('prod');const src=p.fotos?p.fotos[0][0]:p.foto;
   document.getElementById('prod-img').src=src||'';document.getElementById('prod-nom').textContent=p.nombre;
   document.getElementById('prod-det').textContent=[LINEA_NOMBRE[p.linea]||'',p.marca,p.talle&&'Talle '+p.talle,p.art&&'Art. '+p.art].filter(Boolean).join(' · ');
-  document.getElementById('prod-pre').textContent=p.precio?pesos(p.precio):'Consultar precio';
+  document.getElementById('prod-pre').textContent=p.vendido?'Vendido':(p.precio?pesos(p.precio):'Consultar precio');const pc=document.getElementById('prod-comprar');pc.classList.toggle('agotado',!!p.vendido);pc.textContent=p.vendido?'Vendido':'Comprar';
   document.getElementById('prod-comprar').href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(p.fotos?msgModelo(p):msgPrenda(p,vista));
   document.getElementById('prod-mas').href='#'+vista;m.hidden=false;}
 function cerrarProd(){document.getElementById('prod').hidden=true}
