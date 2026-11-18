@@ -1240,7 +1240,7 @@ document.querySelectorAll('.catalogo').forEach(cat=>{
   cat.reset();
   function pintar(){
     const lista=elegido==='Outlet del outlet'?PRODUCTOS.filter(p=>p.outlet):PRODUCTOS.filter(p=>enLinea(p)||(p.linea==='todas'&&elegido==='Tarjetas de regalo')).filter(p=>elegido==='Todos'||(grupoAcc(p,elegido)!==null?grupoAcc(p,elegido):elegido==='Nuevos ingresos'?esNuevo(p):cats(p).includes(elegido)))
-      .sort((a,b)=>(!!a.vendido-!!b.vendido)||(b.fecha||'').localeCompare(a.fecha||''));
+      .sort((a,b)=>(b.fecha||'').localeCompare(a.fecha||''));
     const pal=elegido==='Tarjetas de regalo'?['tarjeta','tarjetas']:(linea==='accesorios'||linea==='gangas')?['pieza','piezas']:linea==='calzado'?['modelo','modelos']:['prenda','prendas'];cuenta.textContent=lista.length?`${lista.length} ${lista.length===1?pal[0]:pal[1]}`:'';
     if(!lista.length&&elegido==='Accesorios importados'){grilla.style.display='block';
       const ims=[1,2,3,4,5,6,7,8,9,10,11].map(k=>`<img src="v/p/imp-${k}.jpg" alt="" decoding="async">`).join('');
