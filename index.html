@@ -1176,7 +1176,7 @@ const PRODUCTOS=[
   {linea:'etiqueta',categoria:['Accesorios','Carteras'],nombre:'Canasto de algodón a rombos camel',marca:'Cód. prov. 34UC2552',talle:'',precio:35600,foto:'v/p/cart-0518.jpg',art:'0518',fecha:'2026-11-17'},
   {linea:'etiqueta',categoria:['Accesorios','Carteras'],nombre:'Canasto de rafia estampada · animal print',marca:'Cód. prov. 12UN9048 C',talle:'',precio:23600,foto:'v/p/cart-0513.jpg',art:'0513',fecha:'2026-11-17'},
   {linea:'etiqueta',categoria:['Accesorios','Carteras'],nombre:'Canasto de rafia estampada · cebra',marca:'Cód. prov. 12UN9048 B',talle:'',precio:23600,foto:'v/p/cart-0514.jpg',art:'0514',fecha:'2026-11-17'},
-  {linea:'etiqueta',categoria:['Accesorios','Carteras'],nombre:'Canasto de rafia marrón claro',marca:'Cód. prov. 12U07090',talle:'',precio:36000,foto:'v/p/cart-0515.jpg',art:'0515',fecha:'2026-11-17'},
+  {linea:'etiqueta',categoria:['Accesorios','Carteras'],nombre:'Canasto de rafia marrón claro',marca:'Cód. prov. 12U07090',talle:'',precio:36000,foto:'v/p/cart-0515.jpg',art:'0515',vendido:true,fecha:'2026-11-17'},
   {linea:'etiqueta',categoria:['Accesorios','Carteras'],nombre:'Canasto de rafia trenzado marrón con asa de bambú',marca:'Cód. prov. 12U07583',talle:'',precio:29999,foto:'v/p/cart-0516.jpg',art:'0516',fecha:'2026-11-17'},
   {linea:'etiqueta',categoria:['Accesorios','Carteras'],nombre:'Canasto de red de eco cuero negro',marca:'Cód. prov. 12U07582',talle:'',precio:25000,foto:'v/p/cart-0517.jpg',art:'0517',fecha:'2026-11-17'},
   // ---- LCO Home · Tienda (consignación Viviana Yáñez, 14-11-2026) ----
@@ -1207,7 +1207,7 @@ const PRODUCTOS=[
 const CATEGORIAS=['Blazers y chalecos','Camisas y blusas','Camperas y abrigos','Denim','Pantalones','Remeras y tops','Shorts','Tarjetas de regalo','Tejidos','Vestidos de fiesta','Vestidos y polleras'];
 const DIAS_NUEVO=15;
 const LINEA_NOMBRE={circular:'Moda circular',etiqueta:'Con etiqueta',fiesta:'Fiesta',calzado:'Calzado',hombre:'Hombre',gangas:'LCO Home'};
-const esNuevo=p=>!p.vendido&&p.fecha&&(Date.now()-new Date(p.fecha+'T12:00:00'))/864e5<=DIAS_NUEVO;
+const esNuevo=p=>p.fecha&&(Date.now()-new Date(p.fecha+'T12:00:00'))/864e5<=DIAS_NUEVO;
 const pesos=n=>Number(n).toLocaleString('es-AR')+' pesos';
 const msgPrenda=(p,linea)=>(p.msg||`Hola Agus! Me interesa esta ${p.linea==='gangas'?'pieza':'prenda'} de ${LINEA_NOMBRE[p.linea]||LINEA_NOMBRE[linea]||'LCO'}: ${p.nombre}${p.art?' (Art. '+p.art+')':''}${p.marca?' ('+p.marca+')':''}${p.precio?' · '+pesos(p.precio):''}${p.talle&&/ al /.test(p.talle)?'. ¿Qué talles tenés disponibles?':(p.talle?', talle '+p.talle+'.':'.')}`)+linkFoto(p.foto);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
