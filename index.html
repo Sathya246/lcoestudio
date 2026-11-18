@@ -1328,7 +1328,7 @@ document.querySelectorAll('.carta-btn').forEach(b=>b.addEventListener('click',()
         else{ctx.fillRect(-p.r/2,-p.r/4,p.r,p.r/2)}ctx.restore()});
       if(t<200)requestAnimationFrame(frame);else ctx.clearRect(0,0,W,H)})();
   }
-  window.addEventListener('hashchange',()=>{if(visto)return;if(location.hash==='#inicio'){visto=true;confeti();setTimeout(()=>{cup.hidden=false},450)}});
+  window.addEventListener('hashchange',()=>{if(visto)return;if(location.hash==='#inicio'){visto=true;requestAnimationFrame(()=>setTimeout(confeti,30));setTimeout(()=>{cup.hidden=false},450)}});
 })();
 /* ---------- Visor de videos ---------- */
 const visor=document.getElementById('visor'),vv=document.getElementById('visor-video'),vt=document.getElementById('visor-titulo');
@@ -1426,15 +1426,17 @@ function mostrar(){
   if(fotoLink){setTimeout(()=>{zimg.src=fotoLink;zoom.hidden=false},60);}
   document.body.classList.toggle('en-bienvenida',v==='bienvenida');
   if(v===actual) return;
+  const previa=actual&&document.getElementById('vista-'+actual);
   Object.keys(rutas).forEach(n=>document.getElementById('vista-'+n).hidden=(n!==v));
-  document.querySelectorAll('.catalogo').forEach(c=>c.reset&&c.reset());
+  const nueva=document.getElementById('vista-'+v);
+  setTimeout(()=>[previa,nueva].forEach(el=>el&&el.querySelectorAll('.catalogo').forEach(c=>c.reset&&c.reset())),0);
   if(!visor.hidden) cerrarVisor();
   if(!zoom.hidden) cerrarZoom();
   const el=document.getElementById('vista-'+v); el.classList.remove('entra'); void el.offsetWidth; el.classList.add('entra');
   const at=document.getElementById('atras'),r=rutas[v],padre=r.length>1?r[r.length-2][1]:(v==='inicio'?'bienvenida':null);
   at.hidden=!padre; if(padre) at.href='#'+padre;
   document.getElementById('ruta').innerHTML=rutas[v].map(([t,h],i,a)=>(h?`<a href="#${h}">${t}</a>`:`<span class="aca">${t}</span>`)+(i<a.length-1?'<span class="sep">›</span>':'')).join('');
-  activarVideos(document.getElementById('vista-'+v));
+  requestAnimationFrame(()=>setTimeout(()=>activarVideos(document.getElementById('vista-'+v)),0));
   actual=v; window.scrollTo(0,0);
 }
 document.getElementById('atras').addEventListener('click',e=>{
