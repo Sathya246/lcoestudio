@@ -744,7 +744,8 @@ footer{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:upp
   <div class="carro-caja">
     <div class="carro-cab"><h3>Mis deseos ♥</h3><button class="carro-x" id="favs-x" type="button" aria-label="Cerrar">×</button></div>
     <ul class="carro-lista" id="favs-lista"></ul>
-    <p class="carro-nota">Guardá acá lo que te gusta y pasalo al carrito cuando quieras.</p>
+    <button class="btn carro-enviar" id="favs-todos" type="button">✨ Hacé realidad tus deseos ✨</button>
+    <p class="carro-nota">Pasá todo al carrito de una, o de a uno con «+ Al carrito».</p>
   </div>
 </div>
 <div class="carro" id="carro" hidden role="dialog" aria-modal="true" aria-label="Mi carrito">
@@ -1546,7 +1547,7 @@ window.addEventListener('hashchange',mostrar); mostrar();
   window.lcoPintarFav=pintarBotones;
   function pintar(){
     const n=carro.length;$('carro-n').textContent=n;$('carro-btn').hidden=!n;
-    $('fav-n').textContent=favs.length;$('fav-btn').hidden=!favs.length;
+    $('fav-n').textContent=favs.length;$('favs-todos').hidden=!favs.length;$('fav-btn').hidden=!favs.length;
     $('carro-lista').innerHTML=n?carro.map((it,k)=>{const p=PRODUCTOS[it.i];
       const det=[marcaOk(p),it.c,it.t?'Talle '+it.t:(p.talle?'Talle '+p.talle:''),p.art&&'Art. '+p.art].filter(Boolean).map(esc).join(' · ');
       return `<li><img src="${esc(fotoDe(p)||'')}" alt=""><div><div class="n">${esc(p.nombre)}</div><div class="d">${det}</div><div class="p">${p.precio?pesos(p.precio):'Consultar precio'}</div></div><button class="carro-quitar" type="button" data-k="${k}">Quitar</button></li>`}).join(''):'<p class="carro-vacio">Tu carrito está vacío.</p>';
@@ -1596,6 +1597,7 @@ window.addEventListener('hashchange',mostrar); mostrar();
   $('carro-x').addEventListener('click',cerrarPanel);
   $('favs-x').addEventListener('click',cerrarPanel);
   $('carro-seguir').addEventListener('click',cerrarPanel);
+  $('favs-todos').addEventListener('click',()=>{vaciarSiCambioElDia();favs.forEach(it=>{const p=PRODUCTOS[it.i];if(p&&!p.vendido&&!carro.some(c=>c.i===it.i))carro.push({i:it.i,n:p.nombre,c:'',t:''})});guardarCarro();pintar();abrirPanel('carro')});
   ['carro','favs'].forEach(id=>$(id).addEventListener('click',e=>{if(e.target.id===id)cerrarPanel()}));
   document.addEventListener('visibilitychange',()=>{if(!document.hidden){vaciarSiCambioElDia();pintar()}});
   new MutationObserver(()=>{clearTimeout(pintarBotones._t);pintarBotones._t=setTimeout(pintarBotones,60)}).observe(document.body,{childList:true,subtree:true});
