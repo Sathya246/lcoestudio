@@ -356,6 +356,10 @@ main.cat-abierta > *:not(.catalogo){display:none!important}
 .visor-cerrar:focus-visible{outline:2px solid var(--fondo);outline-offset:3px}
 .visor video{width:100%;aspect-ratio:9/16;height:auto;max-height:calc(100vh - 110px);object-fit:contain;background:#000;border-radius:16px;max-width:100%}
 
+.comprar .ico-carro{width:1.25em;height:1.25em;flex:none}
+.comprar.ok{background:var(--coral,#E07A6F)!important;border-color:var(--coral,#E07A6F)!important}
+.comprar[data-i]{white-space:nowrap}
+.carro-btn svg{width:28px;height:28px}
 .al-carrito{align-self:flex-start;background:var(--card,#fff);border:1.5px solid var(--azul);color:var(--azul);border-radius:999px;padding:7px 14px;font:inherit;font-size:.7rem;font-weight:500;letter-spacing:.04em;cursor:pointer;margin-top:2px}
 .al-carrito.ok{background:var(--azul);color:#fff}
 .flotan{position:fixed;left:calc(18px + env(safe-area-inset-left,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:6;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
@@ -387,6 +391,7 @@ main.cat-abierta > *:not(.catalogo){display:none!important}
 .carro-total{display:flex;justify-content:space-between;font-weight:500;font-size:1.05rem;border-top:1px solid rgba(53,59,120,.15);padding-top:12px}
 .carro-vacio{opacity:.7;margin:0}
 .carro-enviar{justify-content:center;width:100%}
+.carro-seguir{background:none;border:1.5px solid var(--azul);color:var(--azul);border-radius:999px;padding:12px;font:inherit;font-weight:500;cursor:pointer;width:100%}
 .carro-nota{font-size:.75rem;opacity:.7;margin:0;text-align:center}
 .compartir{align-self:flex-start;background:none;border:0;padding:4px 2px;font:inherit;font-size:.72rem;letter-spacing:.04em;color:var(--azul);opacity:.8;cursor:pointer}
 .prod-modal{position:fixed;inset:0;z-index:22;background:rgba(53,59,120,.82);display:flex;align-items:center;justify-content:center;padding:16px}
@@ -732,9 +737,9 @@ footer{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:upp
 <div class="prod-modal" id="prod" hidden role="dialog" aria-modal="true" aria-label="Prenda">
   <div class="prod-in"><button class="visor-cerrar prod-cerrar" id="prod-cerrar">Cerrar ✕</button>
     <img id="prod-img" alt=""><b id="prod-nom"></b><span class="det" id="prod-det"></span><span class="precio" id="prod-pre"></span>
-    <a class="btn comprar" id="prod-comprar" target="_blank" rel="noopener">Comprar</a><button class="al-carrito" id="prod-carrito" type="button">+ Al carrito</button><button class="prod-fav" id="prod-fav" type="button">♡ Guardar en mis deseos</button><a class="prod-mas" id="prod-mas" href="#moda">Ver más prendas ›</a></div>
+    <a class="btn comprar" id="prod-comprar" target="_blank" rel="noopener">Comprar</a><button class="prod-fav" id="prod-fav" type="button">♡ Guardar en mis deseos</button><a class="prod-mas" id="prod-mas" href="#moda">Ver más prendas ›</a></div>
 </div>
-<div class="flotan"><button class="carro-btn fav" id="fav-btn" type="button" hidden aria-label="Ver mis deseos">♥<b id="fav-n">0</b></button><button class="carro-btn" id="carro-btn" type="button" hidden aria-label="Ver mi carrito">🛍️<b id="carro-n">0</b></button></div>
+<div class="flotan"><button class="carro-btn fav" id="fav-btn" type="button" hidden aria-label="Ver mis deseos">♥<b id="fav-n">0</b></button><button class="carro-btn" id="carro-btn" type="button" hidden aria-label="Ver mi carrito"><svg class="ico-carro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.2a1.5 1.5 0 0 0 1.5 1.2h8.8a1.5 1.5 0 0 0 1.5-1.1L21.5 8H6.2"/></svg><b id="carro-n">0</b></button></div>
 <div class="carro" id="favs" hidden role="dialog" aria-modal="true" aria-label="Mis deseos">
   <div class="carro-caja">
     <div class="carro-cab"><h3>Mis deseos ♥</h3><button class="carro-x" id="favs-x" type="button" aria-label="Cerrar">×</button></div>
@@ -748,6 +753,7 @@ footer{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:upp
     <ul class="carro-lista" id="carro-lista"></ul>
     <div class="carro-total"><span>Total</span><span id="carro-total"></span></div>
     <a class="btn carro-enviar" id="carro-enviar" target="_blank" rel="noopener" href="#">Enviar pedido por WhatsApp</a>
+    <button class="carro-seguir" id="carro-seguir" type="button">Seguir mirando</button>
     <p class="carro-nota">Te llega todo en un solo mensaje y Agus te confirma disponibilidad, envío o retiro por el showroom. El carrito se vacía solo a la medianoche; lo que guardes con ♡ queda en Mis deseos.</p>
   </div>
 </div>
@@ -1286,7 +1292,7 @@ document.querySelectorAll('.catalogo').forEach(cat=>{
     [volverBtn,tit,cuenta,grilla].forEach(e=>e.hidden=true);ficha.hidden=false;ficha.classList.remove('entra');void ficha.offsetWidth;ficha.classList.add('entra');window.scrollTo(0,0)};
   cat.addEventListener('click',e=>{
     if(e.target.closest('.ficha-volver')){history.back();return}
-    if(e.target.closest('.comprar,.al-carrito,.corazon,.compartir'))return;const c=e.target.closest('.prenda.portada');if(!c)return;
+    if(e.target.closest('.comprar,.corazon,.compartir'))return;const c=e.target.closest('.prenda.portada');if(!c)return;
     const p=PRODUCTOS.find(x=>x.fotos&&(x.art||x.nombre)===c.dataset.modelo);if(p)cat.abrirFicha(p)});
   cat.reset=()=>{cat.closest('main').classList.remove('cat-abierta');if(!ficha.hidden){ficha.hidden=true;ficha.innerHTML='';[volverBtn,tit,cuenta,grilla].forEach(e=>e.hidden=false)}elegido=null;vistaCat.hidden=true;lista.hidden=false;
     if(cat.dataset.directo){elegido='Todos';tit.textContent='';lista.hidden=true;vistaCat.hidden=false;cat.querySelector('.cat-volver').hidden=true;pintar()}};
@@ -1306,11 +1312,11 @@ document.querySelectorAll('.catalogo').forEach(cat=>{
     grilla.style.display='';
     grilla.innerHTML=lista.map(p=>{
       const msg=msgPrenda(p,linea);
-      if(p.fotos) return `<article class="prenda portada" data-modelo="${esc(p.art||p.nombre)}" role="button" tabindex="0"><div class="foto"><img src="${esc(p.fotos[0][0])}" alt="${esc(p.nombre)}" loading="lazy">${p.vendido?"":`<button class="corazon" type="button" data-i="${PRODUCTOS.indexOf(p)}" aria-label="Agregar a mis deseos">♡</button>`}</div><b>${esc(p.nombre)}</b><span class="det">${[(p.linea==='gangas'||esAcc(p))?p.marca:'',p.talles&&p.talles.length===1?'Talle '+p.talles[0]:(p.talles&&p.talles.length?'Talles '+p.talles[0]+' al '+p.talles[p.talles.length-1]:''),p.art&&'Art. '+p.art].filter(Boolean).map(esc).join(' · ')}</span>${p.colores&&p.colores.length&&!p.opcion?`<span class="colores">${p.colores.map(c=>`<i class="pt" style="background:${({Negro:'#222',Nude:'#E3BFA6',Plata:'#C9CCD1',Platino:'#E6DCC8',Dorado:'#D8B45A'})[c]||'#ccc'}"></i>${esc(c)}`).join(' ')}</span>`:''}<span class="precio">${p.precio?pesos(p.precio):'Consultar precio'}</span><span class="ver">${(p.linea==='gangas'||!(p.talles&&p.talles.length))?'Ver fotos ›':'Ver fotos y talles ›'}</span><a class="btn comprar" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msgModelo(p))}">Comprar</a>${p.vendido?'':`<button class="al-carrito" type="button" data-i="${PRODUCTOS.indexOf(p)}">+ Al carrito</button>`}${p.art?`<button class="compartir" type="button" data-art="${esc(p.art)}">🔗 Copiar link</button>`:''}</article>`;
+      if(p.fotos) return `<article class="prenda portada" data-modelo="${esc(p.art||p.nombre)}" role="button" tabindex="0"><div class="foto"><img src="${esc(p.fotos[0][0])}" alt="${esc(p.nombre)}" loading="lazy">${p.vendido?"":`<button class="corazon" type="button" data-i="${PRODUCTOS.indexOf(p)}" aria-label="Agregar a mis deseos">♡</button>`}</div><b>${esc(p.nombre)}</b><span class="det">${[(p.linea==='gangas'||esAcc(p))?p.marca:'',p.talles&&p.talles.length===1?'Talle '+p.talles[0]:(p.talles&&p.talles.length?'Talles '+p.talles[0]+' al '+p.talles[p.talles.length-1]:''),p.art&&'Art. '+p.art].filter(Boolean).map(esc).join(' · ')}</span>${p.colores&&p.colores.length&&!p.opcion?`<span class="colores">${p.colores.map(c=>`<i class="pt" style="background:${({Negro:'#222',Nude:'#E3BFA6',Plata:'#C9CCD1',Platino:'#E6DCC8',Dorado:'#D8B45A'})[c]||'#ccc'}"></i>${esc(c)}`).join(' ')}</span>`:''}<span class="precio">${p.precio?pesos(p.precio):'Consultar precio'}</span><span class="ver">${(p.linea==='gangas'||!(p.talles&&p.talles.length))?'Ver fotos ›':'Ver fotos y talles ›'}</span><a class="btn comprar" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msgModelo(p))}"${p.vendido?'':` data-i="${PRODUCTOS.indexOf(p)}"`}>Comprar</a>${p.art?`<button class="compartir" type="button" data-art="${esc(p.art)}">🔗 Copiar link</button>`:''}</article>`;
       return `<article class="prenda${p.vendido?' vendida':''}"><div class="foto${p.ajuste==='contain'?' contener':''}">${p.foto?`<img src="${esc(p.foto)}" alt="${esc(p.nombre)}" loading="lazy">`:''}${p.vendido?'<span class="sello-vendido">Vendido</span>':esNuevo(p)?'<span class="etq">Nuevo</span>':''}${p.outlet?'<span class="sello-outlet">Outlet del outlet</span>':''}${p.vendido?"":`<button class="corazon" type="button" data-i="${PRODUCTOS.indexOf(p)}" aria-label="Agregar a mis deseos">♡</button>`}</div>
         <b>${esc(p.nombre)}</b><span class="det">${[(linea==='fiesta'||linea==='todo')&&p.linea!==linea?LINEA_NOMBRE[p.linea]:'',p.outlet?'Outlet del outlet':'',p.linea==='hombre'?'Moda circular':'',p.marca,p.talle&&'Talle '+p.talle,p.art&&'Art. '+p.art].filter(Boolean).map(esc).join(' · ')}</span>
         <span class="precio">${p.precio?pesos(p.precio):'Consultar precio'}</span>
-        ${p.vendido?'<span class="btn comprar agotado">Vendido</span>':`<a class="btn comprar" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}">Comprar</a><button class="al-carrito" type="button" data-i="${PRODUCTOS.indexOf(p)}">+ Al carrito</button>`}${p.art&&!p.vendido?`<button class="compartir" type="button" data-art="${esc(p.art)}">🔗 Copiar link</button>`:''}</article>`}).join('');
+        ${p.vendido?'<span class="btn comprar agotado">Vendido</span>':`<a class="btn comprar" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}" data-i="${PRODUCTOS.indexOf(p)}">Comprar</a>`}${p.art&&!p.vendido?`<button class="compartir" type="button" data-art="${esc(p.art)}">🔗 Copiar link</button>`:''}</article>`}).join('');
   }
 });
 
@@ -1333,7 +1339,7 @@ function tarjetaModelo(p){
     <span class="precio">${p.precio?pesos(p.precio):'Consultar precio'}</span>
     ${p.colores&&p.colores.length?`<div class="opciones" data-tipo="color"><span>${esc(p.opcion||'Color')}</span>${p.colores.map(c=>`<button class="chip">${esc(c)}</button>`).join('')}</div>`:''}
     ${p.talles&&p.talles.length?`<div class="opciones" data-tipo="talle"><span>Talle</span>${p.talles.map(t=>`<button class="chip">${esc(t)}</button>`).join('')}</div>`:''}
-    <a class="btn comprar" target="_blank" rel="noopener" href="${href}">Comprar</a>${p.vendido?'':`<button class="al-carrito" type="button" data-i="${PRODUCTOS.indexOf(p)}">+ Al carrito</button>`}</article>`;
+    <a class="btn comprar" target="_blank" rel="noopener" href="${href}"${p.vendido?'':` data-i="${PRODUCTOS.indexOf(p)}"`}>Comprar</a></article>`;
 }
 const modeloDe=el=>{const art=el.closest('.modelo').dataset.modelo;return PRODUCTOS.find(p=>p.fotos&&(p.art||p.nombre)===art)};
 function actualizarModelo(card){
@@ -1432,7 +1438,7 @@ function abrirProd(p,vista){const m=document.getElementById('prod');const src=p.
   document.getElementById('prod-det').textContent=[LINEA_NOMBRE[p.linea]||'',p.marca,p.talle&&'Talle '+p.talle,p.art&&'Art. '+p.art].filter(Boolean).join(' · ');
   document.getElementById('prod-pre').textContent=p.vendido?'Vendido':(p.precio?pesos(p.precio):'Consultar precio');const pc=document.getElementById('prod-comprar');pc.classList.toggle('agotado',!!p.vendido);pc.textContent=p.vendido?'Vendido':'Comprar';
   document.getElementById('prod-comprar').href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(p.fotos?msgModelo(p):msgPrenda(p,vista));
-  const pk=document.getElementById('prod-carrito');pk.dataset.i=PRODUCTOS.indexOf(p);pk.hidden=!!p.vendido;const pf=document.getElementById('prod-fav');pf.dataset.i=PRODUCTOS.indexOf(p);pf.hidden=!!p.vendido;window.lcoPintarFav&&window.lcoPintarFav();
+  pc.dataset.i=PRODUCTOS.indexOf(p);if(p.vendido)delete pc.dataset.i;pc.dataset.pint='';const pf=document.getElementById('prod-fav');pf.dataset.i=PRODUCTOS.indexOf(p);pf.hidden=!!p.vendido;window.lcoPintarFav&&window.lcoPintarFav();
   document.getElementById('prod-mas').href='#'+vista;m.hidden=false;}
 function cerrarProd(){document.getElementById('prod').hidden=true}
 document.getElementById('prod-cerrar').addEventListener('click',cerrarProd);
@@ -1529,10 +1535,11 @@ window.addEventListener('hashchange',mostrar); mostrar();
   const base=()=>(SITIO||'https://lcoestudio.pages.dev');
   const marcaOk=p=>p.marca&&!/^Cód\./.test(p.marca)?p.marca:'';
   const elige=p=>(p.colores&&p.colores.length)||(p.talles&&p.talles.length>1);
+  const ICO='<svg class="ico-carro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.2a1.5 1.5 0 0 0 1.5 1.2h8.8a1.5 1.5 0 0 0 1.5-1.1L21.5 8H6.2"/></svg>';
   const fotoDe=p=>p.fotos?p.fotos[0][0]:p.foto;
 
   function pintarBotones(){
-    document.querySelectorAll('.al-carrito').forEach(b=>{const en=carro.some(it=>String(it.i)===b.dataset.i);if(b.classList.contains('ok')!==en||!b.dataset.pint){b.dataset.pint=1;b.classList.toggle('ok',en);b.textContent=en?'✓ En el carrito':'+ Al carrito'}});
+    document.querySelectorAll('.comprar[data-i]').forEach(b=>{const en=carro.some(it=>String(it.i)===b.dataset.i);const st=en?'en':'no';if(b.dataset.pint!==st){b.dataset.pint=st;b.classList.toggle('ok',en);b.innerHTML=(en?'Agregado ':'Comprar ')+ICO}});
     document.querySelectorAll('.corazon').forEach(b=>{const en=favs.some(it=>String(it.i)===b.dataset.i);if(b.classList.contains('on')!==en||!b.dataset.pint){b.dataset.pint=1;b.classList.toggle('on',en);b.textContent=en?'♥':'♡';b.setAttribute('aria-label',en?'Quitar de mis deseos':'Agregar a mis deseos')}});
     const pf=$('prod-fav');if(pf){const en=favs.some(it=>String(it.i)===pf.dataset.i);const t=en?'♥ En mis deseos':'♡ Guardar en mis deseos';if(pf.textContent!==t)pf.textContent=t}
   }
@@ -1554,8 +1561,8 @@ window.addEventListener('hashchange',mostrar); mostrar();
   }
   function agregar(i,o){const p=PRODUCTOS[i];if(!p||p.vendido)return;vaciarSiCambioElDia();
     const ya=carro.findIndex(it=>it.i===i&&(it.c||'')===(o.c||'')&&(it.t||'')===(o.t||''));
-    if(ya>=0)toast('Ya está en tu carrito 🛍️');else{carro.push({i,n:p.nombre,c:o.c||'',t:o.t||''});guardarCarro();toast('Agregado al carrito 🛍️')}
-    pintar()}
+    if(ya>=0)toast('Ya está en tu carrito');else{carro.push({i,n:p.nombre,c:o.c||'',t:o.t||''});guardarCarro()}
+    pintar();abrirPanel('carro')}
 
   /* Paneles: se abren sumando un paso al historial, así la flechita / el botón atrás los cierra y te deja donde estabas */
   function abrirPanel(id){vaciarSiCambioElDia();pintar();['carro','favs'].forEach(x=>{if(x!==id)$(x).hidden=true});$(id).hidden=false;
@@ -1571,8 +1578,8 @@ window.addEventListener('hashchange',mostrar); mostrar();
       const k=favs.findIndex(it=>it.i===i);
       if(k>=0){favs.splice(k,1);toast('Lo sacaste de tus deseos')}else{favs.push({i,n:p.nombre});toast('Guardado en tus deseos ♥')}
       guardarFavs();pintar();return}
-    const b=e.target.closest('.al-carrito');
-    if(b){e.stopPropagation();const i=+b.dataset.i;const p=PRODUCTOS[i];if(!p||p.vendido)return;
+    const b=e.target.closest('.comprar[data-i]');
+    if(b){e.preventDefault();e.stopPropagation();const i=+b.dataset.i;const p=PRODUCTOS[i];if(!p||p.vendido)return;
       const card=b.closest('.modelo');const o={c:'',t:''};
       if(card){const sel=t=>{const x=card.querySelector(`.opciones[data-tipo="${t}"] .chip.on`);return x?x.textContent:''};o.c=sel('color');o.t=sel('talle');
         if(card.querySelector('.opciones[data-tipo="color"]')&&!o.c){toast('Elegí '+(p.opcion?'una opción':'el color')+' antes de agregarlo');return}
@@ -1580,7 +1587,7 @@ window.addEventListener('hashchange',mostrar); mostrar();
       else if(elige(p)&&b.closest('.portada')){const cat=b.closest('.catalogo');if(cat&&cat.abrirFicha){cat.abrirFicha(p);setTimeout(()=>toast('Elegí '+(p.colores&&p.colores.length?(p.opcion?'una opción':'el color'):'el talle')+' y agregalo al carrito'),250);return}}
       if(!o.t&&p.talles&&p.talles.length===1)o.t=p.talles[0];
       agregar(i,o);return}
-    const fa=e.target.closest('.fav-al-carro');if(fa){const it=favs[+fa.dataset.k];if(it)agregar(it.i,{});return}
+    const fa=e.target.closest('.fav-al-carro');if(fa){const it=favs[+fa.dataset.k];if(it){const p=PRODUCTOS[it.i];const ya=carro.some(c=>c.i===it.i);if(!ya){carro.push({i:it.i,n:p.nombre,c:'',t:''});guardarCarro();toast('Pasó al carrito')}pintar()}return}
     const fq=e.target.closest('.fav-quitar');if(fq){favs.splice(+fq.dataset.k,1);guardarFavs();pintar();if(!favs.length)cerrarPanel();return}
     const q=e.target.closest('.carro-quitar');if(q){carro.splice(+q.dataset.k,1);guardarCarro();pintar();if(!carro.length)cerrarPanel();return}
   });
@@ -1588,6 +1595,7 @@ window.addEventListener('hashchange',mostrar); mostrar();
   $('fav-btn').addEventListener('click',()=>abrirPanel('favs'));
   $('carro-x').addEventListener('click',cerrarPanel);
   $('favs-x').addEventListener('click',cerrarPanel);
+  $('carro-seguir').addEventListener('click',cerrarPanel);
   ['carro','favs'].forEach(id=>$(id).addEventListener('click',e=>{if(e.target.id===id)cerrarPanel()}));
   document.addEventListener('visibilitychange',()=>{if(!document.hidden){vaciarSiCambioElDia();pintar()}});
   new MutationObserver(()=>{clearTimeout(pintarBotones._t);pintarBotones._t=setTimeout(pintarBotones,60)}).observe(document.body,{childList:true,subtree:true});
