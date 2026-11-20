@@ -1332,7 +1332,7 @@ document.querySelectorAll('.carta-btn').forEach(b=>b.addEventListener('click',()
         else{ctx.fillRect(-p.r/2,-p.r/4,p.r,p.r/2)}ctx.restore()});
       if(t<200)requestAnimationFrame(frame);else ctx.clearRect(0,0,W,H)})();
   }
-  window.addEventListener('hashchange',()=>{if(visto)return;if(location.hash==='#inicio'){visto=true;requestAnimationFrame(()=>setTimeout(confeti,30));setTimeout(()=>{cup.hidden=false},450)}});
+  window.addEventListener('hashchange',()=>{if(visto)return;if(location.hash==='#inicio'){visto=true;requestAnimationFrame(()=>setTimeout(confeti,30));setTimeout(()=>{cup.hidden=false;try{localStorage.setItem('lco-cupon','1')}catch(e){}},450)}});
 })();
 /* ---------- Visor de videos ---------- */
 const visor=document.getElementById('visor'),vv=document.getElementById('visor-video'),vt=document.getElementById('visor-titulo');
