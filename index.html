@@ -380,6 +380,11 @@ main.cat-abierta > *:not(.catalogo){display:none!important}
 .carro-caja{background:var(--crema,#FFF6EE);width:100%;max-width:520px;max-height:88vh;overflow:auto;border-radius:26px 26px 0 0;padding:22px 18px calc(22px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px;color:var(--tinta)}
 .carro-caja h3{margin:0;font-family:Lora,Georgia,serif;font-weight:500;font-size:1.5rem}
 .carro-cab{display:flex;justify-content:space-between;align-items:center}
+.carro-acc-cab{display:flex;align-items:center;gap:6px}
+.vaciar{display:inline-flex;align-items:center;gap:5px;background:none;border:1px solid var(--linea,#EBD3CB);border-radius:999px;font:inherit;font-size:.8rem;color:var(--tinta);padding:6px 12px;cursor:pointer}
+.vaciar svg{width:16px;height:16px}
+.vaciar.seguro{background:var(--coral,#E07A6F);border-color:var(--coral,#E07A6F);color:#fff}
+.vaciar[hidden]{display:none}
 .carro-x{background:none;border:0;font-size:1.6rem;line-height:1;color:var(--tinta);cursor:pointer;padding:4px 8px}
 .carro-lista{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 .carro-lista li{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;background:#fff;border-radius:16px;padding:8px}
@@ -742,7 +747,7 @@ footer{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:upp
 <div class="flotan"><button class="carro-btn fav" id="fav-btn" type="button" hidden aria-label="Ver mis deseos">♥<b id="fav-n">0</b></button><button class="carro-btn" id="carro-btn" type="button" hidden aria-label="Ver mi carrito"><svg class="ico-carro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.2a1.5 1.5 0 0 0 1.5 1.2h8.8a1.5 1.5 0 0 0 1.5-1.1L21.5 8H6.2"/></svg><b id="carro-n">0</b></button></div>
 <div class="carro" id="favs" hidden role="dialog" aria-modal="true" aria-label="Mis deseos">
   <div class="carro-caja">
-    <div class="carro-cab"><h3>Mis deseos ♥</h3><button class="carro-x" id="favs-x" type="button" aria-label="Cerrar">×</button></div>
+    <div class="carro-cab"><h3>Mis deseos ♥</h3><div class="carro-acc-cab"><button class="vaciar" id="favs-vaciar" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6"/></svg><span>Vaciar</span></button><button class="carro-x" id="favs-x" type="button" aria-label="Cerrar">×</button></div></div>
     <ul class="carro-lista" id="favs-lista"></ul>
     <button class="btn carro-enviar" id="favs-todos" type="button">✨ Hacé realidad tus deseos ✨</button>
     <p class="carro-nota">Pasá todo al carrito de una, o de a uno con «+ Al carrito».</p>
@@ -750,7 +755,7 @@ footer{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:upp
 </div>
 <div class="carro" id="carro" hidden role="dialog" aria-modal="true" aria-label="Mi carrito">
   <div class="carro-caja">
-    <div class="carro-cab"><h3>Mi carrito</h3><button class="carro-x" id="carro-x" type="button" aria-label="Cerrar">×</button></div>
+    <div class="carro-cab"><h3>Mi carrito</h3><div class="carro-acc-cab"><button class="vaciar" id="carro-vaciar" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6"/></svg><span>Vaciar</span></button><button class="carro-x" id="carro-x" type="button" aria-label="Cerrar">×</button></div></div>
     <ul class="carro-lista" id="carro-lista"></ul>
     <div class="carro-total"><span>Total</span><span id="carro-total"></span></div>
     <a class="btn carro-enviar" id="carro-enviar" target="_blank" rel="noopener" href="#">Enviar pedido por WhatsApp</a>
@@ -1619,6 +1624,12 @@ window.addEventListener('hashchange',mostrar); mostrar();
     const fq=e.target.closest('.fav-quitar');if(fq){favs.splice(+fq.dataset.k,1);guardarFavs();pintar();if(!favs.length)cerrarPanel();return}
     const q=e.target.closest('.carro-quitar');if(q){carro.splice(+q.dataset.k,1);guardarCarro();pintar();if(!carro.length)cerrarPanel();return}
   });
+  /* Vaciar todo: primer toque pide confirmación, el segundo vacía */
+  function vaciar(btn,accion){const sp=btn.querySelector('span');
+    if(!btn.classList.contains('seguro')){btn.classList.add('seguro');sp.textContent='¿Seguro? Tocá de nuevo';clearTimeout(btn._t);btn._t=setTimeout(()=>{btn.classList.remove('seguro');sp.textContent='Vaciar'},3000);return}
+    clearTimeout(btn._t);btn.classList.remove('seguro');sp.textContent='Vaciar';accion();pintar();cerrarPanel()}
+  $('carro-vaciar').addEventListener('click',e=>{e.stopPropagation();vaciar(e.currentTarget,()=>{carro=[];guardarCarro();toast('Vaciaste el carrito')})});
+  $('favs-vaciar').addEventListener('click',e=>{e.stopPropagation();vaciar(e.currentTarget,()=>{favs=[];guardarFavs();toast('Vaciaste tu lista de deseos')})});
   $('carro-btn').addEventListener('click',()=>abrirPanel('carro'));
   $('fav-btn').addEventListener('click',()=>abrirPanel('favs'));
   $('carro-x').addEventListener('click',cerrarPanel);
