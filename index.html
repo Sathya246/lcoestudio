@@ -1624,7 +1624,10 @@ window.addEventListener('hashchange',mostrar); mostrar();
   $('carro-x').addEventListener('click',cerrarPanel);
   $('favs-x').addEventListener('click',cerrarPanel);
   $('carro-seguir').addEventListener('click',cerrarPanel);
-  $('favs-todos').addEventListener('click',()=>{vaciarSiCambioElDia();favs.forEach(it=>{const p=PRODUCTOS[it.i];if(p&&!p.vendido&&!carro.some(c=>c.i===it.i))carro.push({i:it.i,n:p.nombre,c:'',t:''})});guardarCarro();pintar();abrirPanel('carro')});
+  $('favs-todos').addEventListener('click',()=>{vaciarSiCambioElDia();favs.forEach(it=>{const p=PRODUCTOS[it.i];if(p&&!p.vendido&&!carro.some(c=>c.i===it.i))carro.push({i:it.i,n:p.nombre,c:'',t:''})});guardarCarro();pintar();
+    /* evita el "toque fantasma" del celular: el botón de WhatsApp aparece justo donde estaba este */
+    const env=$('carro-enviar');env.style.pointerEvents='none';setTimeout(()=>env.style.pointerEvents='',700);
+    abrirPanel('carro');toast('Tus deseos ya están en el carrito 🛍️')});
   ['carro','favs'].forEach(id=>$(id).addEventListener('click',e=>{if(e.target.id===id)cerrarPanel()}));
   document.addEventListener('visibilitychange',()=>{if(!document.hidden){vaciarSiCambioElDia();pintar()}});
   new MutationObserver(()=>{clearTimeout(pintarBotones._t);pintarBotones._t=setTimeout(pintarBotones,60)}).observe(document.body,{childList:true,subtree:true});
