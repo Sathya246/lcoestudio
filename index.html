@@ -750,7 +750,8 @@ footer{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:upp
     <div class="carro-cab"><h3>Mis deseos ♥</h3><div class="carro-acc-cab"><button class="vaciar" id="favs-vaciar" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6"/></svg><span>Vaciar</span></button><button class="carro-x" id="favs-x" type="button" aria-label="Cerrar">×</button></div></div>
     <ul class="carro-lista" id="favs-lista"></ul>
     <button class="btn carro-enviar" id="favs-todos" type="button">✨ Hacé realidad tus deseos ✨</button>
-    <p class="carro-nota">Pasá todo al carrito de una, o de a uno con «+ Al carrito».</p>
+    <button class="carro-seguir" id="favs-ir-carro" style="margin-top:10px" type="button" hidden>🛍️ Ir al carrito (<span id="favs-ir-n">0</span>)</button>
+    <p class="carro-nota">Pasá todo al carrito de una, o de a uno con «+ Al carrito». Lo que pasa al carrito sale de tus deseos.</p>
   </div>
 </div>
 <div class="carro" id="carro" hidden role="dialog" aria-modal="true" aria-label="Mi carrito">
@@ -1582,7 +1583,7 @@ window.addEventListener('hashchange',mostrar); mostrar();
   window.lcoPintarFav=pintarBotones;
   function pintar(){
     const n=carro.length;$('carro-n').textContent=n;$('carro-btn').hidden=!n;
-    $('fav-n').textContent=favs.length;$('favs-todos').hidden=!favs.length;$('fav-btn').hidden=!favs.length;
+    $('fav-n').textContent=favs.length;$('favs-todos').hidden=!favs.length;$('favs-ir-carro').hidden=!n;$('favs-ir-n').textContent=n;$('fav-btn').hidden=!favs.length;
     $('carro-lista').innerHTML=n?carro.map((it,k)=>{const p=PRODUCTOS[it.i];
       const det=[marcaOk(p),it.c,it.t?'Talle '+it.t:(p.talle?'Talle '+p.talle:''),p.art&&'Art. '+p.art].filter(Boolean).map(esc).join(' · ');
       return `<li><img src="${esc(fotoDe(p)||'')}" alt=""><div><div class="n">${esc(p.nombre)}</div><div class="d">${det}</div><div class="p">${p.precio?pesos(p.precio):'Consultar precio'}</div></div><button class="carro-quitar" type="button" data-k="${k}">Quitar</button></li>`}).join(''):'<p class="carro-vacio">Tu carrito está vacío.</p>';
@@ -1623,7 +1624,7 @@ window.addEventListener('hashchange',mostrar); mostrar();
       else if(elige(p)&&b.closest('.portada')){const cat=b.closest('.catalogo');if(cat&&cat.abrirFicha){cat.abrirFicha(p);setTimeout(()=>toast('Elegí '+(p.colores&&p.colores.length?(p.opcion?'una opción':'el color'):'el talle')+' y agregalo al carrito'),250);return}}
       if(!o.t&&p.talles&&p.talles.length===1)o.t=p.talles[0];
       agregar(i,o);return}
-    const fa=e.target.closest('.fav-al-carro');if(fa){const it=favs[+fa.dataset.k];if(it){const p=PRODUCTOS[it.i];const ya=carro.some(c=>c.i===it.i);if(!ya){carro.push({i:it.i,n:p.nombre,c:'',t:''});guardarCarro();toast('Pasó al carrito')}pintar()}return}
+    const fa=e.target.closest('.fav-al-carro');if(fa){const it=favs[+fa.dataset.k];if(it){const p=PRODUCTOS[it.i];const ya=carro.some(c=>c.i===it.i);if(!ya){carro.push({i:it.i,n:p.nombre,c:'',t:''});guardarCarro()}favs.splice(+fa.dataset.k,1);guardarFavs();toast('Pasó al carrito 🛍️');pintar();if(!favs.length)abrirPanel('carro')}return}
     const fq=e.target.closest('.fav-quitar');if(fq){favs.splice(+fq.dataset.k,1);guardarFavs();pintar();if(!favs.length)cerrarPanel();return}
     const q=e.target.closest('.carro-quitar');if(q){carro.splice(+q.dataset.k,1);guardarCarro();pintar();if(!carro.length)cerrarPanel();return}
   });
@@ -1634,11 +1635,12 @@ window.addEventListener('hashchange',mostrar); mostrar();
   $('carro-vaciar').addEventListener('click',e=>{e.stopPropagation();vaciar(e.currentTarget,()=>{carro=[];guardarCarro();toast('Vaciaste el carrito')})});
   $('favs-vaciar').addEventListener('click',e=>{e.stopPropagation();vaciar(e.currentTarget,()=>{favs=[];guardarFavs();toast('Vaciaste tu lista de deseos')})});
   $('carro-btn').addEventListener('click',()=>abrirPanel('carro'));
+  $('favs-ir-carro').addEventListener('click',()=>abrirPanel('carro'));
   $('fav-btn').addEventListener('click',()=>abrirPanel('favs'));
   $('carro-x').addEventListener('click',cerrarPanel);
   $('favs-x').addEventListener('click',cerrarPanel);
   $('carro-seguir').addEventListener('click',cerrarPanel);
-  $('favs-todos').addEventListener('click',()=>{vaciarSiCambioElDia();favs.forEach(it=>{const p=PRODUCTOS[it.i];if(p&&!p.vendido&&!carro.some(c=>c.i===it.i))carro.push({i:it.i,n:p.nombre,c:'',t:''})});guardarCarro();pintar();
+  $('favs-todos').addEventListener('click',()=>{vaciarSiCambioElDia();favs.forEach(it=>{const p=PRODUCTOS[it.i];if(p&&!p.vendido&&!carro.some(c=>c.i===it.i))carro.push({i:it.i,n:p.nombre,c:'',t:''})});favs=[];guardarFavs();guardarCarro();pintar();
     /* evita el "toque fantasma" del celular: el botón de WhatsApp aparece justo donde estaba este */
     const env=$('carro-enviar');env.style.pointerEvents='none';setTimeout(()=>env.style.pointerEvents='',700);
     abrirPanel('carro');toast('Tus deseos ya están en el carrito 🛍️')});
